@@ -1,6 +1,6 @@
 import { d as defineComponent, r as ref, i as onMounted, u as unref, o as openBlock, c as createElementBlock, t as toDisplayString, g as createCommentVNode, p as pushScopeId, k as popScopeId, e as createBaseVNode, _ as _export_sfc, h as createVNode } from "./chunks/framework.57b17dd8.js";
 const _imports_0 = "/img/puff.svg";
-const _withScopeId = (n) => (pushScopeId("data-v-64292239"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-e955d7e9"), n = n(), popScopeId(), n);
 const _hoisted_1 = {
   key: 0,
   class: "tip"
@@ -58,8 +58,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const Examples_vue_vue_type_style_index_0_scoped_64292239_lang = "";
-const Examples = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-64292239"]]);
+const Examples_vue_vue_type_style_index_0_scoped_e955d7e9_lang = "";
+const Examples = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-e955d7e9"]]);
 const __pageData = JSON.parse('{"title":"功能示例","description":"","frontmatter":{"page":true,"footer":false,"title":"功能示例"},"headers":[],"relativePath":"examples/index.md"}');
 const __default__ = { name: "examples/index.md" };
 const _sfc_main = Object.assign(__default__, {
