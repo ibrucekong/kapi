@@ -1035,11 +1035,11 @@ declare interface Camera {
 	setCameraAngleLimit(min : any, max : any, sync : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
-	 * @api  playRoute(route: array, option: object, sync?: boolean) 漫游
+	 * @api  playRoute(route: array, option: object, sync?: boolean) 开始漫游
 	 * @name playRoute
 	 * @group Camera
 	 * @version 1.0.0
-	 * @description 漫游
+	 * @description 开始漫游
 	 * 
 	 * @param route 路线数组，投影坐标和地理坐标都是x,y,z
 	 * @param option 飞行参数
@@ -1146,390 +1146,6 @@ declare interface Camera {
 	addBookmark(type : any, sync : any): /* Camera.prototype.+Promise */ any;
 }
 declare var Camera: Camera;
-
-/**
- * 
- */
-declare interface Coord {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  transformECEFToEngine(x: float, y: float, z: float) 地心地固转引擎
-	 * @name transformECEFToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为引擎坐标
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformECEFToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformECEFToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformECEFToProjection(x: float, y: float, z: float) 地心地固转投影
-	 * @name transformECEFToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformECEFToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformECEFToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformECEFToGeographic(x: float, y: float, z: float) 地心地固转地理
-	 * @name transformECEFToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为地理坐标
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformECEFToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformECEFToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformProjectionToECEF(x: float, y: float, z: float) 投影转地心地固
-	 * @name transformProjectionToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影坐标转地心地固坐标系(地心坐标系)
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformProjectionToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformProjectionToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformProjectionToGeographic(x: float, y: float, z: float) 投影转地理
-	 * @name transformProjectionToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影转地理
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformProjectionToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformProjectionToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformProjectionToEngine(x: float, y: float, z: float) 投影转引擎
-	 * @name transformProjectionToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影转引擎
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformProjectionToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformProjectionToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformEngineToProjection(x: float, y: float, z: float) 引擎转投影
-	 * @name transformEngineToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformEngineToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformEngineToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformEngineToGeographic(x: float, y: float, z: float) 引擎转地理
-	 * @name transformEngineToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转地理
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformEngineToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformEngineToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformEngineToECEF(x: float, y: float, z: float) 引擎转投影
-	 * @name transformEngineToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformEngineToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformEngineToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformGeographicToECEF(x: float, y: float, z: float) 地理转地心地固
-	 * @name transformGeographicToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转地心地固
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformGeographicToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformGeographicToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformGeographicToProjection(x: float, y: float, z: float) 地理转投影
-	 * @name transformGeographicToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformGeographicToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformGeographicToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformGeographicToEngine(x: float, y: float, z: float) 地理转引擎
-	 * @name transformGeographicToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转引擎
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformGeographicToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformGeographicToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-}
-declare var Coord: Coord;
 
 /**
  * 
@@ -2085,98 +1701,6 @@ declare interface Controller {
 	getData(val : any, n : any): any;
 }
 declare var Controller: Controller;
-
-/**
- * 
- */
-declare interface Event {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  addMessageListener(callback: function) 设置消息监听
-	 * @name addMessageListener
-	 * @apiIgnore
-	 * @group Event
-	 * @version 1.0.0
-	 * @description 设置消息监听(PixelStream原生监听)
-	 * 
-	 * @param response 回调
-	 * 
-	 * @example 使用示例
-	 *   let event = new kapi.Event()
-	 *   event.addMessageListener(response => {
-	 * 
-	 *   })
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param callback 
-	 */
-	addMessageListener(callback : any): void;
-		
-	/**
-	 * @api  addCustomListener(eventName: string, callback: function) 设置自定义监听
-	 * @name addCustomListener
-	 * @group Event
-	 * @version 1.0.0
-	 * @description 设置自定义监听
-	 * @param eventName 自定义监听标识
-	 * @param callback 回调
-	 * 
-	 * @example 使用示例
-	 *   let event = new kapi.Event()
-	 *   // 配合帧率启用接口监听帧率值变化
-	 *   event.addCustomListener(KAPI_CONST.FPS, response => {
-	 * 
-	 *   })
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param eventName 
-	 * @param callback 
-	 */
-	addCustomListener(eventName : any, callback : any): void;
-		
-	/**
-	 * @api  removeCustomListener(eventName: string) 删除自定义监听
-	 * @name removeCustomListener
-	 * @group Event
-	 * @version 1.0.0
-	 * @description 删除自定义监听
-	 * 
-	 * @param eventName 自定义监听标识
-	 * 
-	 * @example 使用示例
-	 *   let event = new kapi.Event()
-	 *   event.removeCustomListener("test_btn")
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param eventName 
-	 */
-	removeCustomListener(eventName : any): void;
-}
-// @ts-ignore
-declare var Event: Event;
 
 /**
  * 
@@ -2942,6 +2466,482 @@ declare interface Draw {
 	drawDecal(option : Draw.prototype.DrawDecal0, sync : any): /* Draw.prototype.+Promise */ any;
 }
 declare var Draw: Draw;
+
+/**
+ * 
+ */
+declare interface Event {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  addMessageListener(callback: function) 设置消息监听
+	 * @name addMessageListener
+	 * @apiIgnore
+	 * @group Event
+	 * @version 1.0.0
+	 * @description 设置消息监听(PixelStream原生监听)
+	 * 
+	 * @param response 回调
+	 * 
+	 * @example 使用示例
+	 *   let event = new kapi.Event()
+	 *   event.addMessageListener(response => {
+	 * 
+	 *   })
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param callback 
+	 */
+	addMessageListener(callback : any): void;
+		
+	/**
+	 * @api  addCustomListener(eventName: string, callback: function) 设置自定义监听
+	 * @name addCustomListener
+	 * @group Event
+	 * @version 1.0.0
+	 * @description 设置自定义监听
+	 * @param eventName 自定义监听标识
+	 * @param callback 回调
+	 * 
+	 * @example 使用示例
+	 *   let event = new kapi.Event()
+	 *   // 配合帧率启用接口监听帧率值变化
+	 *   event.addCustomListener(KAPI_CONST.FPS, response => {
+	 * 
+	 *   })
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param eventName 
+	 * @param callback 
+	 */
+	addCustomListener(eventName : any, callback : any): void;
+		
+	/**
+	 * @api  removeCustomListener(eventName: string) 删除自定义监听
+	 * @name removeCustomListener
+	 * @group Event
+	 * @version 1.0.0
+	 * @description 删除自定义监听
+	 * 
+	 * @param eventName 自定义监听标识
+	 * 
+	 * @example 使用示例
+	 *   let event = new kapi.Event()
+	 *   event.removeCustomListener("test_btn")
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param eventName 
+	 */
+	removeCustomListener(eventName : any): void;
+}
+// @ts-ignore
+declare var Event: Event;
+
+/**
+ * 
+ */
+declare interface Coord {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  transformECEFToEngine(x: float, y: float, z: float) 地心地固转引擎
+	 * @name transformECEFToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为引擎坐标
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformECEFToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformECEFToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformECEFToProjection(x: float, y: float, z: float) 地心地固转投影
+	 * @name transformECEFToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformECEFToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformECEFToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformECEFToGeographic(x: float, y: float, z: float) 地心地固转地理
+	 * @name transformECEFToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为地理坐标
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformECEFToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformECEFToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformProjectionToECEF(x: float, y: float, z: float) 投影转地心地固
+	 * @name transformProjectionToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影坐标转地心地固坐标系(地心坐标系)
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformProjectionToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformProjectionToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformProjectionToGeographic(x: float, y: float, z: float) 投影转地理
+	 * @name transformProjectionToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影转地理
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformProjectionToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformProjectionToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformProjectionToEngine(x: float, y: float, z: float) 投影转引擎
+	 * @name transformProjectionToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影转引擎
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformProjectionToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformProjectionToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformEngineToProjection(x: float, y: float, z: float) 引擎转投影
+	 * @name transformEngineToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformEngineToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformEngineToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformEngineToGeographic(x: float, y: float, z: float) 引擎转地理
+	 * @name transformEngineToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转地理
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformEngineToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformEngineToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformEngineToECEF(x: float, y: float, z: float) 引擎转投影
+	 * @name transformEngineToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformEngineToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformEngineToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformGeographicToECEF(x: float, y: float, z: float) 地理转地心地固
+	 * @name transformGeographicToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转地心地固
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformGeographicToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformGeographicToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformGeographicToProjection(x: float, y: float, z: float) 地理转投影
+	 * @name transformGeographicToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformGeographicToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformGeographicToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  transformGeographicToEngine(x: float, y: float, z: float) 地理转引擎
+	 * @name transformGeographicToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转引擎
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.transformGeographicToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	transformGeographicToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+}
+declare var Coord: Coord;
 
 /**
  * 
@@ -3964,6 +3964,147 @@ declare var Measure: Measure;
 /**
  * 
  */
+declare interface Tool {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  getAll(type) 全选视窗物体
+	 * @name getAll
+	 * @group Tool
+	 * @version 1.0.0
+	 * @description 全选视窗物体
+	 * 
+	 * @param type 物体类型【staticmesh  静态网格体；tree  树木；car  车辆】
+	 * 
+	 * @example 使用示例
+	 *   let tool = new kapi.Tool()
+	 *   let type="staticmesh"
+	 *   // 配合 async
+	 *   let tool-getAll = await tool.getAll(type)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @return  
+	 */
+	getAll(type : any): /* Tool.prototype.+Promise */ any;
+		
+	/**
+	 * @api  addGetPointListener(callback) 设置获取点的监听
+	 * @name addGetPointListener
+	 * @group Tool
+	 * @version 1.0.0
+	 * @description 设置获取点的监听
+	 * @param callback 回调
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Tool()
+	 *   draw.addGetPointListener(response => {
+	 * 
+	 *   })
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param callback 
+	 */
+	addGetPointListener(callback : any): void;
+		
+	/**
+	 * @api  openGetPoint(type) 开启取点工具
+	 * @name openGetPoint
+	 * @group Tool
+	 * @version 1.0.0
+	 * @description 开启取点工具
+	 * 
+	 * @param type 返回坐标类型【 engine  返回引擎坐标; project  返回投影坐标; graphic  返回地理坐标】
+	 * 
+	 * @example 使用示例
+	 *   let tool = new kapi.Tool()
+	 *   let type="project"
+	 *   // 配合 async
+	 *   let tool-openGetPoint = await tool.openGetPoint(type)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "开启取点工具",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @return  
+	 */
+	openGetPoint(type : any): /* Tool.prototype.+Promise */ any;
+		
+	/**
+	 * @api  closeGetPoint(type) 关闭取点工具
+	 * @name closeGetPoint
+	 * @group Tool
+	 * @version 1.0.0
+	 * @description 关闭取点工具
+	 * 
+	 * 
+	 * @example 使用示例
+	 *   let tool = new kapi.Tool()
+	 *   // 配合 async
+	 *   let tool-closeGetPoint = await tool.closeGetPoint()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "关闭取点工具",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @return  
+	 */
+	closeGetPoint(): /* Tool.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removeMarkPoint(type) 删除坐标示意点
+	 * @name removeMarkPoint
+	 * @group Tool
+	 * @version 1.0.0
+	 * @description 删除坐标示意点
+	 * 
+	 * 
+	 * @example 使用示例
+	 *   let tool = new kapi.Tool()
+	 *   let id='1';
+	 *   // 配合 async
+	 *   let tool-removeMarkPoint = await tool.removeMarkPoint(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "删除坐标示意点",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @return  
+	 */
+	removeMarkPoint(id : any): /* Tool.prototype.+Promise */ any;
+}
+declare var Tool: Tool;
+
+/**
+ * 
+ */
 declare interface Scene {
 		
 	/**
@@ -4532,147 +4673,6 @@ declare interface Scene {
 	clientId : string;
 }
 declare var Scene: Scene;
-
-/**
- * 
- */
-declare interface Tool {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  getAll(type) 全选视窗物体
-	 * @name getAll
-	 * @group Tool
-	 * @version 1.0.0
-	 * @description 全选视窗物体
-	 * 
-	 * @param type 物体类型【staticmesh  静态网格体；tree  树木；car  车辆】
-	 * 
-	 * @example 使用示例
-	 *   let tool = new kapi.Tool()
-	 *   let type="staticmesh"
-	 *   // 配合 async
-	 *   let tool-getAll = await tool.getAll(type)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param type 
-	 * @return  
-	 */
-	getAll(type : any): /* Tool.prototype.+Promise */ any;
-		
-	/**
-	 * @api  addGetPointListener(callback) 设置获取点的监听
-	 * @name addGetPointListener
-	 * @group Tool
-	 * @version 1.0.0
-	 * @description 设置获取点的监听
-	 * @param callback 回调
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Tool()
-	 *   draw.addGetPointListener(response => {
-	 * 
-	 *   })
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param callback 
-	 */
-	addGetPointListener(callback : any): void;
-		
-	/**
-	 * @api  openGetPoint(type) 开启取点工具
-	 * @name openGetPoint
-	 * @group Tool
-	 * @version 1.0.0
-	 * @description 开启取点工具
-	 * 
-	 * @param type 返回坐标类型【 engine  返回引擎坐标; project  返回投影坐标; graphic  返回地理坐标】
-	 * 
-	 * @example 使用示例
-	 *   let tool = new kapi.Tool()
-	 *   let type="project"
-	 *   // 配合 async
-	 *   let tool-openGetPoint = await tool.openGetPoint(type)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "开启取点工具",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param type 
-	 * @return  
-	 */
-	openGetPoint(type : any): /* Tool.prototype.+Promise */ any;
-		
-	/**
-	 * @api  closeGetPoint(type) 关闭取点工具
-	 * @name closeGetPoint
-	 * @group Tool
-	 * @version 1.0.0
-	 * @description 关闭取点工具
-	 * 
-	 * 
-	 * @example 使用示例
-	 *   let tool = new kapi.Tool()
-	 *   // 配合 async
-	 *   let tool-closeGetPoint = await tool.closeGetPoint()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "关闭取点工具",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @return  
-	 */
-	closeGetPoint(): /* Tool.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removeMarkPoint(type) 删除坐标示意点
-	 * @name removeMarkPoint
-	 * @group Tool
-	 * @version 1.0.0
-	 * @description 删除坐标示意点
-	 * 
-	 * 
-	 * @example 使用示例
-	 *   let tool = new kapi.Tool()
-	 *   let id='1';
-	 *   // 配合 async
-	 *   let tool-removeMarkPoint = await tool.removeMarkPoint(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "删除坐标示意点",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @return  
-	 */
-	removeMarkPoint(id : any): /* Tool.prototype.+Promise */ any;
-}
-declare var Tool: Tool;
 
 /**
  * 
