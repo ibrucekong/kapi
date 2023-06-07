@@ -1,7 +1,7 @@
 let config = {
   token: null,
   server: 'http://www.zhreleven.com:9001/',
-  debug: !location.host.includes('wefamily.gitee.io')
+  debug: !location.host.includes('wefamily.gitee.io') && !location.host.includes('brucekong.com')
 }
 
 let server = config.server
@@ -9,8 +9,39 @@ let localServer = localStorage.getItem('local-server')
 if (localServer) server = localServer
 
 // 判断 iframe 的父级的 body 是不是 dark 类，有的话给当前的 body 加 dark
-let hasDark = parent.document.body.classList.toString().includes('dark')
-if (hasDark) document.body.classList.add('dark')
+let htmlHasDark = parent.document.querySelector('html.dark')
+let bodyHasDark = parent.document.body.classList.toString().includes('dark')
+if (htmlHasDark || bodyHasDark) {
+  document.body.classList.add('dark')
+  // localStorage.setItem('sandbox-theme', 'dark')
+}
+
+function dispatchEventStorage() {
+  const signSetItem = parent.parent.localStorage.setItem
+  parent.parent.localStorage.setItem = function (key, val){
+    let setEvent = new Event('setItemEvent')
+    setEvent.key = key
+    setEvent.newValue = val
+    parent.parent.window.dispatchEvent(setEvent)
+    signSetItem.apply(this, arguments)
+  }
+}
+
+dispatchEventStorage()
+
+//根据自己需要来监听对应的key
+parent.parent.window.addEventListener("setItemEvent",(e) => {
+  //e.key : 是值发生变化的key
+  //e.newValue : 是可以对应的新值
+  if(e.key === "vitepress-theme-appearance"){
+    if (e.newValue === 'dark') {
+      // 修改页面布局的风格
+      document.body.classList.add('dark')
+    }else if (e.newValue === 'auto') {
+      document.body.classList.remove('dark')
+    }
+  }
+})
 
 if (config.debug) console = parent.console
 let oldConsoleLog = console.log
