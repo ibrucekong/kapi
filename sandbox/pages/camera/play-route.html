@@ -43,7 +43,7 @@
 <script src="js/highlight/highlight.min.js"></script>
 <script src="./js/kapi.js"></script>
 <script>
-  let cameraInstance
+  let camera
 
   async function init() {
     let kapi = await KAPI.build(config.token)
@@ -62,7 +62,21 @@
     if (readyStat.code !== 200) return
 
     // 实例化
-    cameraInstance = new kapi.Camera()
+    camera = new kapi.Camera()
+
+    let event = new kapi.Event()
+    // 监听漫游开始的事件监听
+    event.addEventListener(KAPI_CONST.ROUTE.START, response => {
+      console.log(response)
+    })
+    // 监听漫游时的事件监听
+    event.addEventListener(KAPI_CONST.ROUTE.MOVING, response => {
+      console.log(response)
+    })
+    // 监听漫游结束的事件监听
+    event.addEventListener(KAPI_CONST.ROUTE.END, response => {
+      console.log(response)
+    })
   }
 
   async function play() {
@@ -341,16 +355,18 @@
     ]
 
     let option = {
-      time: 5,
+      speed: 25,
+      unit: 'm/s',
+      loop: false,
       isGraphic: false
     }
 
-    let res = await cameraInstance.playRoute(route, option)
+    let res = await camera.playRoute(route, option)
     printLog(res)
   }
 
   async function stop() {
-    let res = await cameraInstance.stopRoute()
+    let res = await camera.stopRoute()
     printLog(res)
   }
 </script>

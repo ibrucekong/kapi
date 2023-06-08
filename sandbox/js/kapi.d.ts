@@ -166,7 +166,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	viewFloor(floor : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	viewFloor(floor : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  closeFloor(floor: int, sync?: boolean) 关闭查看楼层
@@ -194,7 +194,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	closeFloor(floor : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	closeFloor(floor : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  toggleViewFloor(floor: int, sync?: boolean) 切换查看楼层
@@ -222,7 +222,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	toggleViewFloor(floor : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	toggleViewFloor(floor : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addMigrateMap(start: object, end: object, isGraphic: boolean, sync?: boolean) 添加迁徙图
@@ -270,7 +270,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	addMigrateMap(start : any, end : any, isGraphic : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	addMigrateMap(start : any, end : any, isGraphic : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeMigrateMap(id: string, sync?: boolean) 删除迁徙图
@@ -299,7 +299,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	removeMigrateMap(id : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	removeMigrateMap(id : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addStrategicMap(start: object, end: object, isGraphic: boolean, sync?: boolean) 添加战略图
@@ -347,7 +347,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	addStrategicMap(start : any, end : any, isGraphic : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	addStrategicMap(start : any, end : any, isGraphic : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeStrategicMap(id: string, sync?: boolean) 删除战略图
@@ -376,7 +376,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	removeStrategicMap(id : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	removeStrategicMap(id : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addRadiationCircle(option: object, sync?: boolean) 添加辐射圈
@@ -418,7 +418,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	addRadiationCircle(option : Analyze.prototype.AddRadiationCircle0, sync : any): /* Analyze.prototype.+Promise */ any;
+	addRadiationCircle(option : Analyze.prototype.AddRadiationCircle0, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeRadiationCircle(id: string, sync?: boolean) 删除辐射圈
@@ -447,7 +447,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	removeCircularContour(id : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	removeCircularContour(id : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addHighLight(id: string, sync?: boolean) 开启物理高亮
@@ -476,7 +476,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	addHighLight(id : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	addHighLight(id : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeHighLight(id: string, sync?: boolean) 关闭物理高亮
@@ -505,7 +505,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	removeHighLight(id : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	removeHighLight(id : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addVisualFiles2D(option: object, sync?: boolean) 添加2D平面可视域
@@ -554,7 +554,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	addVisualFiles2D(option : Analyze.prototype.AddVisualFiles2D0, sync : any): /* Analyze.prototype.+Promise */ any;
+	addVisualFiles2D(option : Analyze.prototype.AddVisualFiles2D0, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeVisualFiles2D(sync?: boolean) 关闭2D平面可视域
@@ -579,7 +579,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	removeVisualFiles2D(sync : any): /* Analyze.prototype.+Promise */ any;
+	removeVisualFiles2D(sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  openSectioning(sync?: boolean) 开始地面剖切
@@ -604,7 +604,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	openSectioning(sync : any): /* Analyze.prototype.+Promise */ any;
+	openSectioning(sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  closeSectioning(sync?: boolean) 关闭地面剖切
@@ -629,7 +629,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	closeSectioning(sync : any): /* Analyze.prototype.+Promise */ any;
+	closeSectioning(sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addHeatmap2D(heatmapArray: array, option: object, sync?: boolean) 二维热力图
@@ -671,7 +671,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	addHeatmap2D(heatmapArray : any, option : Analyze.prototype.AddHeatmap2D1, sync : any): /* Analyze.prototype.+Promise */ any;
+	addHeatmap2D(heatmapArray : any, option : Analyze.prototype.AddHeatmap2D1, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeHeatmap2D(sync?: boolean) 关闭二维热力图
@@ -697,7 +697,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	removeHeatmap2D(sync : any): /* Analyze.prototype.+Promise */ any;
+	removeHeatmap2D(sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addWaterElectricityAlarm(option: object, sync?: boolean) 添加水电告警
@@ -733,7 +733,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	addWaterElectricityAlarm(option : any, sync : any): /* Analyze.prototype.+Promise */ any;
+	addWaterElectricityAlarm(option : any, sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeWaterElectricityAlarm(sync?: boolean) 移除水电告警
@@ -758,7 +758,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	removeWaterElectricityAlarm(sync : any): /* Analyze.prototype.+Promise */ any;
+	removeWaterElectricityAlarm(sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  openBuildingDismantling(sync?: boolean) 开启楼宇拆解
@@ -783,7 +783,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	openBuildingDismantling(sync : any): /* Analyze.prototype.+Promise */ any;
+	openBuildingDismantling(sync? : any): /* Analyze.prototype.+Promise */ any;
 		
 	/**
 	 * @api  closeBuildingDismantling(sync?: boolean) 关闭楼宇拆解
@@ -808,7 +808,7 @@ declare interface Analyze {
 	 * @param sync 
 	 * @return  
 	 */
-	closeBuildingDismantling(sync : any): /* Analyze.prototype.+Promise */ any;
+	closeBuildingDismantling(sync? : any): /* Analyze.prototype.+Promise */ any;
 }
 declare var Analyze: Analyze;
 
@@ -856,7 +856,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	setCameraSpeed(option : any, sync : any): /* Camera.prototype.+Promise */ any;
+	setCameraSpeed(option : any, sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  getCameraInfo(sync?: boolean) 获取相机参数
@@ -892,7 +892,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	getCameraInfo(sync : any): /* Camera.prototype.+Promise */ any;
+	getCameraInfo(sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  flyTo(position: object, sync?: boolean) 飞到某位置
@@ -942,7 +942,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	flyTo(position : Camera.prototype.FlyTo0, sync : any): /* Camera.prototype.+Promise */ any;
+	flyTo(position : Camera.prototype.FlyTo0, sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  setRotationStatus(status: boolean, speed: float, sync?: boolean) 绕物旋转
@@ -972,7 +972,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	setRotationStatus(status : any, speed : number, sync : any): /* Camera.prototype.+Promise */ any;
+	setRotationStatus(status : any, speed : number, sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  setCameraHeight(height: float, sync?: boolean) 设置相机高度
@@ -1001,7 +1001,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	setCameraHeight(height : any, sync : any): /* Camera.prototype.+Promise */ any;
+	setCameraHeight(height : any, sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  setCameraAngleLimit(min: float, max: float, sync?: boolean) 设置相机高度
@@ -1032,7 +1032,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	setCameraAngleLimit(min : any, max : any, sync : any): /* Camera.prototype.+Promise */ any;
+	setCameraAngleLimit(min : any, max : any, sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  playRoute(route: array, option: object, sync?: boolean) 开始漫游
@@ -1044,7 +1044,8 @@ declare interface Camera {
 	 * @param route 路线数组，投影坐标和地理坐标都是x,y,z
 	 * @param option 飞行参数
 	 * @param option.speed 飞行速度，默认10m/s，单位（米/每秒，m/s）
-	 * @param option.time 两点飞行间隔时间
+	 * @param option.unit 速度单位，默认（米/每秒，m/s），可选（公里/小时，km/h），不传或传错则使用默认m/s
+	 * @param option.loop 是否循环漫游，默认false
 	 * @param option.isGraphic 是否是地理坐标（经纬度），默认true
 	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
 	 * 
@@ -1069,7 +1070,8 @@ declare interface Camera {
 	 * 
 	 *   let option = {
 	 *     speed: 10,
-	 *     time: 3,
+	 *     unit: "m/s",
+	 *     loop: true,
 	 *     isGraphic: true
 	 *   }
 	 *   // 配合 async
@@ -1087,7 +1089,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	playRoute(route : any, option : any, sync : any): /* Camera.prototype.+Promise */ any;
+	playRoute(route : any, option : any, sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  stopRoute(sync?: boolean) 停止漫游
@@ -1113,7 +1115,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	stopRoute(sync : any): /* Camera.prototype.+Promise */ any;
+	stopRoute(sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addBookmark(type: string, sync?: boolean) 添加自定义书签
@@ -1144,7 +1146,7 @@ declare interface Camera {
 	 * @param sync 
 	 * @return  
 	 */
-	addBookmark(type : any, sync : any): /* Camera.prototype.+Promise */ any;
+	addBookmark(type : any, sync? : any): /* Camera.prototype.+Promise */ any;
 }
 declare var Camera: Camera;
 
@@ -1566,7 +1568,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	getPointList(sync : any): /* Draw.prototype.+Promise */ any;
+	getPointList(sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  openDrawPoint(sync?: boolean) 开启绘制点
@@ -1592,7 +1594,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	openDrawPoint(sync : any): /* Draw.prototype.+Promise */ any;
+	openDrawPoint(sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  closeDrawPoint(sync?: boolean) 关闭绘制点
@@ -1618,7 +1620,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	closeDrawPoint(sync : any): /* Draw.prototype.+Promise */ any;
+	closeDrawPoint(sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  drawPoint(type: string, sync?: boolean) 绘制点
@@ -1661,7 +1663,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	drawPoint(type : any, sync : any): /* Draw.prototype.+Promise */ any;
+	drawPoint(type : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  deletePoint(id: string, sync?: boolean) 删除点
@@ -1690,7 +1692,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	deletePoint(id : any, sync : any): /* Draw.prototype.+Promise */ any;
+	deletePoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  showPoint(id: string, sync?: boolean) 显示点
@@ -1719,7 +1721,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	showPoint(id : any, sync : any): /* Draw.prototype.+Promise */ any;
+	showPoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  hidePoint(id: string, sync?: boolean) 隐藏点
@@ -1748,7 +1750,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	hidePoint(id : any, sync : any): /* Draw.prototype.+Promise */ any;
+	hidePoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  drawPolyline(option: object, sync?: boolean) 绘制线
@@ -1784,7 +1786,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	drawPolyline(path : any, option : Draw.prototype.DrawPolyline1, sync : any): /* Draw.prototype.+Promise */ any;
+	drawPolyline(path : any, option : Draw.prototype.DrawPolyline1, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  drawPath(option: object, sync?: boolean) 绘制路径
@@ -1820,7 +1822,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	drawPath(path : any, option : any, sync : any): /* Draw.prototype.+Promise */ any;
+	drawPath(path : any, option : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removePath(id: string, sync?: boolean) 删除路径
@@ -1849,7 +1851,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	removePath(id : any, sync : any): /* Draw.prototype.+Promise */ any;
+	removePath(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  clearPath(sync?: boolean) 清空路径
@@ -1875,7 +1877,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	clearPath(sync : any): /* Draw.prototype.+Promise */ any;
+	clearPath(sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  drawLightFlow(sync?: boolean) 开始绘制光流
@@ -1901,7 +1903,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	drawLightFlow(sync : any): /* Draw.prototype.+Promise */ any;
+	drawLightFlow(sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  closeDrawLightFlow(sync?: boolean) 结束绘制光流
@@ -1927,7 +1929,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	closeDrawLightFlow(sync : any): /* Draw.prototype.+Promise */ any;
+	closeDrawLightFlow(sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeLightFlow(id: string, sync?: boolean) 删除光流
@@ -2040,7 +2042,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	drawContour(contour : any, option : any, sync : any): /* Draw.prototype.+Promise */ any;
+	drawContour(contour : any, option : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeContour(id: string, sync?: boolean) 删除区域轮廓
@@ -2069,7 +2071,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	removeContour(id : any, sync : any): /* Draw.prototype.+Promise */ any;
+	removeContour(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  drawCircularContour(option: object, sync?: boolean) 绘制圆形区域轮廓
@@ -2111,7 +2113,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	drawCircularContour(option : any, sync : any): /* Draw.prototype.+Promise */ any;
+	drawCircularContour(option : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeCircularContour(id: string, sync?: boolean) 删除圆形区域轮廓
@@ -2140,7 +2142,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	removeCircularContour(id : any, sync : any): /* Draw.prototype.+Promise */ any;
+	removeCircularContour(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  removeDecal(id: string, sync?: boolean) 删除贴花
@@ -2169,7 +2171,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	removeDecal(id : any, sync : any): /* Draw.prototype.+Promise */ any;
+	removeDecal(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
 	 * @api  drawDecal(option: object, sync?: boolean) 绘制贴花
@@ -2220,7 +2222,7 @@ declare interface Draw {
 	 * @param sync 
 	 * @return  
 	 */
-	drawDecal(option : Draw.prototype.DrawDecal0, sync : any): /* Draw.prototype.+Promise */ any;
+	drawDecal(option : Draw.prototype.DrawDecal0, sync? : any): /* Draw.prototype.+Promise */ any;
 }
 declare var Draw: Draw;
 
@@ -2279,7 +2281,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	setWeatherType(type : any, sync : any): /* Controller.prototype.+Promise */ any;
+	setWeatherType(type : any, sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  setTimeSimulate(option: object, sync?: boolean) 时间动态模拟
@@ -2311,7 +2313,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	setTimeSimulate(option : Controller.prototype.SetTimeSimulate0, sync : any): /* Controller.prototype.+Promise */ any;
+	setTimeSimulate(option : Controller.prototype.SetTimeSimulate0, sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  setRealWorldTime(sync?: boolean) 真实时间
@@ -2337,7 +2339,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	setRealWorldTime(sync : any): /* Controller.prototype.+Promise */ any;
+	setRealWorldTime(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  setSkyColorParam(option: object, sync?: boolean) 设置天空色彩参数
@@ -2373,7 +2375,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	setSkyColorParam(option : Controller.prototype.SetSkyColorParam0, sync : any): /* Controller.prototype.+Promise */ any;
+	setSkyColorParam(option : Controller.prototype.SetSkyColorParam0, sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  enableFPS(time: float, sync?: boolean) 启用帧数
@@ -2410,7 +2412,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	enableFPS(time : number, sync : any): /* Controller.prototype.+Promise */ any;
+	enableFPS(time : number, sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  disableFPS(sync?: boolean) 禁用帧率
@@ -2436,7 +2438,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	disableFPS(sync : any): /* Controller.prototype.+Promise */ any;
+	disableFPS(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addFPSEventListener(callback: function) 设置帧率的点击监听
@@ -2510,7 +2512,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	showCompass(position : string, sync : any): /* Controller.prototype.+Promise */ any;
+	showCompass(position : string, sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  hideCompass(sync?: boolean) 隐藏指南针控件
@@ -2536,7 +2538,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	hideCompass(sync : any): /* Controller.prototype.+Promise */ any;
+	hideCompass(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  enableBoxSide(sync?: boolean) 开启操作边界限制
@@ -2562,7 +2564,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	enableBoxSide(sync : any): /* Controller.prototype.+Promise */ any;
+	enableBoxSide(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  disableBoxSide(sync?: boolean) 关闭操作边界限制
@@ -2588,7 +2590,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	disableBoxSide(sync : any): /* Controller.prototype.+Promise */ any;
+	disableBoxSide(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  setDateTime(dateTime: string | Date | DateTime | DateString, sync?: boolean) 时间跳转
@@ -2624,7 +2626,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	setDateTime(dateTime : any, sync : any): /* Controller.prototype.+Promise */ any;
+	setDateTime(dateTime : any, sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  enableLightShow(sync?: boolean) 开启灯光状态
@@ -2650,7 +2652,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	enableLightShow(sync : any): /* Controller.prototype.+Promise */ any;
+	enableLightShow(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  disableLightShow(sync?: boolean) 关闭灯光状态
@@ -2676,7 +2678,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	disableLightShow(sync : any): /* Controller.prototype.+Promise */ any;
+	disableLightShow(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  enableMouseInput(sync?: boolean) 启用鼠标
@@ -2702,7 +2704,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	enableMouseInput(sync : any): /* Controller.prototype.+Promise */ any;
+	enableMouseInput(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  disableMouseInput(sync?: boolean) 禁用鼠标
@@ -2728,7 +2730,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	disableMouseInput(sync : any): /* Controller.prototype.+Promise */ any;
+	disableMouseInput(sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * @api  getCoordinate(options: object, sync?: boolean) 获取坐标点
@@ -2757,7 +2759,7 @@ declare interface Controller {
 	 * @param sync 
 	 * @return  
 	 */
-	getCoordinate(options : any, sync : any): /* Controller.prototype.+Promise */ any;
+	getCoordinate(options : any, sync? : any): /* Controller.prototype.+Promise */ any;
 		
 	/**
 	 * 获取网络参数
@@ -2778,6 +2780,779 @@ declare interface Controller {
 	getData(val : any, n : any): any;
 }
 declare var Controller: Controller;
+
+/**
+ * 
+ */
+declare interface Iot {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  openById(id: string, sync?: boolean) 根据ID打开设备
+	 * @name openById
+	 * @group Iot
+	 * @version 1.0.0
+	 * @description 根据设备ID打开设备
+	 * 
+	 * @param id 需要打开的设备ID
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   let iot = new kapi.Iot()
+	 *   // 配合 async
+	 *   let res = await iot.openById(deviceId, sync)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	openById(id : any, sync? : any): /* Iot.prototype.+Promise */ any;
+		
+	/**
+	 * @api  closeById(id: string, sync?: boolean) 根据ID关闭设备
+	 * @name closeById
+	 * @group Iot
+	 * @version 1.0.0
+	 * @description 根据设备ID关闭设备
+	 * 
+	 * @param id 需要关闭的设备ID
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   let iot = new kapi.Iot()
+	 *   // 配合 async
+	 *   let res = await iot.closeById(deviceId, sync)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	closeById(id : any, sync? : any): /* Iot.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setStatusById(id: string, status: boolean, sync?: boolean) 根据ID设置设备
+	 * @name setStatusById
+	 * @group Iot
+	 * @version 1.0.0
+	 * @description 根据设备ID、状态设置设备状态
+	 * 
+	 * @param id 需要设置的设备ID
+	 * @param status 设置的状态，开/关（状态可自定义）
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   let iot = new kapi.Iot()
+	 *   // 配合 async
+	 *   let res = await iot.setStatusById(deviceId, deviceStatus, sync)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param status 
+	 * @param sync 
+	 * @return  
+	 */
+	setStatusById(id : any, status : any, sync? : any): /* Iot.prototype.+Promise */ any;
+		
+	/**
+	 * @api  openByType(type: string, sync?: boolean) 根据类型批量打开设备
+	 * @name openByType
+	 * @group Iot
+	 * @version 1.0.0
+	 * @description 根据设备类型批量打开设备
+	 * 
+	 * @param type 需要打开的设备类型
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   let iot = new kapi.Iot()
+	 *   // 配合 async
+	 *   let res = await iot.openByType(deviceType, sync)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @param sync 
+	 * @return  
+	 */
+	openByType(type : any, sync? : any): /* Iot.prototype.+Promise */ any;
+		
+	/**
+	 * @api  closeByType(type: string, sync?: boolean) 根据类型批量关闭设备
+	 * @name closeByType
+	 * @group Iot
+	 * @version 1.0.0
+	 * @description 根据设备类型批量关闭设备
+	 * 
+	 * @param type 需要关闭的设备类型
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   let iot = new kapi.Iot()
+	 *   // 配合 async
+	 *   let res = await iot.closeById(deviceType, sync)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	closeByType(id : any, sync? : any): /* Iot.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setStatusByType(type: string, status: boolean, sync?: boolean) 根据类型批量设置设备
+	 * @name setStatusByType
+	 * @group Iot
+	 * @version 1.0.0
+	 * @description 根据设备类型、状态批量设置设备状态
+	 * 
+	 * @param type 需要设置的设备类型
+	 * @param status 设置的状态，开/关（状态可自定义）
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   let iot = new kapi.Iot()
+	 *   // 配合 async
+	 *   let res = await iot.setStatusByType(deviceType, deviceStatus, sync)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @param status 
+	 * @param sync 
+	 * @return  
+	 */
+	setStatusByType(type : any, status : any, sync? : any): /* Iot.prototype.+Promise */ any;
+}
+declare var Iot: Iot;
+
+/**
+ * 
+ */
+declare interface Data {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  parseGeoJSON(fileList: FileList) 导入GeoJSON数据
+	 * @name parseGeoJSON
+	 * @group Data
+	 * @version 1.0.0
+	 * @description 导入GeoJSON数据
+	 * 
+	 * @param fileList 原生的<code>&lt;input type='file' multiple accept=".json"></code>中的fileList结果
+	 * @param encoding 编码方式，默认UTF-8
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   <input id='upload' type='file' multiple accept=".json">
+	 *   JavaScript中
+	 *   let fileList = document.getElementById('upload').files
+	 *   let data = new kapi.Data()
+	 *   // 配合 async
+	 *   let coordInfo = await data.parseGeoJSON(fileList)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param fileList 
+	 * @param encoding 
+	 * @return  
+	 */
+	parseGeoJSON(fileList : any, encoding : string): /* Data.prototype.+Promise */ any;
+		
+	/**
+	 * @api  parseShp(fileList: FileList) 导入Shp数据
+	 * @name parseShp
+	 * @group Data
+	 * @apiIgnore
+	 * @version 1.0.0
+	 * @description 导入shp数据
+	 * 
+	 * @param fileList shp的路径/包含shp的zip压缩包/上传文件FileList
+	 * 
+	 * @example 使用示例
+	 *   let data = new kapi.Data()
+	 *   // 配合 async
+	 *   let coordInfo = await data.parseShp('./data/city.shp')
+	 *   // or
+	 *   let coordInfo = await data.parseShp(<Shp 的 FileList>)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param fileList 
+	 * @return  
+	 */
+	parseShp(fileList : any): /* Data.prototype.+Promise */ any;
+}
+declare var Data: Data;
+
+/**
+ * 
+ */
+declare interface Marker {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  createMarker(position: object, attributes) 创建标注点
+	 * @name createMarker
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 创建标注点，但不会标注到场景中
+	 * 
+	 * @param position 坐标 必填
+	 * @param position.x x坐标
+	 * @param position.y y坐标
+	 * @param position.z z坐标
+	 * @param attributes 属性
+	 * @param attributes.id 标注的id 必填字段
+	 * @param attributes.name 标注点名称
+	 * @param attributes.type 标注型
+	 * @param attributes.scale 标注大小比例
+	 * @param attributes.isGraphic 是否是地理坐标，默认是false
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   let options = {
+	 *     position: {
+	 *       x: 510452.4,
+	 *       y: 4056732.75,
+	 *       z: 50,
+	 *     },
+	 *     let attributes = {
+	 *       id: 123,
+	 *       name: "测试",
+	 *       type: "建筑",
+	 *       scale:0.5 ,
+	 *       isGraphic: false
+	 *     }
+	 *   }
+	 *   // 配合 async
+	 *   let markerObject = await marker.createMarker(position, attributes)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {
+	 *        id: 123,
+	 *        isGraphic: false,
+	 *        scale：0.5 ,
+	 *        name: "测试",
+	 *        position: {
+	 *          x: 510452.4,
+	 *          y: 4056732.75,
+	 *          z: 50,
+	 *        },
+	 *        type: "建筑",
+	 *      }
+	 *    }
+	 * @return Promise
+	 * @param position 
+	 * @param attributes 
+	 * @return  
+	 */
+	createMarker(position : any, attributes : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  add(marker: object, sync?: boolean) 标注点
+	 * @name add
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 标注点，直接标注到场景中
+	 * 
+	 * @param marker 标注点对象 必填
+	 * @param marker.position 坐标 必填
+	 * @param marker.position.x x坐标
+	 * @param marker.position.y y坐标
+	 * @param marker.position.z z坐标
+	 * @param marker.attributes 属性
+	 * @param marker.attributes.id 标注的id 必填字段
+	 * @param marker.attributes.name 标注点名称
+	 * @param marker.attributes.type 标注型
+	 * @param attributes.scale 标注大小比例
+	 * @param attributes.visible 标注显隐
+	 * @param marker.attributes.isGraphic 是否是经纬度（地理坐标），默认是false
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   let options = {
+	 *     position: {
+	 *       x: 510452.4,
+	 *       y: 4056732.75,
+	 *       z: 50,
+	 *     },
+	 *     let attributes = {
+	 *       id: 123,
+	 *       name: "测试",
+	 *       type: "建筑",
+	 *       scale：0.5 ,
+	 *       isGraphic: false,
+	 *       visible:true
+	 *     }
+	 *   }
+	 *   // 配合 async
+	 *   let marker1 = await marker.add(marker)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param marker 
+	 * @param sync 
+	 * @return  
+	 */
+	add(marker : any, sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  remove(id: string, sync?: boolean) 删除标注点
+	 * @name remove
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 删除标注点
+	 * 
+	 * @param id 要删除的标注点的id
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   // 配合 async
+	 *   let response = await marker.remove(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	remove(id : any, sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  clear(sync?: boolean) 清空标注点
+	 * @name clear
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 清空标注点
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   // 配合 async
+	 *   let response = await marker.clear()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	clear(sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  updateByAttributes(id: string, attributes: object, sync?: boolean) 按属性更新标注点
+	 * @name updateByAttributes
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 按属性更新标注点
+	 * 
+	 * @param id 更新的标注点的id，必填字段
+	 * @param attributes 更新的标注点的属性，现在支持name和type，必须都要传
+	 * @param attributes.name 更新的标注点的name
+	 * @param attributes.type 更新的标注点的type
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   let attributes = {
+	 *     name: "测试123",
+	 *     type: "建筑"
+	 *   }
+	 *   // 配合 async
+	 *   let response = await marker.updateByAttributes(attributes)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param attributes 
+	 * @param sync 
+	 * @return  
+	 */
+	updateByAttributes(id : any, attributes : any, sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  update(marker: object, sync?: boolean) 更新标注点
+	 * @name update
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 更新标注点
+	 * 
+	 * @param marker 更新的标注点，包括标注点的所有字段，使用 marker.createMarker(position, attributes) 生成的
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   let options = {
+	 *     position: {
+	 *       x: 510452.4,
+	 *       y: 4056732.75,
+	 *       z: 50,
+	 *     },
+	 *     let attributes = {
+	 *       id: 123,
+	 *       name: "测试123",
+	 *       type: "建筑",
+	 *       scale:0.5,
+	 *       isGraphic: false,
+	 *       visible:true
+	 *     }
+	 *   }
+	 *   // 配合 async
+	 *   let markerObject = marker.createMarker(position, attributes)
+	 *   let response = await marker.update(markerObject)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param marker 
+	 * @param sync 
+	 * @return  
+	 */
+	update(marker : Marker, sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  flyToMarker(marker: string, sync?: boolean) 定位到标注点
+	 * @name flyToMarker
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 定位到标注点
+	 * 
+	 * @param marker 更新的标注点，包括标注点的所有字段，使用 marker.createMarker(position, attributes) 生成的
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   let options = {
+	 *     position: {
+	 *       x: 510452.4,
+	 *       y: 4056732.75,
+	 *       z: 50,
+	 *     },
+	 *     let attributes = {
+	 *       id: 123,
+	 *       name: "测试123",
+	 *       type: "建筑",
+	 *       scale:0.5,
+	 *       isGraphic: false,
+	 *       visible:true
+	 *     }
+	 *   }
+	 *   let markerObject = marker.createMarker(position, attributes)
+	 *   // 配合 async
+	 *   let response = await marker.flyToMarker(markerObject)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param marker 
+	 * @param sync 
+	 * @return  
+	 */
+	flyToMarker(marker : /* Marker.prototype.+Scene */ any, sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  show(id: string, sync?: boolean) 显示标注点
+	 * @name show
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 显示标注点
+	 * 
+	 * @param id 标注点的id
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   // 配合 async
+	 *   let response = await marker.show(123)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	show(id : any, sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  showAll(sync?: boolean) 显示全部标注点
+	 * @name showAll
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 显示全部标注点
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   // 配合 async
+	 *   let response = await marker.showAll()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	showAll(sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  hide(id: string, sync?: boolean) 隐藏标注点
+	 * @name hide
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 隐藏标注点
+	 * 
+	 * @param id 标注点的id
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   // 配合 async
+	 *   let response = await marker.hide(123)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	hide(id : any, sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  hideAll(sync?: boolean) 隐藏全部标注点
+	 * @name hideAll
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 隐藏全部标注点
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   // 配合 async
+	 *   let response = await marker.hideAll()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	hideAll(sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  addMarkerFocus(sync?: boolean) 设置标注点点击定位
+	 * @name addMarkerFocus
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 设置标注点定位
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   // 配合 async
+	 *   let response = await marker.addMarkerFocus()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	addMarkerFocus(sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removeMarkerFocus(sync?: boolean) 设置标注点点击定位关闭
+	 * @name removeMarkerFocus
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 设置标注点定位
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   // 配合 async
+	 *   let response = await marker.removeMarkerFocus()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	removeMarkerFocus(sync? : any): /* Marker.prototype.+Promise */ any;
+		
+	/**
+	 * @api  addMarkerClickEventListener(callback: function) 设置标注的点击监听
+	 * @name addMarkerClickEventListener
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 设置标注的点击监听
+	 * @param callback 回调
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   marker.addMarkerClickEventListener(response => {
+	 * 
+	 *   })
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param callback 
+	 */
+	addMarkerClickEventListener(callback : any): void;
+		
+	/**
+	 * @api  removeMarkerClickEventListener() 删除标注的点击监听
+	 * @name removeMarkerClickEventListener
+	 * @group Marker
+	 * @version 1.0.0
+	 * @description 删除标注的点击监听
+	 * 
+	 * @example 使用示例
+	 *   let marker = new kapi.Marker()
+	 *   marker.removeMarkerClickEventListener()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 */
+	removeMarkerClickEventListener(): void;
+}
+declare var Marker: Marker;
 
 /**
  * 
@@ -2874,7 +3649,7 @@ declare var Event: Event;
 /**
  * 
  */
-declare interface Iot {
+declare interface Layer {
 		
 	/**
 	 * 
@@ -2882,20 +3657,28 @@ declare interface Iot {
 	new ();
 		
 	/**
-	 * @api  openById(id: string, sync?: boolean) 根据ID打开设备
-	 * @name openById
-	 * @group Iot
+	 * @api  add3DTiles(urls) 加载3dtiles
+	 * @name add3DTiles
+	 * @group Layer
 	 * @version 1.0.0
-	 * @description 根据设备ID打开设备
+	 * @description 加载 3dtiles，可以是字符串，也可以是数组
 	 * 
-	 * @param id 需要打开的设备ID
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * @param urls 服务地址
 	 * 
 	 * @example 使用示例
-	 *   html中
-	 *   let iot = new kapi.Iot()
-	 *   // 配合 async
-	 *   let res = await iot.openById(deviceId, sync)
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.add3DTiles('http://localhost/demo/tileset.json')
+	 *   // 2、配合 async 数组
+	 *   let urls = ['http://localhost/demo/tileset.json',
+	 *              'http://localhost/demo2/tileset.json',
+	 *              'http://localhost/demo2/tileset.json']
+	 *   let res = await layer.add3DTiles(urls)
+	 *   // 3、配合 async 对象数组
+	 *   let urls = [{url: 'http://localhost/demo/tileset.json'},
+	 *              {url: 'http://localhost/demo/tileset.json'},
+	 *              {url: 'http://localhost/demo/tileset.json'}]
+	 *   let res = await layer.add3DTiles(urls)
 	 * 
 	 * @returns {json}
 	 *    {
@@ -2904,27 +3687,22 @@ declare interface Iot {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param id 
-	 * @param sync 
+	 * @param urls 
 	 * @return  
 	 */
-	openById(id : any, sync : any): /* Iot.prototype.+Promise */ any;
+	add3DTiles(urls : any): /* Layer.prototype.+Promise */ any;
 		
 	/**
-	 * @api  closeById(id: string, sync?: boolean) 根据ID关闭设备
-	 * @name closeById
-	 * @group Iot
+	 * @api  getAllLayers() 获取所有服务
+	 * @name getAllLayers
+	 * @group Layer
 	 * @version 1.0.0
-	 * @description 根据设备ID关闭设备
-	 * 
-	 * @param id 需要关闭的设备ID
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * @description 获取所有服务
 	 * 
 	 * @example 使用示例
-	 *   html中
-	 *   let iot = new kapi.Iot()
-	 *   // 配合 async
-	 *   let res = await iot.closeById(deviceId, sync)
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.getAllLayers()
 	 * 
 	 * @returns {json}
 	 *    {
@@ -2933,28 +3711,23 @@ declare interface Iot {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param id 
-	 * @param sync 
 	 * @return  
 	 */
-	closeById(id : any, sync : any): /* Iot.prototype.+Promise */ any;
+	getAllLayers(): /* Layer.prototype.+Promise */ any;
 		
 	/**
-	 * @api  setStatusById(id: string, status: boolean, sync?: boolean) 根据ID设置设备
-	 * @name setStatusById
-	 * @group Iot
+	 * @api  showLayer(url) 根据url显示服务
+	 * @name showLayer
+	 * @group Layer
 	 * @version 1.0.0
-	 * @description 根据设备ID、状态设置设备状态
+	 * @description 根据url显示服务
 	 * 
-	 * @param id 需要设置的设备ID
-	 * @param status 设置的状态，开/关（状态可自定义）
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * @param url 服务url
 	 * 
 	 * @example 使用示例
-	 *   html中
-	 *   let iot = new kapi.Iot()
-	 *   // 配合 async
-	 *   let res = await iot.setStatusById(deviceId, deviceStatus, sync)
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.showLayer('123')
 	 * 
 	 * @returns {json}
 	 *    {
@@ -2963,28 +3736,24 @@ declare interface Iot {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param id 
-	 * @param status 
-	 * @param sync 
+	 * @param url 
 	 * @return  
 	 */
-	setStatusById(id : any, status : any, sync : any): /* Iot.prototype.+Promise */ any;
+	showLayer(url : any): /* Layer.prototype.+Promise */ any;
 		
 	/**
-	 * @api  openByType(type: string, sync?: boolean) 根据类型批量打开设备
-	 * @name openByType
-	 * @group Iot
+	 * @api  hideLayer(url) 根据url隐藏服务
+	 * @name hideLayer
+	 * @group Layer
 	 * @version 1.0.0
-	 * @description 根据设备类型批量打开设备
+	 * @description 根据url隐藏服务
 	 * 
-	 * @param type 需要打开的设备类型
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * @param url 服务url
 	 * 
 	 * @example 使用示例
-	 *   html中
-	 *   let iot = new kapi.Iot()
-	 *   // 配合 async
-	 *   let res = await iot.openByType(deviceType, sync)
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.hideLayer('123')
 	 * 
 	 * @returns {json}
 	 *    {
@@ -2993,27 +3762,24 @@ declare interface Iot {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param type 
-	 * @param sync 
+	 * @param url 
 	 * @return  
 	 */
-	openByType(type : any, sync : any): /* Iot.prototype.+Promise */ any;
+	hideLayer(url : any): /* Layer.prototype.+Promise */ any;
 		
 	/**
-	 * @api  closeByType(type: string, sync?: boolean) 根据类型批量关闭设备
-	 * @name closeByType
-	 * @group Iot
+	 * @api  removeLayer(url) 根据url移除服务
+	 * @name removeLayer
+	 * @group Layer
 	 * @version 1.0.0
-	 * @description 根据设备类型批量关闭设备
+	 * @description 根据url移除服务
 	 * 
-	 * @param type 需要关闭的设备类型
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * @param url 服务url
 	 * 
 	 * @example 使用示例
-	 *   html中
-	 *   let iot = new kapi.Iot()
-	 *   // 配合 async
-	 *   let res = await iot.closeById(deviceType, sync)
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.removeLayer('123')
 	 * 
 	 * @returns {json}
 	 *    {
@@ -3022,117 +3788,12 @@ declare interface Iot {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param id 
-	 * @param sync 
+	 * @param url 
 	 * @return  
 	 */
-	closeByType(id : any, sync : any): /* Iot.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setStatusByType(type: string, status: boolean, sync?: boolean) 根据类型批量设置设备
-	 * @name setStatusByType
-	 * @group Iot
-	 * @version 1.0.0
-	 * @description 根据设备类型、状态批量设置设备状态
-	 * 
-	 * @param type 需要设置的设备类型
-	 * @param status 设置的状态，开/关（状态可自定义）
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   html中
-	 *   let iot = new kapi.Iot()
-	 *   // 配合 async
-	 *   let res = await iot.setStatusByType(deviceType, deviceStatus, sync)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param type 
-	 * @param status 
-	 * @param sync 
-	 * @return  
-	 */
-	setStatusByType(type : any, status : any, sync : any): /* Iot.prototype.+Promise */ any;
+	removeLayer(url : any): /* Layer.prototype.+Promise */ any;
 }
-declare var Iot: Iot;
-
-/**
- * 
- */
-declare interface Data {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  parseGeoJSON(fileList: FileList) 导入GeoJSON数据
-	 * @name parseGeoJSON
-	 * @group Data
-	 * @version 1.0.0
-	 * @description 导入GeoJSON数据
-	 * 
-	 * @param fileList 原生的<code>&lt;input type='file' multiple accept=".json"></code>中的fileList结果
-	 * @param encoding 编码方式，默认UTF-8
-	 * 
-	 * @example 使用示例
-	 *   html中
-	 *   <input id='upload' type='file' multiple accept=".json">
-	 *   JavaScript中
-	 *   let fileList = document.getElementById('upload').files
-	 *   let data = new kapi.Data()
-	 *   // 配合 async
-	 *   let coordInfo = await data.parseGeoJSON(fileList)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param fileList 
-	 * @param encoding 
-	 * @return  
-	 */
-	parseGeoJSON(fileList : any, encoding : string): /* Data.prototype.+Promise */ any;
-		
-	/**
-	 * @api  parseShp(fileList: FileList) 导入Shp数据
-	 * @name parseShp
-	 * @group Data
-	 * @apiIgnore
-	 * @version 1.0.0
-	 * @description 导入shp数据
-	 * 
-	 * @param fileList shp的路径/包含shp的zip压缩包/上传文件FileList
-	 * 
-	 * @example 使用示例
-	 *   let data = new kapi.Data()
-	 *   // 配合 async
-	 *   let coordInfo = await data.parseShp('./data/city.shp')
-	 *   // or
-	 *   let coordInfo = await data.parseShp(<Shp 的 FileList>)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param fileList 
-	 * @return  
-	 */
-	parseShp(fileList : any): /* Data.prototype.+Promise */ any;
-}
-declare var Data: Data;
+declare var Layer: Layer;
 
 /**
  * 
@@ -3306,665 +3967,6 @@ declare var Measure: Measure;
 /**
  * 
  */
-declare interface Marker {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  createMarker(position: object, attributes) 创建标注点
-	 * @name createMarker
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 创建标注点，但不会标注到场景中
-	 * 
-	 * @param position 坐标 必填
-	 * @param position.x x坐标
-	 * @param position.y y坐标
-	 * @param position.z z坐标
-	 * @param attributes 属性
-	 * @param attributes.id 标注的id 必填字段
-	 * @param attributes.name 标注点名称
-	 * @param attributes.type 标注型
-	 * @param attributes.scale 标注大小比例
-	 * @param attributes.isGraphic 是否是地理坐标，默认是false
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   let options = {
-	 *     position: {
-	 *       x: 510452.4,
-	 *       y: 4056732.75,
-	 *       z: 50,
-	 *     },
-	 *     let attributes = {
-	 *       id: 123,
-	 *       name: "测试",
-	 *       type: "建筑",
-	 *       scale:0.5 ,
-	 *       isGraphic: false
-	 *     }
-	 *   }
-	 *   // 配合 async
-	 *   let markerObject = await marker.createMarker(position, attributes)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {
-	 *        id: 123,
-	 *        isGraphic: false,
-	 *        scale：0.5 ,
-	 *        name: "测试",
-	 *        position: {
-	 *          x: 510452.4,
-	 *          y: 4056732.75,
-	 *          z: 50,
-	 *        },
-	 *        type: "建筑",
-	 *      }
-	 *    }
-	 * @return Promise
-	 * @param position 
-	 * @param attributes 
-	 * @return  
-	 */
-	createMarker(position : any, attributes : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  add(marker: object, sync?: boolean) 标注点
-	 * @name add
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 标注点，直接标注到场景中
-	 * 
-	 * @param marker 标注点对象 必填
-	 * @param marker.position 坐标 必填
-	 * @param marker.position.x x坐标
-	 * @param marker.position.y y坐标
-	 * @param marker.position.z z坐标
-	 * @param marker.attributes 属性
-	 * @param marker.attributes.id 标注的id 必填字段
-	 * @param marker.attributes.name 标注点名称
-	 * @param marker.attributes.type 标注型
-	 * @param attributes.scale 标注大小比例
-	 * @param attributes.visible 标注显隐
-	 * @param marker.attributes.isGraphic 是否是经纬度（地理坐标），默认是false
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   let options = {
-	 *     position: {
-	 *       x: 510452.4,
-	 *       y: 4056732.75,
-	 *       z: 50,
-	 *     },
-	 *     let attributes = {
-	 *       id: 123,
-	 *       name: "测试",
-	 *       type: "建筑",
-	 *       scale：0.5 ,
-	 *       isGraphic: false,
-	 *       visible:true
-	 *     }
-	 *   }
-	 *   // 配合 async
-	 *   let marker1 = await marker.add(marker)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param marker 
-	 * @param sync 
-	 * @return  
-	 */
-	add(marker : any, sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  remove(id: string, sync?: boolean) 删除标注点
-	 * @name remove
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 删除标注点
-	 * 
-	 * @param id 要删除的标注点的id
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   // 配合 async
-	 *   let response = await marker.remove(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	remove(id : any, sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  clear(sync?: boolean) 清空标注点
-	 * @name clear
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 清空标注点
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   // 配合 async
-	 *   let response = await marker.clear()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	clear(sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  updateByAttributes(id: string, attributes: object, sync?: boolean) 按属性更新标注点
-	 * @name updateByAttributes
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 按属性更新标注点
-	 * 
-	 * @param id 更新的标注点的id，必填字段
-	 * @param attributes 更新的标注点的属性，现在支持name和type，必须都要传
-	 * @param attributes.name 更新的标注点的name
-	 * @param attributes.type 更新的标注点的type
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   let attributes = {
-	 *     name: "测试123",
-	 *     type: "建筑"
-	 *   }
-	 *   // 配合 async
-	 *   let response = await marker.updateByAttributes(attributes)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param attributes 
-	 * @param sync 
-	 * @return  
-	 */
-	updateByAttributes(id : any, attributes : any, sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  update(marker: object, sync?: boolean) 更新标注点
-	 * @name update
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 更新标注点
-	 * 
-	 * @param marker 更新的标注点，包括标注点的所有字段，使用 marker.createMarker(position, attributes) 生成的
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   let options = {
-	 *     position: {
-	 *       x: 510452.4,
-	 *       y: 4056732.75,
-	 *       z: 50,
-	 *     },
-	 *     let attributes = {
-	 *       id: 123,
-	 *       name: "测试123",
-	 *       type: "建筑",
-	 *       scale:0.5,
-	 *       isGraphic: false,
-	 *       visible:true
-	 *     }
-	 *   }
-	 *   // 配合 async
-	 *   let markerObject = marker.createMarker(position, attributes)
-	 *   let response = await marker.update(markerObject)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param marker 
-	 * @param sync 
-	 * @return  
-	 */
-	update(marker : Marker, sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  flyToMarker(marker: string, sync?: boolean) 定位到标注点
-	 * @name flyToMarker
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 定位到标注点
-	 * 
-	 * @param marker 更新的标注点，包括标注点的所有字段，使用 marker.createMarker(position, attributes) 生成的
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   let options = {
-	 *     position: {
-	 *       x: 510452.4,
-	 *       y: 4056732.75,
-	 *       z: 50,
-	 *     },
-	 *     let attributes = {
-	 *       id: 123,
-	 *       name: "测试123",
-	 *       type: "建筑",
-	 *       scale:0.5,
-	 *       isGraphic: false,
-	 *       visible:true
-	 *     }
-	 *   }
-	 *   let markerObject = marker.createMarker(position, attributes)
-	 *   // 配合 async
-	 *   let response = await marker.flyToMarker(markerObject)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param marker 
-	 * @param sync 
-	 * @return  
-	 */
-	flyToMarker(marker : /* Marker.prototype.+Scene */ any, sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  show(id: string, sync?: boolean) 显示标注点
-	 * @name show
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 显示标注点
-	 * 
-	 * @param id 标注点的id
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   // 配合 async
-	 *   let response = await marker.show(123)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	show(id : any, sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  showAll(sync?: boolean) 显示全部标注点
-	 * @name showAll
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 显示全部标注点
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   // 配合 async
-	 *   let response = await marker.showAll()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	showAll(sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  hide(id: string, sync?: boolean) 隐藏标注点
-	 * @name hide
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 隐藏标注点
-	 * 
-	 * @param id 标注点的id
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   // 配合 async
-	 *   let response = await marker.hide(123)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	hide(id : any, sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  hideAll(sync?: boolean) 隐藏全部标注点
-	 * @name hideAll
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 隐藏全部标注点
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   // 配合 async
-	 *   let response = await marker.hideAll()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	hideAll(sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  addMarkerFocus(sync?: boolean) 设置标注点点击定位
-	 * @name addMarkerFocus
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 设置标注点定位
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   // 配合 async
-	 *   let response = await marker.addMarkerFocus()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	addMarkerFocus(sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removeMarkerFocus(sync?: boolean) 设置标注点点击定位关闭
-	 * @name removeMarkerFocus
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 设置标注点定位
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   // 配合 async
-	 *   let response = await marker.removeMarkerFocus()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	removeMarkerFocus(sync : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  addMarkerClickEventListener(callback: function) 设置标注的点击监听
-	 * @name addMarkerClickEventListener
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 设置标注的点击监听
-	 * @param callback 回调
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   marker.addMarkerClickEventListener(response => {
-	 * 
-	 *   })
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param callback 
-	 */
-	addMarkerClickEventListener(callback : any): void;
-		
-	/**
-	 * @api  removeMarkerClickEventListener() 删除标注的点击监听
-	 * @name removeMarkerClickEventListener
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 删除标注的点击监听
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   marker.removeMarkerClickEventListener()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 */
-	removeMarkerClickEventListener(): void;
-}
-declare var Marker: Marker;
-
-/**
- * 
- */
-declare interface Layer {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  add3DTiles(urls) 加载3dtiles
-	 * @name add3DTiles
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 加载 3dtiles，可以是字符串，也可以是数组
-	 * 
-	 * @param urls 服务地址
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.add3DTiles('http://localhost/demo/tileset.json')
-	 *   // 2、配合 async 数组
-	 *   let urls = ['http://localhost/demo/tileset.json',
-	 *              'http://localhost/demo2/tileset.json',
-	 *              'http://localhost/demo2/tileset.json']
-	 *   let res = await layer.add3DTiles(urls)
-	 *   // 3、配合 async 对象数组
-	 *   let urls = [{url: 'http://localhost/demo/tileset.json'},
-	 *              {url: 'http://localhost/demo/tileset.json'},
-	 *              {url: 'http://localhost/demo/tileset.json'}]
-	 *   let res = await layer.add3DTiles(urls)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param urls 
-	 * @return  
-	 */
-	add3DTiles(urls : any): /* Layer.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getAllLayers() 获取所有服务
-	 * @name getAllLayers
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 获取所有服务
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.getAllLayers()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @return  
-	 */
-	getAllLayers(): /* Layer.prototype.+Promise */ any;
-		
-	/**
-	 * @api  showLayer(url) 根据url显示服务
-	 * @name showLayer
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 根据url显示服务
-	 * 
-	 * @param url 服务url
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.showLayer('123')
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param url 
-	 * @return  
-	 */
-	showLayer(url : any): /* Layer.prototype.+Promise */ any;
-		
-	/**
-	 * @api  hideLayer(url) 根据url隐藏服务
-	 * @name hideLayer
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 根据url隐藏服务
-	 * 
-	 * @param url 服务url
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.hideLayer('123')
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param url 
-	 * @return  
-	 */
-	hideLayer(url : any): /* Layer.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removeLayer(url) 根据url移除服务
-	 * @name removeLayer
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 根据url移除服务
-	 * 
-	 * @param url 服务url
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.removeLayer('123')
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param url 
-	 * @return  
-	 */
-	removeLayer(url : any): /* Layer.prototype.+Promise */ any;
-}
-declare var Layer: Layer;
-
-/**
- * 
- */
 declare interface Scene {
 		
 	/**
@@ -4076,7 +4078,7 @@ declare interface Scene {
 	 * @param sync 
 	 * @return  
 	 */
-	setResolution(width : any, height : any, sync : any): /* Scene.prototype.+Promise */ any;
+	setResolution(width : any, height : any, sync? : any): /* Scene.prototype.+Promise */ any;
 		
 	/**
 	 * @api  getResolution() 获取分辨率
@@ -4136,7 +4138,7 @@ declare interface Scene {
 	 * @param sync 
 	 * @return  
 	 */
-	startEntrance(sync : any): /* Scene.prototype.+Promise */ any;
+	startEntrance(sync? : any): /* Scene.prototype.+Promise */ any;
 		
 	/**
 	 * @api  pauseEntrance(sync?: boolean) 暂停入场动画
@@ -4161,7 +4163,7 @@ declare interface Scene {
 	 * @param sync 
 	 * @return  
 	 */
-	pauseEntrance(sync : any): /* Scene.prototype.+Promise */ any;
+	pauseEntrance(sync? : any): /* Scene.prototype.+Promise */ any;
 		
 	/**
 	 * @api  stopEntrance(sync?: boolean) 停止入场动画
@@ -4186,7 +4188,7 @@ declare interface Scene {
 	 * @param sync 
 	 * @return  
 	 */
-	stopEntrance(sync : any): /* Scene.prototype.+Promise */ any;
+	stopEntrance(sync? : any): /* Scene.prototype.+Promise */ any;
 		
 	/**
 	 * @api  showGrid(sync?: boolean) 显示单元网格
@@ -4211,7 +4213,7 @@ declare interface Scene {
 	 * @param sync 
 	 * @return  
 	 */
-	showGrid(sync : any): /* Scene.prototype.+Promise */ any;
+	showGrid(sync? : any): /* Scene.prototype.+Promise */ any;
 		
 	/**
 	 * @api  hideGrid(sync?: boolean) 隐藏单元网格
@@ -4236,7 +4238,7 @@ declare interface Scene {
 	 * @param sync 
 	 * @return  
 	 */
-	hideGrid(sync : any): /* Scene.prototype.+Promise */ any;
+	hideGrid(sync? : any): /* Scene.prototype.+Promise */ any;
 		
 	/**
 	 * @api  mute() 执行静音
@@ -5104,4 +5106,64 @@ declare interface KAPI {
    */
   ui: any;
 }
+/**
+ * KAPI接口入口
+ */
 declare var KAPI: KAPI;
+
+declare interface KAPI_CONST {
+  FPS: 'fps',
+  ROUTE: {
+    START: 'route-start',
+    MOVING: 'route-moving',
+    END: 'route-end',
+  },
+  MEASURE: {
+    AREA_2D: 'controller_2darea', // 测量监听字段
+    AREA_3D: 'controller_area', // 测量监听字段
+    HEIGHT: 'controller_height', // 测量监听字段
+    LENGTH_2D: 'controller_2dlength', // 测量监听字段
+    LENGTH_3D: 'controller_length' // 测量监听字段
+  },
+  DRAW: {
+    DESTROY_POINT: 'destroyPoint', // 绘制字段
+    DRAW_POINT: 'drawPoint', // 绘制字段
+    CACHE_POINT_LIST: 'draw-point', // 本地缓存字段
+    CACHE_POLYLINE_LIST: 'draw-polyline', // 本地缓存字段
+    CACHE_POLYGON_LIST: 'draw-polygon', // 本地缓存字段
+    CACHE_PATH_LIST: 'draw-path', // 本地缓存字段
+    DRAW_LIGHT_FLOW: 'drawLightflow', //绘制字段
+    DRAW_GET_POINT: 'getPoint' //获取点
+  },
+  POINT_TYPE: {
+    FIRE_01: 'Fire_01:',
+    FIRE_02: 'Fire_02:',
+    FIRE_03: 'Fire_03:',
+    TREE_01: 'Tree_01:',
+    TREE_02: 'Tree_02:',
+    TREE_03: 'Tree_03:',
+    DECAL_01: 'Decal_01',
+    DECAL_02: 'Decal_02',
+    DECAL_03: 'Decal_03',
+    FBX: 'Fbx'
+  },
+  WEATHER: {
+    CLEAR_SKIES: 0,
+    PARTLY_CLOUDY: 1,
+    CLOUDY: 2,
+    OVERCAST: 3,
+    FOGGY: 4,
+    LIGHT_RAIN: 5,
+    RAIN: 6,
+    THUNDERSTORM: 7,
+    SAND_DUST: 8,
+    SANDSTORM: 9,
+    LIGHT_SNOW: 10,
+    SNOW: 11,
+    BLIZZARD: 12
+  }
+}
+/**
+ * KAPI系统常量
+ */
+declare const KAPI_CONST: KAPI_CONST;

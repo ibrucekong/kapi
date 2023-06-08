@@ -43,6 +43,28 @@ parent.parent.window.addEventListener("setItemEvent",(e) => {
   }
 })
 
+// 判断是不是在kapi-docs中
+if (window.parent.parent.document.querySelector('.VPApp')) {
+  document.onkeydown = (e) => {
+    let keyCode = e.key;
+    let ctrlKey = e.ctrlKey;
+    let shiftKey = e.shiftKey;
+    if (ctrlKey) {
+      //这里可以处理同时按下ctrl的逻辑，加上其他按键可以实现快捷键功能
+      switch (keyCode) {
+        case 'k':
+          // 要去执行
+          // console.log("Ctrl + k")
+          e.preventDefault()
+          return false
+          break;
+        default:
+          break;
+      }
+    }
+  }
+}
+
 if (config.debug) console = parent.console
 let oldConsoleLog = console.log
 printLog = function () {
