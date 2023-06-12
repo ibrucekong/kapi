@@ -68,7 +68,7 @@ body.dark #kapi-container {
   padding: 0;
   margin: 0;
   overflow: hidden;
-  background: black;
+  background: transparent;
 }
 
 body.dark .operation-range {

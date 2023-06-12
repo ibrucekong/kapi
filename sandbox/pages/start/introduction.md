@@ -50,6 +50,5 @@
    let readyStat = await scene.ready()
    console.log(readyStat)
    ```
-   更多参数请查看 [KAPI Doc](https://wefamily.gitee.io/kapi/)
 
 <div style='height: 20px; background: transparent'></div>

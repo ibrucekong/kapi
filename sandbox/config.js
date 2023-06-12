@@ -12,7 +12,7 @@ if (localServer) server = localServer
 let htmlHasDark = parent.document.querySelector('html.dark')
 let bodyHasDark = parent.document.body.classList.toString().includes('dark')
 if (htmlHasDark || bodyHasDark) {
-  document.body.classList.add('dark')
+  document.body && document.body.classList.add('dark')
   // localStorage.setItem('sandbox-theme', 'dark')
 }
 
@@ -22,7 +22,7 @@ function dispatchEventStorage() {
     let setEvent = new Event('setItemEvent')
     setEvent.key = key
     setEvent.newValue = val
-    parent.parent.window.dispatchEvent(setEvent)
+    parent && parent.parent && parent.parent.window && parent.parent.window.dispatchEvent && parent.parent.window.dispatchEvent(setEvent)
     signSetItem.apply(this, arguments)
   }
 }

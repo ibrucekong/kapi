@@ -14,7 +14,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: black;
     }
 
     .operation-range {
@@ -28,12 +27,10 @@
 </head>
 <body onload='init()'>
 <div class='container'>
-  <div class='container'>
-    <div id='kapi-container'></div>
-    <div class='operation-range'>
-      <div class='row'>
-        <div class='btn' onclick='getCameraInfo()'>获取相机信息</div>
-      </div>
+  <div id='kapi-container'></div>
+  <div class='operation-range'>
+    <div class='row'>
+      <div class='btn' onclick='getCameraInfo()'>获取相机信息</div>
     </div>
   </div>
 </div>
