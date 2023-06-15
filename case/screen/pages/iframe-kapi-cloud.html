@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link href="../css/iframe-kapi-cloud.css" rel="stylesheet" type="text/css"/>
+  <link href="../css/ProgressBarWars.css" rel="stylesheet"/>
+  <title>数字孪生仿真可视化大屏 - 云桥平台</title>
+  <meta name="keywords" content="云桥平台 数字孪生"/>
+  <script src="../js/jquery.js"></script>
+  <script src="../js/echarts-all.js"></script>
+  <script src="../js/ProgressBarWars.js"></script>
+  <style>
+    * {
+      padding: 0;
+      margin: 0
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden
+    }
+
+    .progress {
+      margin-top: 30px;
+    }
+
+    .down_span {
+      color: #dfdede;
+      font-size: 12px;
+      font-weight: lighter
+    }
+
+    h3, ul, li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .scrollbox {
+      width: 268px;
+      margin: 0 auto;
+    }
+
+    #scrollDiv {
+      width: 268px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /*这里的高度和超出隐藏是必须的*/
+    #scrollDiv ul li {
+      height: 66px;
+      width: 259px;;
+      background-color: #07325e;
+      overflow: hidden;
+      margin-bottom: 4px;
+      color: #dfdede;
+      font-size: 14px;
+      padding: 0 9px 0 9px;
+      line-height: 30px;
+      position: relative
+    }
+
+    #scrollDiv ul li span {
+      position: absolute;
+      bottom: 5px;
+      right: 16px;
+      display: block;
+      width: 68px;
+      height: 18px;
+      text-align: center;
+      color: #081e49;
+      background-color: #69c200;
+      line-height: 18px
+    }
+
+    .sent-div {
+      width: 98%;
+      height: 98%;
+      margin: 0 auto;
+    }
+  </style>
+  <style>
+    .kapi-cloud-title {
+      z-index: 99999;
+      position: absolute;
+      left: calc(50vw - 343px);
+    }
+    #kapi-container {
+      width: 100vw;
+      height: 100vh;
+      background: transparent;
+      position: absolute;
+      top: 0;
+    }
+    #scrollDiv ul li {
+
+    }
+    #scrollDiv ul li:hover {
+        background: rgba(7, 50, 94, 0.65);
+    }
+  </style>
+  <title></title>
+  <script src='../js/kapi.js'></script>
+  <script src='../js/vue.min.js'></script>
+</head>
+<body id='body-id'>
+
+<!--标题栏-->
+<div class="kapi-cloud-title">
+  <a style=" color: #00e4ff;font-size: 24px;" href="#">数字孪生仿真可视化大屏</a>
+</div>
+
+<!--中心场景-->
+<div id="kapi-container"></div>
+
+<div id='app'>
+  <!--左侧边浮窗-->
+  <div class="fltoutbox leftbox">
+    <div style="height: 65px; padding-top: 25px;">
+      <span class="analyzedatashowtitle">【物联设备连接数量】</span>
+    </div>
+    <!--左上分析内容放置框-->
+    <div class="analyzemsgbgbox" style=" margin-left: 2px;">
+      <div class="sent-div" id="container1"></div>
+    </div>
+    <!--左下分析内容放置框-->
+    <div class="analyzemsgbgbox left-box" style="margin-top: 20px; height: calc(100vh - 450px);overflow: hidden;">
+      <span class="analyzedatashowtitle" style="line-height: 66px;">【本日数据接入排行】</span>
+      <div class="scrollbox">
+        <div id="scrollDiv">
+          <ul>
+            <li>本季度执法案件数量超过平均值20%以上。
+              <span style="">11/2</span>
+            </li>
+            <li>人员制度管理。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30%。
+              <span style="">11/2</span>
+            </li>
+            <li>本季度执法案件数量超过平均值20%以上。
+              <span style="">11/2</span>
+            </li>
+            <li>女性人数偏少，仅占总数的20%，执法过程中女性...！
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+            <li>案件超期率超过30。
+              <span style="">11/2</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="fltdecarround fltdecarroundleft fltdecarroundtop left-fltdecarroundtop-left"></div>
+    <div class="fltdecarround fltdecarroundtop fltdecarroundright left-fltdecarroundtop-right"></div>
+    <div class="fltdecarround fltdecarroundleft fltdecarroundbottom"></div>
+    <div class="fltdecarround fltdecarroundbottom fltdecarroundright "></div>
+  </div>
+
+  <!--右侧边浮窗-->
+  <div class="fltoutbox rightbox">
+    <div style="height: 36px; padding-top: 25px;">
+      <span class="analyzedatashowtitle">【今日人员在线】</span>
+    </div>
+    <!--右上分析内容放置框-->
+    <div class="analyzemsgbgbox " style=" margin-right: 2px;padding-bottom: 29px">
+      <div style="background-color: #022542;opacity: 0.9;height: 130px">
+        <div style="padding: 10px 0 0 16px">
+          <div class="l_left"><span style="color: #dfdede;font-size: 10px;margin-right: 10px">人员一：</span></div>
+          <div class="progress l_left" id="vaderSize" style="width: 150px;padding: 0;margin-top: 6px;"></div>
+          <div class="l_left"><span style="color: #dd9809;margin-left: 4px;font-size: 10px">743人</span></div>
+          <div class="clear"></div>
+        </div>
+        <div style="padding: 8px 0 0 16px">
+          <div class="l_left"><span style="color: #dfdede;font-size: 10px;margin-right: 10px">人员二：</span></div>
+          <div class="progress l_left" id="vaderSize1" style="width: 150px;margin-top: 6px;"></div>
+          <script>
+
+          </script>
+          <div class="l_left"><span style="color: #00d8ff;margin-left: 4px;font-size: 10px">216人</span></div>
+          <div class="clear"></div>
+        </div>
+        <div style="padding: 8px 0 0 16px">
+          <div class="l_left"><span style="color: #dfdede;font-size: 10px;margin-right: 10px">人员三：</span></div>
+          <div class="progress l_left" id="vaderSize2" style="width: 150px;margin-top: 6px;"></div>
+          <div class="l_left"><span style="color: #56a4ff;margin-left: 4px;font-size: 10px">2037人</span></div>
+          <div class="clear"></div>
+        </div>
+        <div style="padding: 8px 0 0 16px">
+          <div class="l_left"><span style="color: #dfdede;font-size: 10px;margin-right: 10px">人员四：</span></div>
+          <div class="progress l_left" id="vaderSize3" style="width: 150px;margin-top: 6px;"></div>
+          <div class="l_left"><span style="color: #56ff6a;margin-left: 4px;font-size: 10px">651人</span></div>
+          <div class="clear"></div>
+        </div>
+
+      </div>
+      <div>
+        <p style="color: #dfdede;font-size: 14px;margin: 22px 0 0 17px ">【今日车辆在线】</p>
+        <div class="progress l_left" id="vaderSize4" style="width: 200px;padding: 0;margin: 40px 0 0 18px;"></div>
+        <div class="l_left" style="color: #ffea00;margin: 44px 0 0 4px;font-size: 14px"><span>413辆</span></div>
+      </div>
+      <div class="fltdecarround fltdecarroundleft fltdecarroundbottom"></div>
+      <div class="fltdecarround fltdecarroundbottom fltdecarroundright "></div>
+    </div>
+    <!--右下分析内容放置框-->
+    <div class="analyzemsgbgbox" style="margin-top: 20px; height: calc(100vh - 450px);">
+      <span class="analyzedatashowtitle">【各平台数据接入量】</span>
+      <div style="margin: 0 6px;background-color: #011c2f;opacity: 0.8;padding:8px 0 6px 0;height: 100%">
+        <div>
+          <div><span class="down_span">【xxx系统一】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 118px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize5" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#40e315;font-size: 12px ">8.02%</span></div>
+            <div class="clear"></div>
+          </div>
+          <div><span class="down_span">【xxx系统二】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 118px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize6" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class="l_left" style="margin-left: 12px;color:#15e3ac;font-size: 12px ">8.09%</span></div>
+            <div class="clear"></div>
+          </div>
+          <div><span class="down_span">【xxx系统三】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 131px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize7" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class="down_span l_left" style="margin-left: 12px;color:#1f9cff ;font-size: 12px">2.87%</span>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div><span class="down_span">【xxx系统四】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 143px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize8" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class="down_span l_left" style="margin-left: 12px;color:#c97802;font-size: 12px ">0.85%</span>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div><span class="down_span">【1xxx系统五】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 108px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize9" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#72ff00;font-size: 12px ">80.44%</span></div>
+            <div class="clear"></div>
+          </div>
+
+          <div><span class="down_span">【xxx系统六】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 119px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize10" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#ef4503;font-size: 12px ">2.56%</span></div>
+            <div class="clear"></div>
+          </div>
+
+          <div><span class="down_span">【xxx系统七】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 119px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize11" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#ef4503;font-size: 12px ">2.56%</span></div>
+            <div class="clear"></div>
+          </div>
+
+          <div><span class="down_span">【xxx系统八】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 119px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize12" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#72ff00;font-size: 12px ">2.56%</span></div>
+            <div class="clear"></div>
+          </div>
+
+          <div><span class="down_span">【xxx系统九】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 119px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize13" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#ef4503;font-size: 12px ">2.56%</span></div>
+            <div class="clear"></div>
+          </div>
+
+          <div><span class="down_span">【xxx系统十】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 119px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize14" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#72ff00;font-size: 12px ">2.56%</span></div>
+            <div class="clear"></div>
+          </div>
+
+          <div><span class="down_span">【xxx系统十一】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 119px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize15" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#ef4503;font-size: 12px ">2.56%</span></div>
+            <div class="clear"></div>
+          </div>
+
+          <div><span class="down_span">【xxx系统十二】</span><span
+            style="color:#dfdede;font-size: 10px;margin-left: 119px; font-weight: lighter;">1235</span></div>
+          <div style="margin: 5px 0 4px 12px;">
+            <div class="progress l_left" id="vaderSize16" style="width: 190px;padding: 0;margin-top: 4px"></div>
+            <div><span class=" l_left" style="margin-left: 12px;color:#72ff00;font-size: 12px ">2.56%</span></div>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <div class="fltdecarround fltdecarroundleft fltdecarroundtop"></div>
+      <div class="fltdecarround fltdecarroundtop fltdecarroundright "></div>
+      <div class="fltdecarround fltdecarroundleft fltdecarroundbottom"></div>
+      <div class="fltdecarround fltdecarroundbottom fltdecarroundright "></div>
+    </div>
+  </div>
+
+</div>
+
+<!--版权-->
+<div class="copyrigntoutbox" style='display: none;'>
+  <span class="copyrigntmsg">版权所有 © KAPI 2023 保留一切权利</span>
+</div>
+
+</body>
+<!-- kapi -->
+<script>
+  window.onload = async function () {
+    document.querySelector('#kapi-container').onclick = requestFullScreen
+
+    // 全屏事件
+    function requestFullScreen() {
+      // 判断各种浏览器，找到正确的方法
+      let element = document.getElementById('body-id')
+      let requestMethod = element.requestFullScreen || // W3C
+        element.webkitRequestFullScreen || // Chrome等
+        element.mozRequestFullScreen || // FireFox
+        element.msRequestFullScreen // IE11
+      if (requestMethod) {
+        setTimeout(() => {
+          if (!isFullscreen()) {
+            requestMethod.call(element)
+          }
+        }, 100)
+      } else if (typeof window.ActiveXObject !== 'undefined') { // for Internet Explorer
+        let wscript = new ActiveXObject('WScript.Shell')
+        if (wscript !== null) {
+          wscript.SendKeys('{F11}')
+        }
+      }
+    }
+
+    function isFullscreen() {
+      return document.fullscreenElement ||
+        document.msFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.webkitFullscreenElement || false;
+    }
+
+    let server = 'http://www.zhreleven.com:9001'
+    let localStore = localStorage.getItem('server')
+    if (localStore) {
+      server = localStore
+    }
+    // 初始化kapi场景
+    let kapi = await KAPI.build()
+    let scene = new kapi.Scene('kapi-container', { server })
+    let ready = await scene.ready()
+    console.log(ready)
+  }
+</script>
+
+<!-- vue -->
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue!'
+    },
+    mounted() {
+      this.initLeftEcharts()
+    },
+    computed: {
+      // showParam() {
+      //   return this.counter.length
+      // }
+    },
+    methods: {
+      initLeftEcharts() {
+        let salesMyChart = echarts.init($('#container1')[0])
+        let option = {
+          tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+          },
+          visualMap: {
+            show: false,
+            min: 80,
+            max: 600,
+            inRange: {
+              colorLightness: [0, 1]
+            }
+          },
+          series: [
+            {
+              name: '物联设备连接数量',
+              type: 'pie',
+              radius: '55%',
+              center: ['50%', '50%'],
+              data: [
+                {value: 335, name: '系统一'},
+                {value: 310, name: '系统二'},
+                {value: 274, name: '系统三'},
+                {value: 235, name: '系统四'},
+                {value: 400, name: '系统五'}
+              ].sort(function (a, b) {
+                return a.value - b.value
+              }),
+              roseType: 'area',
+              label: {
+                normal: {
+                  textStyle: {
+                    color: 'rgba(255, 255, 255, 0.5)'
+                  }
+                }
+              },
+              labelLine: {
+                normal: {
+                  lineStyle: {
+                    color: 'rgba(255, 255, 255, 0.3)'
+                  },
+                  smooth: 0.2,
+                  length: 10,
+                  length2: 20
+                }
+              },
+              itemStyle: {
+                normal: {
+                  color: '#c23531',
+                  shadowBlur: 200,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              },
+              animationType: 'scale',
+              animationEasing: 'elasticOut',
+              animationDelay: function (idx) {
+                return Math.random() * 200
+              }
+            }
+          ]
+        }
+        salesMyChart.setOption(option)
+
+        // 左下侧滚动
+        $('#scrollDiv').Scroll({line: 1, speed: 500, timer: 5000, up: 'but_up', down: 'but_down'})
+
+        // 右侧
+        // 人员一
+        var number = 30
+        $(function () {
+          $('#vaderSize').ProgressBarWars({porcentaje: 30, estilo: 'vader', tiempo: 5980, alto: '8px', flag: true})
+          setInterval(function () {
+            number = Math.floor(Math.random() * 99 + 1)
+            $('#vaderSize').ProgressBarWars({porcentaje: number, estilo: 'vader', tiempo: 5980, alto: '30px', flag: false})
+          }, 5000)
+        })
+
+        // 人员二
+        var number = 90
+        $(function () {
+          $('#vaderSize1').ProgressBarWars1({porcentaje: 30, estilo: 'vader1', tiempo: 5980, alto: '8px', flag: true})
+          setInterval(function () {
+            number = Math.floor(Math.random() * 99 + 1)
+            $('#vaderSize1').ProgressBarWars1({porcentaje: number, estilo: 'vader1', tiempo: 5980, alto: '30px', flag: false})
+          }, 5000)
+        })
+
+        // 人员三
+        var number = 60
+        $(function () {
+          $('#vaderSize2').ProgressBarWars2({porcentaje: 30, estilo: 'vader2', tiempo: 5980, alto: '8px', flag: true})
+          setInterval(function () {
+            number = Math.floor(Math.random() * 99 + 1)
+            $('#vaderSize2').ProgressBarWars2({porcentaje: number, estilo: 'vader2', tiempo: 5980, alto: '30px', flag: false})
+          }, 5000)
+        })
+        // 人员四
+        var number = 90
+        $(function () {
+          $('#vaderSize3').ProgressBarWars3({porcentaje: 30, estilo: 'vader3', tiempo: 5980, alto: '8px', flag: true})
+          setInterval(function () {
+            number = Math.floor(Math.random() * 99 + 1)
+            $('#vaderSize3').ProgressBarWars3({porcentaje: number, estilo: 'vader3', tiempo: 5980, alto: '8px', flag: false})
+          }, 5000)
+        })
+
+        // 车辆在线
+        var number = 60
+        $(function () {
+          $('#vaderSize4').ProgressBarWars4({porcentaje: number, estilo: 'vader4', tiempo: 5980, alto: '22px', flag: true})
+          setInterval(function () {
+            number = Math.floor(Math.random() * 99 + 1)
+            $('#vaderSize4').ProgressBarWars4({porcentaje: number, estilo: 'vader4', tiempo: 5980, alto: '22px', flag: false})
+          }, 5000)
+        })
+
+        // 系统一
+        $('#vaderSize5').ProgressBarWars5({porcentaje: 16, estilo: 'vader5', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统二
+        $('#vaderSize6').ProgressBarWars6({porcentaje: 16, estilo: 'vader6', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统三
+        $('#vaderSize7').ProgressBarWars7({porcentaje: 6, estilo: 'vader7', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统四
+        $('#vaderSize8').ProgressBarWars8({porcentaje: 2, estilo: 'vader8', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统五
+        $('#vaderSize9').ProgressBarWars9({porcentaje: 83, estilo: 'vader9', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统六
+        $('#vaderSize10').ProgressBarWars10({porcentaje: 6, estilo: 'vader10', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统七
+        $('#vaderSize11').ProgressBarWars10({porcentaje: 36, estilo: 'vader10', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统八
+        $('#vaderSize12').ProgressBarWars9({porcentaje: 52, estilo: 'vader9', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统九
+        $('#vaderSize13').ProgressBarWars10({porcentaje: 6, estilo: 'vader10', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统十
+        $('#vaderSize14').ProgressBarWars9({porcentaje: 28, estilo: 'vader9', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统十一
+        $('#vaderSize15').ProgressBarWars10({porcentaje: 10, estilo: 'vader10', tiempo: 5980, alto: '8px', flag: true})
+
+        // 系统十二
+        $('#vaderSize16').ProgressBarWars9({porcentaje: 26, estilo: 'vader9', tiempo: 5980, alto: '8px', flag: true})
+      }
+    }
+  })
+</script>
+</html>
