@@ -96,10 +96,6 @@ body.dark .operation-range div.btn {
   background: #fff;
   border: 1px solid #dcdfe6;
   color: #606266;
-  -webkit-appearance: none;
-  text-align: center;
-  box-sizing: border-box;
-  outline: none;
   margin-left: 10px;
   transition: .1s;
   font-weight: 500;

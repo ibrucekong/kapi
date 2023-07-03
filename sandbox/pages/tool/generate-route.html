@@ -637,7 +637,7 @@
       // 修改当前id的位置信息
       handleEdit(row) {
         let dom = document.getElementsByClassName('edit-content')[0]
-        let domInfo = `<span class='span-style'>序号: ${row.name}</span><br>
+        dom.innerHTML = `<span class='span-style'>序号: ${row.name}</span><br>
 <span>{</span><br>
 <span style='display: inline-block'>&nbsp;&nbsp;x: ${row.position.x},</span><br>
 <span style='display: inline-block'>&nbsp;&nbsp;y: ${row.position.y},</span><br>
@@ -648,7 +648,6 @@
 <span style='display: inline-block'>&nbsp;&nbsp;&nbsp;&nbsp;yaw: ${row.position.rotation.yaw}</span><br>
 <span>&nbsp;&nbsp;}<br></span>
 <span>}`
-        dom.innerHTML = domInfo
 
         this.editMode = true
 

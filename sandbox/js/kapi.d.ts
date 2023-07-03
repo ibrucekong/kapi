@@ -33,20 +33,6 @@ declare namespace Analyze.prototype{
 		size : number;
 	}
 }
-declare namespace Camera.prototype{
-	// Camera.prototype.flyTo.!0
-	
-	/**
-	 * 
-	 */
-	interface FlyTo0 {
-				
-		/**
-		 * 米换算成厘米（UE中的单位是厘米）
-		 */
-		distance : number;
-	}
-}
 declare namespace Controller.prototype{
 	// Controller.prototype.setTimeSimulate.!0
 	
@@ -63,6 +49,20 @@ declare namespace Controller.prototype{
 	 * 
 	 */
 	interface SetSkyColorParam0 {
+	}
+}
+declare namespace Camera.prototype{
+	// Camera.prototype.flyTo.!0
+	
+	/**
+	 * 
+	 */
+	interface FlyTo0 {
+				
+		/**
+		 * 米换算成厘米（UE中的单位是厘米）
+		 */
+		distance : number;
 	}
 }
 declare namespace Draw.prototype{
@@ -395,7 +395,7 @@ declare interface Analyze {
 	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
 	 * 
 	 * @example 使用示例
-	 *   let analyze = new kapi.Analyz()
+	 *   let analyze = new kapi.Analyze()
 	 *   let option = {
 	 *     isGraphic: false,
 	 *     radius: 200,
@@ -527,7 +527,7 @@ declare interface Analyze {
 	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
 	 * 
 	 * @example 使用示例
-	 *   let analyze = new kapi.Analyz()
+	 *   let analyze = new kapi.Analyze()
 	 *   let option = {
 	 *     isGraphic: false,
 	 *     distance: 2000,
@@ -566,7 +566,7 @@ declare interface Analyze {
 	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
 	 * 
 	 * @example 使用示例
-	 *   let analyze = new kapi.Analyz()
+	 *   let analyze = new kapi.Analyze()
 	 *   let pathInfo = await analyze.removeVisualField2D()
 	 * 
 	 * @returns {json}
@@ -591,7 +591,7 @@ declare interface Analyze {
 	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
 	 * 
 	 * @example 使用示例
-	 *   let analyze = new kapi.Analyz()
+	 *   let analyze = new kapi.Analyze()
 	 *   let pathInfo = await analyze.openSectioning()
 	 * 
 	 * @returns {json}
@@ -616,7 +616,7 @@ declare interface Analyze {
 	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
 	 * 
 	 * @example 使用示例
-	 *   let analyze = new kapi.Analyz()
+	 *   let analyze = new kapi.Analyze()
 	 *   let pathInfo = await analyze.closeSectioning()
 	 * 
 	 * @returns {json}
@@ -811,344 +811,6 @@ declare interface Analyze {
 	closeBuildingDismantling(sync? : any): /* Analyze.prototype.+Promise */ any;
 }
 declare var Analyze: Analyze;
-
-/**
- * 
- */
-declare interface Camera {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  setCameraSpeed(option: object, sync?: boolean) 设置移动速度
-	 * @name setCameraSpeed
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 设置移动速度
-	 * 
-	 * @param option 移动速度参数
-	 * @param option.speed 移动速度
-	 * @param option.speedUp 按开键盘后到speed时的加速度
-	 * @param option.speedDown 松开键盘后速度停止到0减速度
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   let option = {
-	 *     speed: 10,
-	 *     speedUp: 20,
-	 *     speedDown: 30,
-	 *   }
-	 *   // 配合 async
-	 *   let cameraInfo = await camera.setCameraSpeed(option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	setCameraSpeed(option : any, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getCameraInfo(sync?: boolean) 获取相机参数
-	 * @name getCameraInfo
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 获取相机参数
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   let cameraInfo = await camera.getCameraInfo()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {
-	 *        x: 117.23,
-	 *        y: 36.21,
-	 *        z: 500,
-	 *        rotation: {
-	 *          roll: 0.3,
-	 *          pitch: 0.5,
-	 *          yaw: 1
-	 *        }
-	 *      }
-	 *    }
-	 * 
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	getCameraInfo(sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  flyTo(position: object, sync?: boolean) 飞到某位置
-	 * @name flyTo
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 将相机飞到某位置
-	 * 
-	 * @param position 位置信息
-	 * @param position.floor 为了27楼单独设置的，可以没有
-	 * @param position.x x/经度
-	 * @param position.y y/维度
-	 * @param position.z z/高度
-	 * @param position.distance 距离
-	 * @param position.rotation 姿态
-	 * @param position.rotation.roll 翻滚角
-	 * @param position.rotation.pitch 俯仰角
-	 * @param position.rotation.yaw 偏航角
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   let position = {
-	 *      floor: 27,
-	 *      x: 108020.0,
-	 *      y: -129000.0,
-	 *      z: -8240.0,
-	 *      distance: 300,
-	 *      rotation: {
-	 *        roll: 0,
-	 *        pitch: 0,
-	 *        yaw: -120.000153
-	 *      }
-	 *    }
-	 *   // 定位到27楼
-	 *   let response = await camera.flyTo(position)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param position 
-	 * @param sync 
-	 * @return  
-	 */
-	flyTo(position : Camera.prototype.FlyTo0, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setRotationStatus(status: boolean, speed: float, sync?: boolean) 绕物旋转
-	 * @name setRotationStatus
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 设置场景绕物旋转
-	 * 
-	 * @param status 开启状态
-	 * @param speed 旋转速度
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   let res = await camera.setRotationStatus(true, 0.5)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "KAPI Rotating",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param status 
-	 * @param speed 
-	 * @param sync 
-	 * @return  
-	 */
-	setRotationStatus(status : any, speed : number, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setCameraHeight(height: float, sync?: boolean) 设置相机高度
-	 * @name setCameraHeight
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 设置相机高度
-	 * 
-	 * @param height 高度值，正值为向上，负值为向下
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   // 使相机向上100m
-	 *   let res = await camera.setCameraHeight(100)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "设置成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param height 
-	 * @param sync 
-	 * @return  
-	 */
-	setCameraHeight(height : any, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setCameraAngleLimit(min: float, max: float, sync?: boolean) 设置相机高度
-	 * @name setCameraHeight
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 设置相机高度
-	 * 
-	 * @param min yaw最小值
-	 * @param max yaw最大值
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   // 使相机向上100m
-	 *   let res = await camera.setCameraAngleLimit(-50,50)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "设置成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param min 
-	 * @param max 
-	 * @param sync 
-	 * @return  
-	 */
-	setCameraAngleLimit(min : any, max : any, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  playRoute(route: array, option: object, sync?: boolean) 开始漫游
-	 * @name playRoute
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 开始漫游
-	 * 
-	 * @param route 路线数组，投影坐标和地理坐标都是x,y,z
-	 * @param option 飞行参数
-	 * @param option.speed 飞行速度，默认10m/s，单位（米/每秒，m/s）
-	 * @param option.unit 速度单位，默认（米/每秒，m/s），可选（公里/小时，km/h），不传或传错则使用默认m/s
-	 * @param option.loop 是否循环漫游，默认false
-	 * @param option.isGraphic 是否是地理坐标（经纬度），默认true
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   let route = [{x: 117.0951698, y: 36.6568560, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.0989151, y: 36.6579687, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.101380, y: 36.658651, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.104513, y: 36.658556, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.110243, y: 36.658797, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.113300, y: 36.659102, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.117694, y: 36.659221, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.121247, y: 36.659218, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.122851, y: 36.658847, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.126288, y: 36.658258, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.128160, y: 36.658287, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.128318, y: 36.661273, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.1294164, y: 36.6614676, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.1302911, y: 36.6619168, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.1306743, y: 36.6626012, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}}
-	 *       ]
-	 * 
-	 *   let option = {
-	 *     speed: 10,
-	 *     unit: "m/s",
-	 *     loop: true,
-	 *     isGraphic: true
-	 *   }
-	 *   // 配合 async
-	 *   let res = await camera.playRoute(route, option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "漫游结束",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param route 
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	playRoute(route : any, option : any, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  stopRoute(sync?: boolean) 停止漫游
-	 * @name stopRoute
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 漫游
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   let res = await camera.stopRoute()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "漫游已停止",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	stopRoute(sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  addBookmark(type: string, sync?: boolean) 添加自定义书签
-	 * @name addBookmark
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 添加自定义书签
-	 * 
-	 * @param type 返回坐标的类型（engine、project、graphic）
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   let type = "graphic";
-	 *   // 配合 async
-	 *   // 添加自定义书签
-	 *   let res = await camera.addBookmark(type)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      "timestamp": 1648538635305,
-	 *      "code": 200,
-	 *      "message": "返回成功",
-	 *      "data": {}
-	 *    }
-	 * @return Promise
-	 * @param type 
-	 * @param sync 
-	 * @return  
-	 */
-	addBookmark(type : any, sync? : any): /* Camera.prototype.+Promise */ any;
-}
-declare var Camera: Camera;
 
 /**
  * 
@@ -1704,6 +1366,417 @@ declare interface Controller {
 	getData(val : any, n : any): any;
 }
 declare var Controller: Controller;
+
+/**
+ * 
+ */
+declare interface Camera {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  setCameraSpeed(option: object, sync?: boolean) 设置移动速度
+	 * @name setCameraSpeed
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 设置移动速度
+	 * 
+	 * @param option 移动速度参数
+	 * @param option.speed 移动速度
+	 * @param option.speedUp 按开键盘后到speed时的加速度
+	 * @param option.speedDown 松开键盘后速度停止到0减速度
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   let option = {
+	 *     speed: 10,
+	 *     speedUp: 20,
+	 *     speedDown: 30,
+	 *   }
+	 *   // 配合 async
+	 *   let cameraInfo = await camera.setCameraSpeed(option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	setCameraSpeed(option : any, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  getCameraInfo(sync?: boolean) 获取相机参数
+	 * @name getCameraInfo
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 获取相机参数
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   let cameraInfo = await camera.getCameraInfo()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {
+	 *        x: 117.23,
+	 *        y: 36.21,
+	 *        z: 500,
+	 *        rotation: {
+	 *          roll: 0.3,
+	 *          pitch: 0.5,
+	 *          yaw: 1
+	 *        }
+	 *      }
+	 *    }
+	 * 
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	getCameraInfo(sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  flyTo(position: object, sync?: boolean) 飞到某位置
+	 * @name flyTo
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 将相机飞到某位置
+	 * 
+	 * @param position 位置信息
+	 * @param position.floor 为了27楼单独设置的，可以没有
+	 * @param position.x x/经度
+	 * @param position.y y/维度
+	 * @param position.z z/高度
+	 * @param position.distance 距离
+	 * @param position.rotation 姿态
+	 * @param position.rotation.roll 翻滚角
+	 * @param position.rotation.pitch 俯仰角
+	 * @param position.rotation.yaw 偏航角
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   let position = {
+	 *      floor: 27,
+	 *      x: 108020.0,
+	 *      y: -129000.0,
+	 *      z: -8240.0,
+	 *      distance: 300,
+	 *      rotation: {
+	 *        roll: 0,
+	 *        pitch: 0,
+	 *        yaw: -120.000153
+	 *      }
+	 *    }
+	 *   // 定位到27楼
+	 *   let response = await camera.flyTo(position)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param position 
+	 * @param sync 
+	 * @return  
+	 */
+	flyTo(position : Camera.prototype.FlyTo0, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setRotationStatus(status: boolean, speed: float, sync?: boolean) 绕物旋转
+	 * @name setRotationStatus
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 设置场景绕物旋转
+	 * 
+	 * @param status 开启状态
+	 * @param speed 旋转速度
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   let res = await camera.setRotationStatus(true, 0.5)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "KAPI Rotating",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param status 
+	 * @param speed 
+	 * @param sync 
+	 * @return  
+	 */
+	setRotationStatus(status : any, speed : number, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setCameraHeight(height: float, sync?: boolean) 设置相机高度
+	 * @name setCameraHeight
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 设置相机高度
+	 * 
+	 * @param height 高度值，正值为向上，负值为向下
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   // 使相机向上100m
+	 *   let res = await camera.setCameraHeight(100)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "设置成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param height 
+	 * @param sync 
+	 * @return  
+	 */
+	setCameraHeight(height : any, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setCameraAngleLimit(min: float, max: float, sync?: boolean) 设置相机高度
+	 * @name setCameraHeight
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 设置相机高度
+	 * 
+	 * @param min yaw最小值
+	 * @param max yaw最大值
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   // 使相机向上100m
+	 *   let res = await camera.setCameraAngleLimit(-50,50)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "设置成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param min 
+	 * @param max 
+	 * @param sync 
+	 * @return  
+	 */
+	setCameraAngleLimit(min : any, max : any, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  playRoute(route: array, option: object, sync?: boolean) 开始漫游
+	 * @name playRoute
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 开始漫游
+	 * 
+	 * @param route 路线数组，投影坐标和地理坐标都是x,y,z
+	 * @param option 飞行参数
+	 * @param option.speed 飞行速度，默认10m/s，单位（米/每秒，m/s）
+	 * @param option.unit 速度单位，默认（米/每秒，m/s），可选（公里/小时，km/h），不传或传错则使用默认m/s
+	 * @param option.loop 是否循环漫游，默认false
+	 * @param option.isGraphic 是否是地理坐标（经纬度），默认true
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   let route = [{x: 117.0951698, y: 36.6568560, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.0989151, y: 36.6579687, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.101380, y: 36.658651, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.104513, y: 36.658556, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.110243, y: 36.658797, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.113300, y: 36.659102, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.117694, y: 36.659221, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.121247, y: 36.659218, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.122851, y: 36.658847, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.126288, y: 36.658258, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.128160, y: 36.658287, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.128318, y: 36.661273, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.1294164, y: 36.6614676, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.1302911, y: 36.6619168, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.1306743, y: 36.6626012, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}}
+	 *       ]
+	 * 
+	 *   let option = {
+	 *     speed: 10,
+	 *     unit: "m/s",
+	 *     loop: true,
+	 *     isGraphic: true
+	 *   }
+	 *   // 配合 async
+	 *   let res = await camera.playRoute(route, option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "漫游结束",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param route 
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	playRoute(route : any, option : any, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  stopRoute(sync?: boolean) 停止漫游
+	 * @name stopRoute
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 漫游
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   let res = await camera.stopRoute()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "漫游已停止",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	stopRoute(sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  addBookmark(type: string, sync?: boolean) 添加自定义书签
+	 * @name addBookmark
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 添加自定义书签
+	 * 
+	 * @param type 返回坐标的类型（engine、project、graphic）
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   let type = "graphic";
+	 *   // 配合 async
+	 *   // 添加自定义书签
+	 *   let res = await camera.addBookmark(type)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      "timestamp": 1648538635305,
+	 *      "code": 200,
+	 *      "message": "返回成功",
+	 *      "data": {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @param sync 
+	 * @return  
+	 */
+	addBookmark(type : any, sync? : any): /* Camera.prototype.+Promise */ any;
+}
+declare var Camera: Camera;
+
+/**
+ * 
+ */
+declare interface Data {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  parseGeoJSON(fileList: FileList) 导入GeoJSON数据
+	 * @name parseGeoJSON
+	 * @group Data
+	 * @version 1.0.0
+	 * @description 导入GeoJSON数据
+	 * 
+	 * @param fileList 原生的<code>&lt;input type='file' multiple accept=".json"></code>中的fileList结果
+	 * @param encoding 编码方式，默认UTF-8
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   <input id='upload' type='file' multiple accept=".json">
+	 *   JavaScript中
+	 *   let fileList = document.getElementById('upload').files
+	 *   let data = new kapi.Data()
+	 *   // 配合 async
+	 *   let coordInfo = await data.parseGeoJSON(fileList)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param fileList 
+	 * @param encoding 
+	 * @return  
+	 */
+	parseGeoJSON(fileList : any, encoding : string): /* Data.prototype.+Promise */ any;
+		
+	/**
+	 * @api  parseShp(fileList: FileList) 导入Shp数据
+	 * @name parseShp
+	 * @group Data
+	 * @apiIgnore
+	 * @version 1.0.0
+	 * @description 导入shp数据
+	 * 
+	 * @param fileList shp的路径/包含shp的zip压缩包/上传文件FileList
+	 * 
+	 * @example 使用示例
+	 *   let data = new kapi.Data()
+	 *   // 配合 async
+	 *   let coordInfo = await data.parseShp('./data/city.shp')
+	 *   // or
+	 *   let coordInfo = await data.parseShp(<Shp 的 FileList>)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param fileList 
+	 * @return  
+	 */
+	parseShp(fileList : any): /* Data.prototype.+Promise */ any;
+}
+declare var Data: Data;
 
 /**
  * 
@@ -2784,79 +2857,6 @@ declare var Draw: Draw;
 /**
  * 
  */
-declare interface Data {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  parseGeoJSON(fileList: FileList) 导入GeoJSON数据
-	 * @name parseGeoJSON
-	 * @group Data
-	 * @version 1.0.0
-	 * @description 导入GeoJSON数据
-	 * 
-	 * @param fileList 原生的<code>&lt;input type='file' multiple accept=".json"></code>中的fileList结果
-	 * @param encoding 编码方式，默认UTF-8
-	 * 
-	 * @example 使用示例
-	 *   html中
-	 *   <input id='upload' type='file' multiple accept=".json">
-	 *   JavaScript中
-	 *   let fileList = document.getElementById('upload').files
-	 *   let data = new kapi.Data()
-	 *   // 配合 async
-	 *   let coordInfo = await data.parseGeoJSON(fileList)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param fileList 
-	 * @param encoding 
-	 * @return  
-	 */
-	parseGeoJSON(fileList : any, encoding : string): /* Data.prototype.+Promise */ any;
-		
-	/**
-	 * @api  parseShp(fileList: FileList) 导入Shp数据
-	 * @name parseShp
-	 * @group Data
-	 * @apiIgnore
-	 * @version 1.0.0
-	 * @description 导入shp数据
-	 * 
-	 * @param fileList shp的路径/包含shp的zip压缩包/上传文件FileList
-	 * 
-	 * @example 使用示例
-	 *   let data = new kapi.Data()
-	 *   // 配合 async
-	 *   let coordInfo = await data.parseShp('./data/city.shp')
-	 *   // or
-	 *   let coordInfo = await data.parseShp(<Shp 的 FileList>)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param fileList 
-	 * @return  
-	 */
-	parseShp(fileList : any): /* Data.prototype.+Promise */ any;
-}
-declare var Data: Data;
-
-/**
- * 
- */
 declare interface Event {
 		
 	/**
@@ -2945,155 +2945,6 @@ declare interface Event {
 }
 // @ts-ignore
 declare var Event: Event;
-
-/**
- * 
- */
-declare interface Layer {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  add3DTiles(urls) 加载3dtiles
-	 * @name add3DTiles
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 加载 3dtiles，可以是字符串，也可以是数组
-	 * 
-	 * @param urls 服务地址
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.add3DTiles('http://localhost/demo/tileset.json')
-	 *   // 2、配合 async 数组
-	 *   let urls = ['http://localhost/demo/tileset.json',
-	 *              'http://localhost/demo2/tileset.json',
-	 *              'http://localhost/demo2/tileset.json']
-	 *   let res = await layer.add3DTiles(urls)
-	 *   // 3、配合 async 对象数组
-	 *   let urls = [{url: 'http://localhost/demo/tileset.json'},
-	 *              {url: 'http://localhost/demo/tileset.json'},
-	 *              {url: 'http://localhost/demo/tileset.json'}]
-	 *   let res = await layer.add3DTiles(urls)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param urls 
-	 * @return  
-	 */
-	add3DTiles(urls : any): /* Layer.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getAllLayers() 获取所有服务
-	 * @name getAllLayers
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 获取所有服务
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.getAllLayers()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @return  
-	 */
-	getAllLayers(): /* Layer.prototype.+Promise */ any;
-		
-	/**
-	 * @api  showLayer(url) 根据url显示服务
-	 * @name showLayer
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 根据url显示服务
-	 * 
-	 * @param url 服务url
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.showLayer('123')
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param url 
-	 * @return  
-	 */
-	showLayer(url : any): /* Layer.prototype.+Promise */ any;
-		
-	/**
-	 * @api  hideLayer(url) 根据url隐藏服务
-	 * @name hideLayer
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 根据url隐藏服务
-	 * 
-	 * @param url 服务url
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.hideLayer('123')
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param url 
-	 * @return  
-	 */
-	hideLayer(url : any): /* Layer.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removeLayer(url) 根据url移除服务
-	 * @name removeLayer
-	 * @group Layer
-	 * @version 1.0.0
-	 * @description 根据url移除服务
-	 * 
-	 * @param url 服务url
-	 * 
-	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.removeLayer('123')
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param url 
-	 * @return  
-	 */
-	removeLayer(url : any): /* Layer.prototype.+Promise */ any;
-}
-declare var Layer: Layer;
 
 /**
  * 
@@ -3284,6 +3135,155 @@ declare interface Iot {
 	setStatusByType(type : any, status : any, sync? : any): /* Iot.prototype.+Promise */ any;
 }
 declare var Iot: Iot;
+
+/**
+ * 
+ */
+declare interface Layer {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  add3DTiles(urls) 加载3dtiles
+	 * @name add3DTiles
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 加载 3dtiles，可以是字符串，也可以是数组
+	 * 
+	 * @param urls 服务地址
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.add3DTiles('http://localhost/demo/tileset.json')
+	 *   // 2、配合 async 数组
+	 *   let urls = ['http://localhost/demo/tileset.json',
+	 *              'http://localhost/demo2/tileset.json',
+	 *              'http://localhost/demo2/tileset.json']
+	 *   let res = await layer.add3DTiles(urls)
+	 *   // 3、配合 async 对象数组
+	 *   let urls = [{url: 'http://localhost/demo/tileset.json'},
+	 *              {url: 'http://localhost/demo/tileset.json'},
+	 *              {url: 'http://localhost/demo/tileset.json'}]
+	 *   let res = await layer.add3DTiles(urls)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param urls 
+	 * @return  
+	 */
+	add3DTiles(urls : any): /* Layer.prototype.+Promise */ any;
+		
+	/**
+	 * @api  getAllLayers() 获取所有服务
+	 * @name getAllLayers
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 获取所有服务
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.getAllLayers()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @return  
+	 */
+	getAllLayers(): /* Layer.prototype.+Promise */ any;
+		
+	/**
+	 * @api  showLayer(url) 根据url显示服务
+	 * @name showLayer
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 根据url显示服务
+	 * 
+	 * @param url 服务url
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.showLayer('123')
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param url 
+	 * @return  
+	 */
+	showLayer(url : any): /* Layer.prototype.+Promise */ any;
+		
+	/**
+	 * @api  hideLayer(url) 根据url隐藏服务
+	 * @name hideLayer
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 根据url隐藏服务
+	 * 
+	 * @param url 服务url
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.hideLayer('123')
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param url 
+	 * @return  
+	 */
+	hideLayer(url : any): /* Layer.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removeLayer(url) 根据url移除服务
+	 * @name removeLayer
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 根据url移除服务
+	 * 
+	 * @param url 服务url
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.removeLayer('123')
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param url 
+	 * @return  
+	 */
+	removeLayer(url : any): /* Layer.prototype.+Promise */ any;
+}
+declare var Layer: Layer;
 
 /**
  * 
