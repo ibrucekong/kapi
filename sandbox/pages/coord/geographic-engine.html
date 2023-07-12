@@ -94,7 +94,7 @@
     let x = document.getElementById('x').value
     let y = document.getElementById('y').value
     let z = document.getElementById('z').value
-    let res = await coord.transformECEFToEngine(x, y, z)
+    let res = await coord.ecefToEngine(x, y, z)
     if (res.code === 200) {
       document.getElementById('resultx').value = res.data.coordinate.x
       document.getElementById('resultY').value = res.data.coordinate.y
@@ -106,7 +106,7 @@
     let x = document.getElementById('x').value
     let y = document.getElementById('y').value
     let z = document.getElementById('z').value
-    let res = await coord.transformEngineToECEF(x, y, z)
+    let res = await coord.engineToECEF(x, y, z)
     if (res.code === 200) {
       document.getElementById('resultx').value = res.data.coordinate.x
       document.getElementById('resultY').value = res.data.coordinate.y

@@ -51,20 +51,6 @@ declare namespace Controller.prototype{
 	interface SetSkyColorParam0 {
 	}
 }
-declare namespace Camera.prototype{
-	// Camera.prototype.flyTo.!0
-	
-	/**
-	 * 
-	 */
-	interface FlyTo0 {
-				
-		/**
-		 * 米换算成厘米（UE中的单位是厘米）
-		 */
-		distance : number;
-	}
-}
 declare namespace Draw.prototype{
 	// Draw.prototype.drawPolyline.!1
 	
@@ -86,6 +72,20 @@ declare namespace Draw.prototype{
 	 * 
 	 */
 	interface DrawDecal0 {
+	}
+}
+declare namespace Camera.prototype{
+	// Camera.prototype.flyTo.!0
+	
+	/**
+	 * 
+	 */
+	interface FlyTo0 {
+				
+		/**
+		 * 米换算成厘米（UE中的单位是厘米）
+		 */
+		distance : number;
 	}
 }
 declare namespace Marker.prototype{
@@ -128,7 +128,7 @@ declare namespace Scene.prototype{
 		/**
 		 * 
 		 */
-		keyboardIgnoreList : /* Scene.defaultOptions.keyboardIgnoreList */ any;
+		keyboardIgnoreList : /* Scene.options.keyboardIgnoreList */ any;
 	}
 }
 declare interface Analyze {
@@ -1370,344 +1370,6 @@ declare var Controller: Controller;
 /**
  * 
  */
-declare interface Camera {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  setCameraSpeed(option: object, sync?: boolean) 设置移动速度
-	 * @name setCameraSpeed
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 设置移动速度
-	 * 
-	 * @param option 移动速度参数
-	 * @param option.speed 移动速度
-	 * @param option.speedUp 按开键盘后到speed时的加速度
-	 * @param option.speedDown 松开键盘后速度停止到0减速度
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   let option = {
-	 *     speed: 10,
-	 *     speedUp: 20,
-	 *     speedDown: 30,
-	 *   }
-	 *   // 配合 async
-	 *   let cameraInfo = await camera.setCameraSpeed(option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	setCameraSpeed(option : any, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getCameraInfo(sync?: boolean) 获取相机参数
-	 * @name getCameraInfo
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 获取相机参数
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   let cameraInfo = await camera.getCameraInfo()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {
-	 *        x: 117.23,
-	 *        y: 36.21,
-	 *        z: 500,
-	 *        rotation: {
-	 *          roll: 0.3,
-	 *          pitch: 0.5,
-	 *          yaw: 1
-	 *        }
-	 *      }
-	 *    }
-	 * 
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	getCameraInfo(sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  flyTo(position: object, sync?: boolean) 飞到某位置
-	 * @name flyTo
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 将相机飞到某位置
-	 * 
-	 * @param position 位置信息
-	 * @param position.floor 为了27楼单独设置的，可以没有
-	 * @param position.x x/经度
-	 * @param position.y y/维度
-	 * @param position.z z/高度
-	 * @param position.distance 距离
-	 * @param position.rotation 姿态
-	 * @param position.rotation.roll 翻滚角
-	 * @param position.rotation.pitch 俯仰角
-	 * @param position.rotation.yaw 偏航角
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   let position = {
-	 *      floor: 27,
-	 *      x: 108020.0,
-	 *      y: -129000.0,
-	 *      z: -8240.0,
-	 *      distance: 300,
-	 *      rotation: {
-	 *        roll: 0,
-	 *        pitch: 0,
-	 *        yaw: -120.000153
-	 *      }
-	 *    }
-	 *   // 定位到27楼
-	 *   let response = await camera.flyTo(position)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param position 
-	 * @param sync 
-	 * @return  
-	 */
-	flyTo(position : Camera.prototype.FlyTo0, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setRotationStatus(status: boolean, speed: float, sync?: boolean) 绕物旋转
-	 * @name setRotationStatus
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 设置场景绕物旋转
-	 * 
-	 * @param status 开启状态
-	 * @param speed 旋转速度
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   let res = await camera.setRotationStatus(true, 0.5)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "KAPI Rotating",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param status 
-	 * @param speed 
-	 * @param sync 
-	 * @return  
-	 */
-	setRotationStatus(status : any, speed : number, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setCameraHeight(height: float, sync?: boolean) 设置相机高度
-	 * @name setCameraHeight
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 设置相机高度
-	 * 
-	 * @param height 高度值，正值为向上，负值为向下
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   // 使相机向上100m
-	 *   let res = await camera.setCameraHeight(100)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "设置成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param height 
-	 * @param sync 
-	 * @return  
-	 */
-	setCameraHeight(height : any, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setCameraAngleLimit(min: float, max: float, sync?: boolean) 设置相机高度
-	 * @name setCameraHeight
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 设置相机高度
-	 * 
-	 * @param min yaw最小值
-	 * @param max yaw最大值
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   // 使相机向上100m
-	 *   let res = await camera.setCameraAngleLimit(-50,50)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "设置成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param min 
-	 * @param max 
-	 * @param sync 
-	 * @return  
-	 */
-	setCameraAngleLimit(min : any, max : any, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  playRoute(route: array, option: object, sync?: boolean) 开始漫游
-	 * @name playRoute
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 开始漫游
-	 * 
-	 * @param route 路线数组，投影坐标和地理坐标都是x,y,z
-	 * @param option 飞行参数
-	 * @param option.speed 飞行速度，默认10m/s，单位（米/每秒，m/s）
-	 * @param option.unit 速度单位，默认（米/每秒，m/s），可选（公里/小时，km/h），不传或传错则使用默认m/s
-	 * @param option.loop 是否循环漫游，默认false
-	 * @param option.isGraphic 是否是地理坐标（经纬度），默认true
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   let route = [{x: 117.0951698, y: 36.6568560, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.0989151, y: 36.6579687, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.101380, y: 36.658651, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.104513, y: 36.658556, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.110243, y: 36.658797, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.113300, y: 36.659102, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.117694, y: 36.659221, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.121247, y: 36.659218, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.122851, y: 36.658847, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.126288, y: 36.658258, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.128160, y: 36.658287, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.128318, y: 36.661273, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.1294164, y: 36.6614676, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.1302911, y: 36.6619168, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
-	 *          {x: 117.1306743, y: 36.6626012, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}}
-	 *       ]
-	 * 
-	 *   let option = {
-	 *     speed: 10,
-	 *     unit: "m/s",
-	 *     loop: true,
-	 *     isGraphic: true
-	 *   }
-	 *   // 配合 async
-	 *   let res = await camera.playRoute(route, option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "漫游结束",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param route 
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	playRoute(route : any, option : any, sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  stopRoute(sync?: boolean) 停止漫游
-	 * @name stopRoute
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 漫游
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   // 配合 async
-	 *   let res = await camera.stopRoute()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "漫游已停止",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	stopRoute(sync? : any): /* Camera.prototype.+Promise */ any;
-		
-	/**
-	 * @api  addBookmark(type: string, sync?: boolean) 添加自定义书签
-	 * @name addBookmark
-	 * @group Camera
-	 * @version 1.0.0
-	 * @description 添加自定义书签
-	 * 
-	 * @param type 返回坐标的类型（engine、project、graphic）
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let camera = new kapi.Camera()
-	 *   let type = "graphic";
-	 *   // 配合 async
-	 *   // 添加自定义书签
-	 *   let res = await camera.addBookmark(type)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      "timestamp": 1648538635305,
-	 *      "code": 200,
-	 *      "message": "返回成功",
-	 *      "data": {}
-	 *    }
-	 * @return Promise
-	 * @param type 
-	 * @param sync 
-	 * @return  
-	 */
-	addBookmark(type : any, sync? : any): /* Camera.prototype.+Promise */ any;
-}
-declare var Camera: Camera;
-
-/**
- * 
- */
 declare interface Data {
 		
 	/**
@@ -1781,390 +1443,6 @@ declare var Data: Data;
 /**
  * 
  */
-declare interface Coord {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  transformECEFToEngine(x: float, y: float, z: float) 地心地固转引擎
-	 * @name transformECEFToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为引擎坐标
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformECEFToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformECEFToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformECEFToProjection(x: float, y: float, z: float) 地心地固转投影
-	 * @name transformECEFToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformECEFToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformECEFToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformECEFToGeographic(x: float, y: float, z: float) 地心地固转地理
-	 * @name transformECEFToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为地理坐标
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformECEFToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformECEFToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformProjectionToECEF(x: float, y: float, z: float) 投影转地心地固
-	 * @name transformProjectionToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影坐标转地心地固坐标系(地心坐标系)
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformProjectionToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformProjectionToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformProjectionToGeographic(x: float, y: float, z: float) 投影转地理
-	 * @name transformProjectionToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影转地理
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformProjectionToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformProjectionToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformProjectionToEngine(x: float, y: float, z: float) 投影转引擎
-	 * @name transformProjectionToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影转引擎
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformProjectionToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformProjectionToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformEngineToProjection(x: float, y: float, z: float) 引擎转投影
-	 * @name transformEngineToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformEngineToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformEngineToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformEngineToGeographic(x: float, y: float, z: float) 引擎转地理
-	 * @name transformEngineToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转地理
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformEngineToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformEngineToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformEngineToECEF(x: float, y: float, z: float) 引擎转投影
-	 * @name transformEngineToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformEngineToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformEngineToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformGeographicToECEF(x: float, y: float, z: float) 地理转地心地固
-	 * @name transformGeographicToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转地心地固
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformGeographicToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformGeographicToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformGeographicToProjection(x: float, y: float, z: float) 地理转投影
-	 * @name transformGeographicToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformGeographicToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformGeographicToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  transformGeographicToEngine(x: float, y: float, z: float) 地理转引擎
-	 * @name transformGeographicToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转引擎
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.transformGeographicToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	transformGeographicToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-}
-declare var Coord: Coord;
-
-/**
- * 
- */
 declare interface Draw {
 		
 	/**
@@ -2177,7 +1455,7 @@ declare interface Draw {
 	 * @name getPointList
 	 * @group Draw
 	 * @version 1.0.0
-	 * @description 获取点列表
+	 * @description 获取点列表【需要完善】
 	 * 
 	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
 	 * 
@@ -2588,54 +1866,6 @@ declare interface Draw {
 	removeLightFlow(id : any): /* Draw.prototype.+Promise */ any;
 		
 	/**
-	 * @api  addLightFlowEventListener(callback: function) 设置光流的生成监听
-	 * @name addLightFlowEventListener
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 设置光流的生成监听
-	 * @param callback 回调
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   draw.addLightFlowEventListener(response => {
-	 * 
-	 *   })
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {
-	 *        id: 'Fire_01'
-	 *      }
-	 *    }
-	 * @return Promise
-	 * @param callback 
-	 */
-	addLightFlowEventListener(callback : any): void;
-		
-	/**
-	 * @api  removeLightFlowEventListener() 删除光流的点击监听
-	 * @name removeLightFlowEventListener
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 删除光流的点击监听
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   draw.removeLightFlowEventListener()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 */
-	removeLightFlowEventListener(): void;
-		
-	/**
 	 * @api  drawContour(contour: array, option: object, sync?: boolean) 绘制区域轮廓
 	 * @name drawContour
 	 * @group Draw
@@ -2903,7 +2133,7 @@ declare interface Event {
 	 * @example 使用示例
 	 *   let event = new kapi.Event()
 	 *   // 配合帧率启用接口监听帧率值变化
-	 *   event.addEventListener(KAPI_CONST.FPS, response => {
+	 *   event.addEventListener(KAPI_CONST.EVENT.FPS, response => {
 	 * 
 	 *   })
 	 * 
@@ -2945,6 +2175,877 @@ declare interface Event {
 }
 // @ts-ignore
 declare var Event: Event;
+
+/**
+ * 
+ */
+declare interface Camera {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  setCameraSpeed(option: object, sync?: boolean) 设置移动速度
+	 * @name setCameraSpeed
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 设置移动速度
+	 * 
+	 * @param option 移动速度参数
+	 * @param option.speed 移动速度
+	 * @param option.speedUp 按开键盘后到speed时的加速度
+	 * @param option.speedDown 松开键盘后速度停止到0减速度
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   let option = {
+	 *     speed: 10,
+	 *     speedUp: 20,
+	 *     speedDown: 30,
+	 *   }
+	 *   // 配合 async
+	 *   let cameraInfo = await camera.setCameraSpeed(option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	setCameraSpeed(option : any, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  getCameraInfo(sync?: boolean) 获取相机参数
+	 * @name getCameraInfo
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 获取相机参数
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   let cameraInfo = await camera.getCameraInfo()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {
+	 *        x: 117.23,
+	 *        y: 36.21,
+	 *        z: 500,
+	 *        rotation: {
+	 *          roll: 0.3,
+	 *          pitch: 0.5,
+	 *          yaw: 1
+	 *        }
+	 *      }
+	 *    }
+	 * 
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	getCameraInfo(sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  flyTo(position: object, sync?: boolean) 飞到某位置
+	 * @name flyTo
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 将相机飞到某位置
+	 * 
+	 * @param position 位置信息
+	 * @param position.floor 为了27楼单独设置的，可以没有
+	 * @param position.x x/经度
+	 * @param position.y y/维度
+	 * @param position.z z/高度
+	 * @param position.distance 距离
+	 * @param position.rotation 姿态
+	 * @param position.rotation.roll 翻滚角
+	 * @param position.rotation.pitch 俯仰角
+	 * @param position.rotation.yaw 偏航角
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   let position = {
+	 *      floor: 27,
+	 *      x: 108020.0,
+	 *      y: -129000.0,
+	 *      z: -8240.0,
+	 *      distance: 300,
+	 *      rotation: {
+	 *        roll: 0,
+	 *        pitch: 0,
+	 *        yaw: -120.000153
+	 *      }
+	 *    }
+	 *   // 定位到27楼
+	 *   let response = await camera.flyTo(position)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param position 
+	 * @param sync 
+	 * @return  
+	 */
+	flyTo(position : Camera.prototype.FlyTo0, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setRotationStatus(status: boolean, speed: float, sync?: boolean) 绕物旋转
+	 * @name setRotationStatus
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 设置场景绕物旋转
+	 * 
+	 * @param status 开启状态
+	 * @param speed 旋转速度
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   let res = await camera.setRotationStatus(true, 0.5)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "KAPI Rotating",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param status 
+	 * @param speed 
+	 * @param sync 
+	 * @return  
+	 */
+	setRotationStatus(status : any, speed : number, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setCameraHeight(height: float, sync?: boolean) 设置相机高度
+	 * @name setCameraHeight
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 设置相机高度
+	 * 
+	 * @param height 高度值，正值为向上，负值为向下
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   // 使相机向上100m
+	 *   let res = await camera.setCameraHeight(100)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "设置成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param height 
+	 * @param sync 
+	 * @return  
+	 */
+	setCameraHeight(height : any, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setCameraAngleLimit(min: float, max: float, sync?: boolean) 设置相机高度
+	 * @name setCameraHeight
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 设置相机高度
+	 * 
+	 * @param min yaw最小值
+	 * @param max yaw最大值
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   // 使相机向上100m
+	 *   let res = await camera.setCameraAngleLimit(-50,50)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "设置成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param min 
+	 * @param max 
+	 * @param sync 
+	 * @return  
+	 */
+	setCameraAngleLimit(min : any, max : any, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  playRoute(route: array, option: object, sync?: boolean) 开始漫游
+	 * @name playRoute
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 开始漫游
+	 * 
+	 * @param route 路线数组，投影坐标和地理坐标都是x,y,z
+	 * @param option 飞行参数
+	 * @param option.speed 飞行速度，默认10m/s，单位（米/每秒，m/s）
+	 * @param option.unit 速度单位，默认（米/每秒，m/s），可选（公里/小时，km/h），不传或传错则使用默认m/s
+	 * @param option.loop 是否循环漫游，默认false
+	 * @param option.isGraphic 是否是地理坐标（经纬度），默认true
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   let route = [{x: 117.0951698, y: 36.6568560, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.0989151, y: 36.6579687, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.101380, y: 36.658651, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.104513, y: 36.658556, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.110243, y: 36.658797, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.113300, y: 36.659102, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.117694, y: 36.659221, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.121247, y: 36.659218, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.122851, y: 36.658847, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.126288, y: 36.658258, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.128160, y: 36.658287, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.128318, y: 36.661273, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.1294164, y: 36.6614676, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.1302911, y: 36.6619168, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}},
+	 *          {x: 117.1306743, y: 36.6626012, z: 100, rotation: {yaw: 1, roll: 0, pitch: 1}}
+	 *       ]
+	 * 
+	 *   let option = {
+	 *     speed: 10,
+	 *     unit: "m/s",
+	 *     loop: true,
+	 *     isGraphic: true
+	 *   }
+	 *   // 配合 async
+	 *   let res = await camera.playRoute(route, option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "漫游结束",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param route 
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	playRoute(route : any, option : any, sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  stopRoute(sync?: boolean) 停止漫游
+	 * @name stopRoute
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 漫游
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   // 配合 async
+	 *   let res = await camera.stopRoute()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "漫游已停止",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	stopRoute(sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  addBookmark(type: string, sync?: boolean) 添加自定义书签
+	 * @name addBookmark
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 添加自定义书签
+	 * 
+	 * @param type 返回坐标的类型（engine、project、graphic）
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let camera = new kapi.Camera()
+	 *   let type = "graphic";
+	 *   // 配合 async
+	 *   // 添加自定义书签
+	 *   let res = await camera.addBookmark(type)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      "timestamp": 1648538635305,
+	 *      "code": 200,
+	 *      "message": "返回成功",
+	 *      "data": {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @param sync 
+	 * @return  
+	 */
+	addBookmark(type : any, sync? : any): /* Camera.prototype.+Promise */ any;
+}
+declare var Camera: Camera;
+
+/**
+ * 
+ */
+declare interface Coord {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  ecefToEngine(x: float, y: float, z: float) 地心地固转引擎
+	 * @name ecefToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为引擎坐标
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.ecefToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	ecefToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  ecefToProjection(x: float, y: float, z: float) 地心地固转投影
+	 * @name ecefToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.ecefToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	ecefToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  ecefToGeographic(x: float, y: float, z: float) 地心地固转地理
+	 * @name ecefToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为地理坐标
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.ecefToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	ecefToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  projectionToECEF(x: float, y: float, z: float) 投影转地心地固
+	 * @name projectionToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影坐标转地心地固坐标系(地心坐标系)
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.projectionToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	projectionToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  projectionToGeographic(x: float, y: float, z: float) 投影转地理
+	 * @name projectionToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影转地理
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.projectionToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	projectionToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  projectionToEngine(x: float, y: float, z: float) 投影转引擎
+	 * @name projectionToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影转引擎
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.projectionToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	projectionToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  engineToProjection(x: float, y: float, z: float) 引擎转投影
+	 * @name engineToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.engineToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	engineToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  engineToGeographic(x: float, y: float, z: float) 引擎转地理
+	 * @name engineToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转地理
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.engineToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	engineToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  engineToECEF(x: float, y: float, z: float) 引擎转投影
+	 * @name engineToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.engineToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	engineToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  geographicToECEF(x: float, y: float, z: float) 地理转地心地固
+	 * @name geographicToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转地心地固
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.geographicToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	geographicToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  geographicToProjection(x: float, y: float, z: float) 地理转投影
+	 * @name geographicToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.geographicToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	geographicToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  geographicToEngine(x: float, y: float, z: float) 地理转引擎
+	 * @name geographicToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转引擎
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.geographicToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	geographicToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+}
+declare var Coord: Coord;
+
+/**
+ * 
+ */
+declare interface Layer {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  add3DTiles(urls) 加载3dtiles
+	 * @name add3DTiles
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 加载 3dtiles，可以是字符串，也可以是数组
+	 * 
+	 * @param urls 服务地址
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.add3DTiles('http://localhost/demo/tileset.json')
+	 *   // 2、配合 async 数组
+	 *   let urls = ['http://localhost/demo/tileset.json',
+	 *              'http://localhost/demo2/tileset.json',
+	 *              'http://localhost/demo2/tileset.json']
+	 *   let res = await layer.add3DTiles(urls)
+	 *   // 3、配合 async 对象数组
+	 *   let urls = [{url: 'http://localhost/demo/tileset.json'},
+	 *              {url: 'http://localhost/demo/tileset.json'},
+	 *              {url: 'http://localhost/demo/tileset.json'}]
+	 *   let res = await layer.add3DTiles(urls)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param urls 
+	 * @return  
+	 */
+	add3DTiles(urls : any): /* Layer.prototype.+Promise */ any;
+		
+	/**
+	 * @api  getAllLayers() 获取所有服务
+	 * @name getAllLayers
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 获取所有服务
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.getAllLayers()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @return  
+	 */
+	getAllLayers(): /* Layer.prototype.+Promise */ any;
+		
+	/**
+	 * @api  showLayer(url) 根据url显示服务
+	 * @name showLayer
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 根据url显示服务
+	 * 
+	 * @param url 服务url
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.showLayer('123')
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param url 
+	 * @return  
+	 */
+	showLayer(url : any): /* Layer.prototype.+Promise */ any;
+		
+	/**
+	 * @api  hideLayer(url) 根据url隐藏服务
+	 * @name hideLayer
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 根据url隐藏服务
+	 * 
+	 * @param url 服务url
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.hideLayer('123')
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param url 
+	 * @return  
+	 */
+	hideLayer(url : any): /* Layer.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removeLayer(url) 根据url移除服务
+	 * @name removeLayer
+	 * @group Layer
+	 * @version 1.0.0
+	 * @description 根据url移除服务
+	 * 
+	 * @param url 服务url
+	 * 
+	 * @example 使用示例
+	 *   let layer = new kapi.Layer()
+	 *   // 1、配合 async 字符串
+	 *   let res = await layer.removeLayer('123')
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param url 
+	 * @return  
+	 */
+	removeLayer(url : any): /* Layer.prototype.+Promise */ any;
+}
+declare var Layer: Layer;
 
 /**
  * 
@@ -3139,7 +3240,7 @@ declare var Iot: Iot;
 /**
  * 
  */
-declare interface Layer {
+declare interface Measure {
 		
 	/**
 	 * 
@@ -3147,28 +3248,19 @@ declare interface Layer {
 	new ();
 		
 	/**
-	 * @api  add3DTiles(urls) 加载3dtiles
-	 * @name add3DTiles
-	 * @group Layer
+	 * @api  get3DLength(options: object) 获取空间距离
+	 * @name get3DLength
+	 * @group Measure
 	 * @version 1.0.0
-	 * @description 加载 3dtiles，可以是字符串，也可以是数组
+	 * @description 获取空间距离
 	 * 
-	 * @param urls 服务地址
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
 	 * 
 	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.add3DTiles('http://localhost/demo/tileset.json')
-	 *   // 2、配合 async 数组
-	 *   let urls = ['http://localhost/demo/tileset.json',
-	 *              'http://localhost/demo2/tileset.json',
-	 *              'http://localhost/demo2/tileset.json']
-	 *   let res = await layer.add3DTiles(urls)
-	 *   // 3、配合 async 对象数组
-	 *   let urls = [{url: 'http://localhost/demo/tileset.json'},
-	 *              {url: 'http://localhost/demo/tileset.json'},
-	 *              {url: 'http://localhost/demo/tileset.json'}]
-	 *   let res = await layer.add3DTiles(urls)
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get3DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
 	 * 
 	 * @returns {json}
 	 *    {
@@ -3177,22 +3269,26 @@ declare interface Layer {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param urls 
+	 * @param options 
 	 * @return  
 	 */
-	add3DTiles(urls : any): /* Layer.prototype.+Promise */ any;
+	get3DLength(options : any): /* Measure.prototype.+Promise */ any;
 		
 	/**
-	 * @api  getAllLayers() 获取所有服务
-	 * @name getAllLayers
-	 * @group Layer
+	 * @api  get2DLength(options: object) 获取平面距离
+	 * @name get2DLength
+	 * @group Measure
 	 * @version 1.0.0
-	 * @description 获取所有服务
+	 * @description 获取平面距离
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
 	 * 
 	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.getAllLayers()
+	 *   let measure = new kapi.Measure()
+	 *   // 配合 async
+	 *   let measureInfo = await measure.get2DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
 	 * 
 	 * @returns {json}
 	 *    {
@@ -3201,23 +3297,25 @@ declare interface Layer {
 	 *      data: {}
 	 *    }
 	 * @return Promise
+	 * @param options 
 	 * @return  
 	 */
-	getAllLayers(): /* Layer.prototype.+Promise */ any;
+	get2DLength(options : any): /* Measure.prototype.+Promise */ any;
 		
 	/**
-	 * @api  showLayer(url) 根据url显示服务
-	 * @name showLayer
-	 * @group Layer
+	 * @api  get3DArea(options: object) 获取空间面积
+	 * @name get3DArea
+	 * @group Measure
 	 * @version 1.0.0
-	 * @description 根据url显示服务
+	 * @description 获取空间面积
 	 * 
-	 * @param url 服务url
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
 	 * 
 	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.showLayer('123')
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get3DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
 	 * 
 	 * @returns {json}
 	 *    {
@@ -3226,24 +3324,25 @@ declare interface Layer {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param url 
+	 * @param options 
 	 * @return  
 	 */
-	showLayer(url : any): /* Layer.prototype.+Promise */ any;
+	get3DArea(options : any): /* Measure.prototype.+Promise */ any;
 		
 	/**
-	 * @api  hideLayer(url) 根据url隐藏服务
-	 * @name hideLayer
-	 * @group Layer
+	 * @api  get2DArea(options: object) 获取平面面积
+	 * @name get2DArea
+	 * @group Measure
 	 * @version 1.0.0
-	 * @description 根据url隐藏服务
+	 * @description 获取平面面积
 	 * 
-	 * @param url 服务url
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
 	 * 
 	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.hideLayer('123')
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get2DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
 	 * 
 	 * @returns {json}
 	 *    {
@@ -3252,24 +3351,25 @@ declare interface Layer {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param url 
+	 * @param options 
 	 * @return  
 	 */
-	hideLayer(url : any): /* Layer.prototype.+Promise */ any;
+	get2DArea(options : any): /* Measure.prototype.+Promise */ any;
 		
 	/**
-	 * @api  removeLayer(url) 根据url移除服务
-	 * @name removeLayer
-	 * @group Layer
+	 * @api  getHeight(options: object)  获取高度
+	 * @name getHeight
+	 * @group Measure
 	 * @version 1.0.0
-	 * @description 根据url移除服务
+	 * @description 获取高度
 	 * 
-	 * @param url 服务url
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
 	 * 
 	 * @example 使用示例
-	 *   let layer = new kapi.Layer()
-	 *   // 1、配合 async 字符串
-	 *   let res = await layer.removeLayer('123')
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.getHeight({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
 	 * 
 	 * @returns {json}
 	 *    {
@@ -3278,12 +3378,33 @@ declare interface Layer {
 	 *      data: {}
 	 *    }
 	 * @return Promise
-	 * @param url 
+	 * @param options 
 	 * @return  
 	 */
-	removeLayer(url : any): /* Layer.prototype.+Promise */ any;
+	getHeight(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  clear()  清空
+	 * @name clear
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 清空
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.clear()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @return  
+	 */
+	clear(): /* Measure.prototype.+Promise */ any;
 }
-declare var Layer: Layer;
+declare var Measure: Measure;
 
 /**
  * 
@@ -3746,223 +3867,8 @@ declare interface Marker {
 	 * @return  
 	 */
 	removeMarkerFocus(sync? : any): /* Marker.prototype.+Promise */ any;
-		
-	/**
-	 * @api  addMarkerClickEventListener(callback: function) 设置标注的点击监听
-	 * @name addMarkerClickEventListener
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 设置标注的点击监听
-	 * @param callback 回调
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   marker.addMarkerClickEventListener(response => {
-	 * 
-	 *   })
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param callback 
-	 */
-	addMarkerClickEventListener(callback : any): void;
-		
-	/**
-	 * @api  removeMarkerClickEventListener() 删除标注的点击监听
-	 * @name removeMarkerClickEventListener
-	 * @group Marker
-	 * @version 1.0.0
-	 * @description 删除标注的点击监听
-	 * 
-	 * @example 使用示例
-	 *   let marker = new kapi.Marker()
-	 *   marker.removeMarkerClickEventListener()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 */
-	removeMarkerClickEventListener(): void;
 }
 declare var Marker: Marker;
-
-/**
- * 
- */
-declare interface Measure {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  get3DLength(options: object) 获取空间距离
-	 * @name get3DLength
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取空间距离
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get3DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get3DLength(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get2DLength(options: object) 获取平面距离
-	 * @name get2DLength
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取平面距离
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   // 配合 async
-	 *   let measureInfo = await measure.get2DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get2DLength(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get3DArea(options: object) 获取空间面积
-	 * @name get3DArea
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取空间面积
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get3DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get3DArea(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get2DArea(options: object) 获取平面面积
-	 * @name get2DArea
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取平面面积
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get2DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get2DArea(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getHeight(options: object)  获取高度
-	 * @name getHeight
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取高度
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.getHeight({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	getHeight(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  clear()  清空
-	 * @name clear
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 清空
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.clear()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @return  
-	 */
-	clear(): /* Measure.prototype.+Promise */ any;
-}
-declare var Measure: Measure;
 
 /**
  * 
@@ -4457,10 +4363,9 @@ declare interface Scene {
 		syncClientId : string;
 				
 		/**
-		 * 为保证屏蔽数组必须包含默认值，现做如下操作，现和默认数组合并，然后去重
-		 * 合并两个数组
+		 * 
 		 */
-		keyboardIgnoreList : Array<string>;
+		keyboardIgnoreList : Array<any>;
 				
 		/**
 		 * 
@@ -4494,6 +4399,11 @@ declare interface Scene {
 		domId : string;
 				
 		/**
+		 * 去重
+		 */
+		keyboardIgnoreList : Array<any>;
+				
+		/**
 		 * 
 		 */
 		turnServerError : boolean;
@@ -4507,11 +4417,6 @@ declare interface Scene {
 		 * 
 		 */
 		keyboardEvents : boolean;
-				
-		/**
-		 * 
-		 */
-		keyboardIgnoreList : /* Scene.defaultOptions.keyboardIgnoreList */ any;
 	}
 		
 	/**
@@ -5112,11 +5017,28 @@ declare interface KAPI {
 declare var KAPI: KAPI;
 
 declare interface KAPI_CONST {
-  FPS: 'fps',
+  EVENT: {
+    /**
+     * 帧率
+     */
+    FPS: 'fps',
+    /**
+     * 设置光流的生成监听
+     */
+    DRAW_LIGHT_FLOW: 'drawLightflow',
+    /**
+     * 获取点
+     */
+    DRAW_GET_POINT: 'getPoint',
+    /**
+     * marker点击事件监听
+     */
+    MARKER_CLICK: 'marker_click'
+  },
   ROUTE: {
     START: 'route-start',
     MOVING: 'route-moving',
-    END: 'route-end',
+    END: 'route-end'
   },
   MEASURE: {
     AREA_2D: 'controller_2darea', // 测量监听字段
@@ -5127,13 +5049,7 @@ declare interface KAPI_CONST {
   },
   DRAW: {
     DESTROY_POINT: 'destroyPoint', // 绘制字段
-    DRAW_POINT: 'drawPoint', // 绘制字段
-    CACHE_POINT_LIST: 'draw-point', // 本地缓存字段
-    CACHE_POLYLINE_LIST: 'draw-polyline', // 本地缓存字段
-    CACHE_POLYGON_LIST: 'draw-polygon', // 本地缓存字段
-    CACHE_PATH_LIST: 'draw-path', // 本地缓存字段
-    DRAW_LIGHT_FLOW: 'drawLightflow', //绘制字段
-    DRAW_GET_POINT: 'getPoint' //获取点
+    DRAW_POINT: 'drawPoint' // 绘制字段
   },
   POINT_TYPE: {
     FIRE_01: 'Fire_01:',
