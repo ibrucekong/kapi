@@ -1,22 +1,23 @@
 import { d as defineComponent, r as ref, i as onMounted, k as resolveComponent, o as openBlock, c as createElementBlock, e as createBaseVNode, F as Fragment, f as renderList, u as unref, n as normalizeClass, g as createCommentVNode, h as createVNode, l as withCtx, w as withDirectives, m as createBlock, p as pushScopeId, j as popScopeId, q as nextTick, s as vShow, _ as _export_sfc } from "./chunks/framework.1251c745.js";
 import { _ as _imports_0 } from "./chunks/puff.fe70d5e4.js";
 import { O as OnResize } from "./chunks/onresize.49581790.js";
-const _withScopeId = (n) => (pushScopeId("data-v-8db66f31"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-404b9397"), n = n(), popScopeId(), n);
 const _hoisted_1 = { class: "case-container" };
-const _hoisted_2 = { class: "grid-content bg-purple" };
-const _hoisted_3 = {
+const _hoisted_2 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("div", { class: "tips" }, "* 点击下面的卡片会自动全屏", -1));
+const _hoisted_3 = { class: "grid-content bg-purple" };
+const _hoisted_4 = {
   key: 0,
   class: "mask"
 };
-const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("img", {
+const _hoisted_5 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("img", {
   src: _imports_0,
   width: "50",
   alt: ""
 }, null, -1));
-const _hoisted_5 = [
-  _hoisted_4
+const _hoisted_6 = [
+  _hoisted_5
 ];
-const _hoisted_6 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("iframe", {
+const _hoisted_7 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ createBaseVNode("iframe", {
   id: "iframe",
   class: "iframe",
   src: ""
@@ -100,6 +101,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       const _component_el_row = resolveComponent("el-row");
       return openBlock(), createElementBlock(Fragment, null, [
         createBaseVNode("div", _hoisted_1, [
+          _hoisted_2,
           (openBlock(true), createElementBlock(Fragment, null, renderList(unref(list), (row, index) => {
             return openBlock(), createElementBlock("div", {
               class: "case-card",
@@ -115,7 +117,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
                       title: item.name
                     }, {
                       default: withCtx(() => [
-                        createBaseVNode("div", _hoisted_2, [
+                        createBaseVNode("div", _hoisted_3, [
                           createVNode(_component_el_image, {
                             src: item.img,
                             fit: "cover"
@@ -137,15 +139,15 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
           key: 0,
           class: normalizeClass(["case-preview", unref(dark) ? "dark" : "white"])
         }, [
-          unref(show) ? (openBlock(), createElementBlock("div", _hoisted_3, _hoisted_5)) : createCommentVNode("", true),
-          _hoisted_6
+          unref(show) ? (openBlock(), createElementBlock("div", _hoisted_4, _hoisted_6)) : createCommentVNode("", true),
+          _hoisted_7
         ], 2)) : createCommentVNode("", true)
       ], 64);
     };
   }
 });
-const Case_vue_vue_type_style_index_0_scoped_8db66f31_lang = "";
-const Case = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-8db66f31"]]);
+const Case_vue_vue_type_style_index_0_scoped_404b9397_lang = "";
+const Case = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-404b9397"]]);
 const __pageData = JSON.parse('{"title":"功能示例","description":"","frontmatter":{"page":true,"footer":false,"title":"功能示例"},"headers":[],"relativePath":"case/index.md","filePath":"case/index.md"}');
 const __default__ = { name: "case/index.md" };
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {

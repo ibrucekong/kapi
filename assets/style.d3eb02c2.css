@@ -173,19 +173,24 @@ html.dark .tip[data-v-b2a278fe] {
   /*padding: 0 32px 0 calc((100% - var(--vp-screen-max-width)) / 2);*/
 }
 
-.case-container[data-v-8db66f31] {
+.case-container[data-v-404b9397] {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 40px;
+
+  user-select: none;
 }
-.case-card[data-v-8db66f31] {
+.tips[data-v-404b9397] {
+  color: lightgray;
+}
+.case-card[data-v-404b9397] {
   margin: 0;
   padding: 20px 0;
   width: 70%;
 }
-.case-preview[data-v-8db66f31] {
+.case-preview[data-v-404b9397] {
   position: absolute;
   top: 0;
   left: 0;
@@ -193,13 +198,13 @@ html.dark .tip[data-v-b2a278fe] {
   height: calc(100vh - var(--vt-nav-height));
   background: transparent;
 }
-.white[data-v-8db66f31] {
+.white[data-v-404b9397] {
   background: white!important;
 }
-.dark[data-v-8db66f31] {
+.dark[data-v-404b9397] {
   background: black!important;
 }
-.mask[data-v-8db66f31] {
+.mask[data-v-404b9397] {
   text-align: center;
   background-color: transparent;
   width: 50px;
@@ -209,35 +214,35 @@ html.dark .tip[data-v-b2a278fe] {
   top: 50%;
   transform: translate(-50%,-50%);
 }
-.iframe[data-v-8db66f31] {
+.iframe[data-v-404b9397] {
   width: 100%;
   height: calc(100vh - var(--vt-nav-height));
   border: 0!important;
 }
-.back[data-v-8db66f31] {
+.back[data-v-404b9397] {
   position: absolute;
   top: 0;
   right: 0;
 }
-.el-row[data-v-8db66f31] {
+.el-row[data-v-404b9397] {
   margin: 0!important;
 }
-.el-row[data-v-8db66f31]:last-child {
+.el-row[data-v-404b9397]:last-child {
    margin-bottom: 0;
 }
-.el-col[data-v-8db66f31] {
+.el-col[data-v-404b9397] {
   border-radius: 4px;
 }
-.grid-content[data-v-8db66f31] {
+.grid-content[data-v-404b9397] {
   border-radius: 10px;
   min-height: 200px;
 }
-.grid-content[data-v-8db66f31]:hover {
+.grid-content[data-v-404b9397]:hover {
   background: #8e8e8e;
   cursor: pointer;
   box-shadow: 3px 4px 20px 0 rgba(142, 142, 142, 0.8);
 }
-.row-bg[data-v-8db66f31] {
+.row-bg[data-v-404b9397] {
   padding: 10px 0;
   background-color: #f9fafc;
 }
