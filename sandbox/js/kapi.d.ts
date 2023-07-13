@@ -47,24 +47,6 @@ declare namespace Camera.prototype{
 		distance : number;
 	}
 }
-declare namespace Controller.prototype{
-	// Controller.prototype.setTimeSimulate.!0
-	
-	/**
-	 * 
-	 */
-	interface SetTimeSimulate0 {
-	}
-}
-declare namespace Controller.prototype{
-	// Controller.prototype.setSkyColorParam.!0
-	
-	/**
-	 * 
-	 */
-	interface SetSkyColorParam0 {
-	}
-}
 declare namespace Draw.prototype{
 	// Draw.prototype.drawPolyline.!1
 	
@@ -86,6 +68,24 @@ declare namespace Draw.prototype{
 	 * 
 	 */
 	interface DrawDecal0 {
+	}
+}
+declare namespace Controller.prototype{
+	// Controller.prototype.setTimeSimulate.!0
+	
+	/**
+	 * 
+	 */
+	interface SetTimeSimulate0 {
+	}
+}
+declare namespace Controller.prototype{
+	// Controller.prototype.setSkyColorParam.!0
+	
+	/**
+	 * 
+	 */
+	interface SetSkyColorParam0 {
 	}
 }
 declare namespace Marker.prototype{
@@ -1153,561 +1153,6 @@ declare var Camera: Camera;
 /**
  * 
  */
-declare interface Controller {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  setWeatherType(type: int, sync?: boolean) 设置天气
-	 * @name setWeatherType
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 设置天气，支持11种天气情况：晴天、少云、多云、阴天、雾天、小雨、中雨、暴风雨、小雪、中雪、暴风雪。
-	 * 
-	 * @param type 天气类型，参考KAPI_CONST.WEATHER字典，如下：<br>
-	 * <table>
-	 *   <thead><tr><th style="width: 40%">枚举参数</th><th style="width: 60%">天气描述</th></tr></thead>
-	 *   <tbody>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.CLEAR_SKIES</td><td><p>晴天</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.PARTLY_CLOUDY</td><td><p>少云</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.CLOUDY</td><td><p>多云</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.OVERCAST</td><td><p>阴天</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.FOGGY</td><td><p>雾天</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.LIGHT_RAIN</td><td><p>小雨</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.RAIN</td><td><p>中雨</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.THUNDERSTORM</td><td><p>暴风雨</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.SAND_DUST</td><td><p>沙尘</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.SANDSTORM</td><td><p>沙尘暴</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.LIGHT_SNOW</td><td><p>小雪</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.SNOW</td><td><p>中雪</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.WEATHER.BLIZZARD</td><td><p>暴风雪</p></td></tr>
-	 *   </tbody>
-	 * </table>
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.setWeatherType(KAPI_CONST.WEATHER.SNOW)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param type 
-	 * @param sync 
-	 * @return  
-	 */
-	setWeatherType(type : any, sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setTimeSimulate(option: object, sync?: boolean) 时间动态模拟
-	 * @name setTimeSimulate
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 时间动态模拟，24小时动态模拟，可以指定开始时间、多久模拟一个周期和是否循环模拟
-	 * 
-	 * @param option 参数
-	 * @param option.status （int 枚举型）设置时间循环状态（0-开始、1-停止、2-结束）
-	 * @param option.startTime 设置开始时间，整数，单位小时
-	 * @param option.period 周期，单位秒，默认86400（循环时间为24小时）
-	 * @param option.loop 是否循环播放
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.setTimeSimulate(option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	setTimeSimulate(option : Controller.prototype.SetTimeSimulate0, sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setRealWorldTime(sync?: boolean) 真实时间
-	 * @name setRealWorldTime
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 设置与真实时间同步
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.setRealWorldTime()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	setRealWorldTime(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setSkyColorParam(option: object, sync?: boolean) 设置天空色彩参数
-	 * @name setSkyColorParam
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 天空色彩
-	 * 
-	 * @param option 天空色彩参数
-	 * @param option.temperature 色温（1700-12000）
-	 * @param option.contrast 对比度（0-1）
-	 * @param option.saturation 饱和度（0-1.5）
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let option = {
-	 *     temperature: 4000,
-	 *     contrast: 0.5,
-	 *     saturation: 0.5,
-	 *   }
-	 *   let controllerInfo = await controller.setSkyColorParam(option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	setSkyColorParam(option : Controller.prototype.SetSkyColorParam0, sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  enableFPS(time: float, sync?: boolean) 启用帧数
-	 * @name enableFPS
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 启用帧数
-	 * 
-	 * @param time 获取时间间隔，默认1秒获取一次
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 0.5 秒获取一次帧率
-	 *   let time = 0.5
-	 *   // 配合 async
-	 *   let fpsStatus = await controller.enableFPS(time)
-	 *   // 然后使用事件监听获取帧率
-	 *   let event = new kapi.Event()
-	 *   event.addEventListener('fps', data => {
-	 *     if (data.code === 200) {
-	 *       console.log(data)
-	 *     }
-	 *   })
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param time 
-	 * @param sync 
-	 * @return  
-	 */
-	enableFPS(time : number, sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  disableFPS(sync?: boolean) 禁用帧率
-	 * @name disableFPS
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 禁用帧率
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let fpsStatus = await controller.disableFPS()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	disableFPS(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  addFPSEventListener(callback: function) 设置帧率的点击监听
-	 * @name addFPSEventListener
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 设置帧率的点击监听
-	 * @param callback 回调
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   controller.addFPSEventListener(response => {
-	 * 
-	 *   })
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return null
-	 * @param callback 
-	 */
-	addFPSEventListener(callback : any): void;
-		
-	/**
-	 * @api  removeFPSEventListener() 删除帧率的点击监听
-	 * @name removeFPSEventListener
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 删除帧率的点击监听
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   controller.removeFPSEventListener()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return null
-	 */
-	removeFPSEventListener(): void;
-		
-	/**
-	 * @api  showCompass(position: string, sync?: boolean) 显示指南针控件
-	 * @name showCompass
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 显示指南针控件
-	 * 
-	 * @param position 控件屏幕位置，默认left-top，可取值：left-top, left-bottom，right-top，right-bottom
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.showCompass('left-top')
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "添加指南针成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param position 
-	 * @param sync 
-	 * @return  
-	 */
-	showCompass(position : string, sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  hideCompass(sync?: boolean) 隐藏指南针控件
-	 * @name hideCompass
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 隐藏指南针控件
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.hideCompass()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "移除指南针成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	hideCompass(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  enableBoxSide(sync?: boolean) 开启操作边界限制
-	 * @name enableBoxSide
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 开启操作边界限制
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.enableBoxSide()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "开启边界限制成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	enableBoxSide(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  disableBoxSide(sync?: boolean) 关闭操作边界限制
-	 * @name disableBoxSide
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 关闭操作边界限制
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.disableBoxSide()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "关闭边界限制成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	disableBoxSide(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  setDateTime(dateTime: string | Date | DateTime | DateString, sync?: boolean) 时间跳转
-	 * @name setDateTime
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 时间跳转
-	 * 
-	 * @param dateTime 时间字符串或时间戳 [标准的时间字符串，new Date().getTime()]
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 跳转到 2010年，10月10日的上午10点20分20秒
-	 *   let dateTime = '2010-10-10 10:20:20'
-	 *   // or
-	 *   dateTime = new Date()
-	 *   // or
-	 *   dateTime = new Date().getTime()
-	 *   // or
-	 *   dateTime = new Date().toString()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.setDateTime(dateTime)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "设置24小时时间成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param dateTime 
-	 * @param sync 
-	 * @return  
-	 */
-	setDateTime(dateTime : any, sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  enableLightShow(sync?: boolean) 开启灯光状态
-	 * @name enableLightShow
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 开启灯光状态
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.enableLightShow()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "灯光控制成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	enableLightShow(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  disableLightShow(sync?: boolean) 关闭灯光状态
-	 * @name disableLightShow
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 关闭灯光状态
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.disableLightShow()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "灯光控制成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	disableLightShow(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  enableMouseInput(sync?: boolean) 启用鼠标
-	 * @name enableMouseInput
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 启用鼠标
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.enableMouseInput()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "启用成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	enableMouseInput(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  disableMouseInput(sync?: boolean) 禁用鼠标
-	 * @name disableMouseInput
-	 * @group Controller
-	 * @version 1.0.0
-	 * @description 禁用鼠标
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   // 配合 async
-	 *   let controllerInfo = await controller.disableMouseInput()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "禁用成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	disableMouseInput(sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getCoordinate(options: object, sync?: boolean) 获取坐标点
-	 * @name getCoordinate
-	 * @apiIgnore
-	 * @group Controller
-	 * @version 0.0.2
-	 * @description 获取坐标点
-	 * 
-	 * @param options 相关参数
-	 * @param options.color rgba，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0,1]对应于红色
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let controller = new kapi.Controller()
-	 *   let controllerInfo = await controller.getCoordinate({color: [255, 0, 0, 1], cableColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {"result":"Lat=*** Lon=*** Alt=***"}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @param sync 
-	 * @return  
-	 */
-	getCoordinate(options : any, sync? : any): /* Controller.prototype.+Promise */ any;
-		
-	/**
-	 * 获取网络参数
-	 * @param callback
-	 * @param callback 
-	 */
-	getStats(callback : any): void;
-		
-	/**
-	 * 获取格式化的数据
-	 * @param val 原先值
-	 * @param n 乘积数
-	 * @return {string|number} 结果
-	 * @param val 
-	 * @param n 
-	 * @return  
-	 */
-	getData(val : any, n : any): any;
-}
-declare var Controller: Controller;
-
-/**
- * 
- */
 declare interface Data {
 		
 	/**
@@ -1777,390 +1222,6 @@ declare interface Data {
 	parseShp(fileList : any): /* Data.prototype.+Promise */ any;
 }
 declare var Data: Data;
-
-/**
- * 
- */
-declare interface Coord {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  ecefToEngine(x: float, y: float, z: float) 地心地固转引擎
-	 * @name ecefToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为引擎坐标
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.ecefToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	ecefToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  ecefToProjection(x: float, y: float, z: float) 地心地固转投影
-	 * @name ecefToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.ecefToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	ecefToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  ecefToGeographic(x: float, y: float, z: float) 地心地固转地理
-	 * @name ecefToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地心地固坐标系(地心坐标系)转换为地理坐标
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.ecefToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	ecefToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  projectionToECEF(x: float, y: float, z: float) 投影转地心地固
-	 * @name projectionToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影坐标转地心地固坐标系(地心坐标系)
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.projectionToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	projectionToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  projectionToGeographic(x: float, y: float, z: float) 投影转地理
-	 * @name projectionToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影转地理
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.projectionToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	projectionToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  projectionToEngine(x: float, y: float, z: float) 投影转引擎
-	 * @name projectionToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 投影转引擎
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.projectionToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	projectionToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  engineToProjection(x: float, y: float, z: float) 引擎转投影
-	 * @name engineToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.engineToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	engineToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  engineToGeographic(x: float, y: float, z: float) 引擎转地理
-	 * @name engineToGeographic
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转地理
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.engineToGeographic(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	engineToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  engineToECEF(x: float, y: float, z: float) 引擎转投影
-	 * @name engineToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 引擎转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.engineToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	engineToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  geographicToECEF(x: float, y: float, z: float) 地理转地心地固
-	 * @name geographicToECEF
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转地心地固
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.geographicToECEF(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	geographicToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  geographicToProjection(x: float, y: float, z: float) 地理转投影
-	 * @name geographicToProjection
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转投影
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.geographicToProjection(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	geographicToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-		
-	/**
-	 * @api  geographicToEngine(x: float, y: float, z: float) 地理转引擎
-	 * @name geographicToEngine
-	 * @group Coord
-	 * @version 1.0.0
-	 * @description 地理转引擎
-	 * 
-	 * @param x x坐标
-	 * @param y y坐标
-	 * @param z z坐标
-	 * 
-	 * @example 使用示例
-	 *   let coord = new kapi.Coord()
-	 *   let x = 510853.156, y = 4057258.500, z = 0.000
-	 *   // 配合 async
-	 *   let coordInfo = await coord.geographicToEngine(x, y, z)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param x 
-	 * @param y 
-	 * @param z 
-	 * @return  
-	 */
-	geographicToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
-}
-declare var Coord: Coord;
 
 /**
  * 
@@ -2832,6 +1893,945 @@ declare interface Draw {
 	getAllByWindow(type : any): /* Draw.prototype.+Promise */ any;
 }
 declare var Draw: Draw;
+
+/**
+ * 
+ */
+declare interface Coord {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  ecefToEngine(x: float, y: float, z: float) 地心地固转引擎
+	 * @name ecefToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为引擎坐标
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.ecefToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	ecefToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  ecefToProjection(x: float, y: float, z: float) 地心地固转投影
+	 * @name ecefToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.ecefToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	ecefToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  ecefToGeographic(x: float, y: float, z: float) 地心地固转地理
+	 * @name ecefToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地心地固坐标系(地心坐标系)转换为地理坐标
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.ecefToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	ecefToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  projectionToECEF(x: float, y: float, z: float) 投影转地心地固
+	 * @name projectionToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影坐标转地心地固坐标系(地心坐标系)
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.projectionToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	projectionToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  projectionToGeographic(x: float, y: float, z: float) 投影转地理
+	 * @name projectionToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影转地理
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.projectionToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	projectionToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  projectionToEngine(x: float, y: float, z: float) 投影转引擎
+	 * @name projectionToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 投影转引擎
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.projectionToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	projectionToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  engineToProjection(x: float, y: float, z: float) 引擎转投影
+	 * @name engineToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.engineToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	engineToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  engineToGeographic(x: float, y: float, z: float) 引擎转地理
+	 * @name engineToGeographic
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转地理
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.engineToGeographic(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	engineToGeographic(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  engineToECEF(x: float, y: float, z: float) 引擎转投影
+	 * @name engineToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 引擎转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.engineToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	engineToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  geographicToECEF(x: float, y: float, z: float) 地理转地心地固
+	 * @name geographicToECEF
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转地心地固
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.geographicToECEF(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	geographicToECEF(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  geographicToProjection(x: float, y: float, z: float) 地理转投影
+	 * @name geographicToProjection
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转投影
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.geographicToProjection(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	geographicToProjection(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+		
+	/**
+	 * @api  geographicToEngine(x: float, y: float, z: float) 地理转引擎
+	 * @name geographicToEngine
+	 * @group Coord
+	 * @version 1.0.0
+	 * @description 地理转引擎
+	 * 
+	 * @param x x坐标
+	 * @param y y坐标
+	 * @param z z坐标
+	 * 
+	 * @example 使用示例
+	 *   let coord = new kapi.Coord()
+	 *   let x = 510853.156, y = 4057258.500, z = 0.000
+	 *   // 配合 async
+	 *   let coordInfo = await coord.geographicToEngine(x, y, z)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param x 
+	 * @param y 
+	 * @param z 
+	 * @return  
+	 */
+	geographicToEngine(x : any, y : any, z : any): /* Coord.prototype.+Promise */ any;
+}
+declare var Coord: Coord;
+
+/**
+ * 
+ */
+declare interface Controller {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  setWeatherType(type: int, sync?: boolean) 设置天气
+	 * @name setWeatherType
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 设置天气，支持11种天气情况：晴天、少云、多云、阴天、雾天、小雨、中雨、暴风雨、小雪、中雪、暴风雪。
+	 * 
+	 * @param type 天气类型，参考KAPI_CONST.WEATHER字典，如下：<br>
+	 * <table>
+	 *   <thead><tr><th style="width: 40%">枚举参数</th><th style="width: 60%">天气描述</th></tr></thead>
+	 *   <tbody>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.CLEAR_SKIES</td><td><p>晴天</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.PARTLY_CLOUDY</td><td><p>少云</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.CLOUDY</td><td><p>多云</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.OVERCAST</td><td><p>阴天</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.FOGGY</td><td><p>雾天</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.LIGHT_RAIN</td><td><p>小雨</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.RAIN</td><td><p>中雨</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.THUNDERSTORM</td><td><p>暴风雨</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.SAND_DUST</td><td><p>沙尘</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.SANDSTORM</td><td><p>沙尘暴</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.LIGHT_SNOW</td><td><p>小雪</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.SNOW</td><td><p>中雪</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.WEATHER.BLIZZARD</td><td><p>暴风雪</p></td></tr>
+	 *   </tbody>
+	 * </table>
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.setWeatherType(KAPI_CONST.WEATHER.SNOW)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @param sync 
+	 * @return  
+	 */
+	setWeatherType(type : any, sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setTimeSimulate(option: object, sync?: boolean) 时间动态模拟
+	 * @name setTimeSimulate
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 时间动态模拟，24小时动态模拟，可以指定开始时间、多久模拟一个周期和是否循环模拟
+	 * 
+	 * @param option 参数
+	 * @param option.status （int 枚举型）设置时间循环状态（0-开始、1-停止、2-结束）
+	 * @param option.startTime 设置开始时间，整数，单位小时
+	 * @param option.period 周期，单位秒，默认86400（循环时间为24小时）
+	 * @param option.loop 是否循环播放
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.setTimeSimulate(option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	setTimeSimulate(option : Controller.prototype.SetTimeSimulate0, sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setRealWorldTime(sync?: boolean) 真实时间
+	 * @name setRealWorldTime
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 设置与真实时间同步
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.setRealWorldTime()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	setRealWorldTime(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setSkyColorParam(option: object, sync?: boolean) 设置天空色彩参数
+	 * @name setSkyColorParam
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 天空色彩
+	 * 
+	 * @param option 天空色彩参数
+	 * @param option.temperature 色温（1700-12000）
+	 * @param option.contrast 对比度（0-1）
+	 * @param option.saturation 饱和度（0-1.5）
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let option = {
+	 *     temperature: 4000,
+	 *     contrast: 0.5,
+	 *     saturation: 0.5,
+	 *   }
+	 *   let controllerInfo = await controller.setSkyColorParam(option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	setSkyColorParam(option : Controller.prototype.SetSkyColorParam0, sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  enableFPS(time: float, sync?: boolean) 启用帧数
+	 * @name enableFPS
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 启用帧数
+	 * 
+	 * @param time 获取时间间隔，默认1秒获取一次
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 0.5 秒获取一次帧率
+	 *   let time = 0.5
+	 *   // 配合 async
+	 *   let fpsStatus = await controller.enableFPS(time)
+	 *   // 然后使用事件监听获取帧率
+	 *   let event = new kapi.Event()
+	 *   event.addEventListener('fps', data => {
+	 *     if (data.code === 200) {
+	 *       console.log(data)
+	 *     }
+	 *   })
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param time 
+	 * @param sync 
+	 * @return  
+	 */
+	enableFPS(time : number, sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  disableFPS(sync?: boolean) 禁用帧率
+	 * @name disableFPS
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 禁用帧率
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let fpsStatus = await controller.disableFPS()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	disableFPS(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  addFPSEventListener(callback: function) 设置帧率的点击监听
+	 * @name addFPSEventListener
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 设置帧率的点击监听
+	 * @param callback 回调
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   controller.addFPSEventListener(response => {
+	 * 
+	 *   })
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return null
+	 * @param callback 
+	 */
+	addFPSEventListener(callback : any): void;
+		
+	/**
+	 * @api  removeFPSEventListener() 删除帧率的点击监听
+	 * @name removeFPSEventListener
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 删除帧率的点击监听
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   controller.removeFPSEventListener()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return null
+	 */
+	removeFPSEventListener(): void;
+		
+	/**
+	 * @api  showCompass(position: string, sync?: boolean) 显示指南针控件
+	 * @name showCompass
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 显示指南针控件
+	 * 
+	 * @param position 控件屏幕位置，默认left-top，可取值：left-top, left-bottom，right-top，right-bottom
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.showCompass('left-top')
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "添加指南针成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param position 
+	 * @param sync 
+	 * @return  
+	 */
+	showCompass(position : string, sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  hideCompass(sync?: boolean) 隐藏指南针控件
+	 * @name hideCompass
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 隐藏指南针控件
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.hideCompass()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "移除指南针成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	hideCompass(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  enableBoxSide(sync?: boolean) 开启操作边界限制
+	 * @name enableBoxSide
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 开启操作边界限制
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.enableBoxSide()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "开启边界限制成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	enableBoxSide(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  disableBoxSide(sync?: boolean) 关闭操作边界限制
+	 * @name disableBoxSide
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 关闭操作边界限制
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.disableBoxSide()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "关闭边界限制成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	disableBoxSide(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  setDateTime(dateTime: string | Date | DateTime | DateString, sync?: boolean) 时间跳转
+	 * @name setDateTime
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 时间跳转
+	 * 
+	 * @param dateTime 时间字符串或时间戳 [标准的时间字符串，new Date().getTime()]
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 跳转到 2010年，10月10日的上午10点20分20秒
+	 *   let dateTime = '2010-10-10 10:20:20'
+	 *   // or
+	 *   dateTime = new Date()
+	 *   // or
+	 *   dateTime = new Date().getTime()
+	 *   // or
+	 *   dateTime = new Date().toString()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.setDateTime(dateTime)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "设置24小时时间成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param dateTime 
+	 * @param sync 
+	 * @return  
+	 */
+	setDateTime(dateTime : any, sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  enableLightShow(sync?: boolean) 开启灯光状态
+	 * @name enableLightShow
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 开启灯光状态
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.enableLightShow()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "灯光控制成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	enableLightShow(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  disableLightShow(sync?: boolean) 关闭灯光状态
+	 * @name disableLightShow
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 关闭灯光状态
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.disableLightShow()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "灯光控制成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	disableLightShow(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  enableMouseInput(sync?: boolean) 启用鼠标
+	 * @name enableMouseInput
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 启用鼠标
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.enableMouseInput()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "启用成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	enableMouseInput(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  disableMouseInput(sync?: boolean) 禁用鼠标
+	 * @name disableMouseInput
+	 * @group Controller
+	 * @version 1.0.0
+	 * @description 禁用鼠标
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   // 配合 async
+	 *   let controllerInfo = await controller.disableMouseInput()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "禁用成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	disableMouseInput(sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * @api  getCoordinate(options: object, sync?: boolean) 获取坐标点
+	 * @name getCoordinate
+	 * @apiIgnore
+	 * @group Controller
+	 * @version 0.0.2
+	 * @description 获取坐标点
+	 * 
+	 * @param options 相关参数
+	 * @param options.color rgba，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0,1]对应于红色
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let controller = new kapi.Controller()
+	 *   let controllerInfo = await controller.getCoordinate({color: [255, 0, 0, 1], cableColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {"result":"Lat=*** Lon=*** Alt=***"}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @param sync 
+	 * @return  
+	 */
+	getCoordinate(options : any, sync? : any): /* Controller.prototype.+Promise */ any;
+		
+	/**
+	 * 获取网络参数
+	 * @param callback
+	 * @param callback 
+	 */
+	getStats(callback : any): void;
+		
+	/**
+	 * 获取格式化的数据
+	 * @param val 原先值
+	 * @param n 乘积数
+	 * @return {string|number} 结果
+	 * @param val 
+	 * @param n 
+	 * @return  
+	 */
+	getData(val : any, n : any): any;
+}
+declare var Controller: Controller;
 
 /**
  * 
@@ -3731,175 +3731,6 @@ declare var Marker: Marker;
 /**
  * 
  */
-declare interface Measure {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  get3DLength(options: object) 获取空间距离
-	 * @name get3DLength
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取空间距离
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get3DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get3DLength(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get2DLength(options: object) 获取平面距离
-	 * @name get2DLength
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取平面距离
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   // 配合 async
-	 *   let measureInfo = await measure.get2DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get2DLength(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get3DArea(options: object) 获取空间面积
-	 * @name get3DArea
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取空间面积
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get3DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get3DArea(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get2DArea(options: object) 获取平面面积
-	 * @name get2DArea
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取平面面积
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get2DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get2DArea(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getHeight(options: object)  获取高度
-	 * @name getHeight
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取高度
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.getHeight({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	getHeight(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  clear()  清空
-	 * @name clear
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 清空
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.clear()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @return  
-	 */
-	clear(): /* Measure.prototype.+Promise */ any;
-}
-declare var Measure: Measure;
-
-/**
- * 
- */
 declare interface Scene {
 		
 	/**
@@ -4471,6 +4302,175 @@ declare var Scene: Scene;
 /**
  * 
  */
+declare interface Measure {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  get3DLength(options: object) 获取空间距离
+	 * @name get3DLength
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取空间距离
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get3DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	get3DLength(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  get2DLength(options: object) 获取平面距离
+	 * @name get2DLength
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取平面距离
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   // 配合 async
+	 *   let measureInfo = await measure.get2DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	get2DLength(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  get3DArea(options: object) 获取空间面积
+	 * @name get3DArea
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取空间面积
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get3DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	get3DArea(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  get2DArea(options: object) 获取平面面积
+	 * @name get2DArea
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取平面面积
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get2DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	get2DArea(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  getHeight(options: object)  获取高度
+	 * @name getHeight
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取高度
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.getHeight({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	getHeight(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  clear()  清空
+	 * @name clear
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 清空
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.clear()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @return  
+	 */
+	clear(): /* Measure.prototype.+Promise */ any;
+}
+declare var Measure: Measure;
+
+/**
+ * 
+ */
 declare interface Tool {
 		
 	/**
@@ -4981,6 +4981,14 @@ declare interface KAPI_CONST {
      * 获取点
      */
     GET_POINT: 'getPoint'
+    /**
+     * 绘制点
+     */
+    CREATE_POINT: 'drawPoint',
+    /**
+     * 销毁点
+     */
+    DESTROY_POINT: 'destroyPoint'
   },
   // 标注的监听
   MARKER: {
@@ -5011,10 +5019,6 @@ declare interface KAPI_CONST {
     HEIGHT: 'controller_height', // 测量监听字段
     LENGTH_2D: 'controller_2dlength', // 测量监听字段
     LENGTH_3D: 'controller_length' // 测量监听字段
-  },
-  DRAW: {
-    DESTROY_POINT: 'destroyPoint', // 绘制字段
-    DRAW_POINT: 'drawPoint' // 绘制字段
   },
   POINT_TYPE: {
     FIRE_01: 'Fire_01:',
