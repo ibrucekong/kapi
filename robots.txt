@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /CNAME
+Sitemap: https://kapi.brucekong.com/sitemap.xml
