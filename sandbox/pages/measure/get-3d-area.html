@@ -52,7 +52,7 @@
     let options = {
       server,                                                    // 服务地址
       netStats: false,                                           // 是否显示网络信息
-      fullscreen: true                                          // 设置需要忽略的按键，默认如下
+      fullscreen: true                                          // 是否要全屏
     }
     let scene = new kapi.Scene('kapi-container', options)
     // 等待场景响应好
@@ -69,7 +69,7 @@
     measure = new kapi.Measure()
     event = new kapi.Event()
 
-    event.addCustomListener(KAPI_CONST.MEASURE.AREA_3D, response => {
+    event.addEventListener(KAPI_CONST.MEASURE.AREA_3D, response => {
       printLog(response)
     })
   }

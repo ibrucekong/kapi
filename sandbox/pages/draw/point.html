@@ -44,12 +44,12 @@
       </select>
       <div class='btn' onclick='closeDraw()'>关闭绘制点</div>
     </div>
-    <div class='row'>
+<!--    <div class='row'>
       <select name='draw-list' id='draw-list' onchange='drawPoint()'>
       </select>
       <div class='btn' onclick='del()'>删除点</div>
       <div class='btn' onclick='pan()'>平移点</div>
-    </div>
+    </div>-->
   </div>
 </div>
 <pre id='console-log'><code id='logs'></code></pre>
@@ -68,7 +68,7 @@
     let options = {
       server,                                                    // 服务地址
       netStats: false,                                           // 是否显示网络信息
-      fullscreen: true                                          // 设置需要忽略的按键，默认如下
+      fullscreen: true                                          // 是否要全屏
     }
     // 初始化场景
     let scene = new kapi.Scene('kapi-container', options)
@@ -82,52 +82,52 @@
     eventInstance = new kapi.Event()
 
     // 获取场景中已标注的点
-    let response = await drawInstance.getPointList()
-    if (response.code === 200) {
-      let drawList = document.querySelector('#draw-list')
-      let list = response.data.pointList
-      // 更新保存的生成新的 options
-      let len = list.length
-      for (let i = 0; i < len; i++) {
-        // 根据 index 删除
-        drawList.options.add(new Option(list[i], list[i]))
-      }
-      // 如果list得长度=0，隐藏 draw-list
-      if (len === 0) {
-        document.getElementById('draw-list').style.display = 'none'
-      }
-    } else {
-      // 不存在，隐藏 draw-list
-      document.getElementById('draw-list').style.display = 'none'
-    }
+    // let response = await drawInstance.getPointList() // 接口需要后台返回
+    // if (response.code === 200) {
+    //   let drawList = document.querySelector('#draw-list')
+    //   let list = response.data.pointList
+    //   // 更新保存的生成新的 options
+    //   let len = list.length
+    //   for (let i = 0; i < len; i++) {
+    //     // 根据 index 删除
+    //     drawList.options.add(new Option(list[i], list[i]))
+    //   }
+    //   // 如果list得长度=0，隐藏 draw-list
+    //   if (len === 0) {
+    //     document.getElementById('draw-list').style.display = 'none'
+    //   }
+    // } else {
+    //   // 不存在，隐藏 draw-list
+    //   document.getElementById('draw-list').style.display = 'none'
+    // }
 
     // 左键添加点要素
-    eventInstance.addCustomListener(KAPI_CONST.DRAW.DRAW_POINT, async response => {
-      let pointList = await drawInstance.getPointList()
-      if (pointList.code === 200) {
-        // 更新绘制列表 select
-        let drawList = document.querySelector('#draw-list')
-        drawList.options.add(new Option(response.data.id, response.data.id))
-
-        if (drawList.options.length) {
-          document.getElementById('draw-list').style.display = 'block'
-        }
-      }
+    eventInstance.addEventListener(KAPI_CONST.EVENT.DRAW.CREATE_POINT, async response => {
+      // let pointList = await drawInstance.getPointList()
+      // if (pointList.code === 200) {
+      //   // 更新绘制列表 select
+      //   let drawList = document.querySelector('#draw-list')
+      //   drawList.options.add(new Option(response.data.id, response.data.id))
+      //
+      //   if (drawList.options.length) {
+      //     document.getElementById('draw-list').style.display = 'block'
+      //   }
+      // }
     })
     // 右键删除点要素
-    eventInstance.addCustomListener(KAPI_CONST.DRAW.DESTROY_POINT, async response => {
-      let pointList = await drawInstance.getPointList()
-      if (pointList.code === 200) {
-        // 删除某一个，更新绘制列表 select
-        let drawList = document.querySelector('#draw-list')
-        let len = drawList.options.length
-        for (let i = 0; i < len; i++) {
-          // 根据 index 删除
-          if (drawList.options[i].value === response.data.id) {
-            drawList.options.remove(index)
-          }
-        }
-      }
+    eventInstance.addEventListener(KAPI_CONST.EVENT.DRAW.DESTROY_POINT, async response => {
+      // let pointList = await drawInstance.getPointList()
+      // if (pointList.code === 200) {
+      //   // 删除某一个，更新绘制列表 select
+      //   let drawList = document.querySelector('#draw-list')
+      //   let len = drawList.options.length
+      //   for (let i = 0; i < len; i++) {
+      //     // 根据 index 删除
+      //     if (drawList.options[i].value === response.data.id) {
+      //       drawList.options.remove(index)
+      //     }
+      //   }
+      // }
     })
   }
 

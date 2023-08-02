@@ -47,17 +47,19 @@
 <script src="./js/kapi.js"></script>
 <script>
   async function init() {
+    console.time("init-scene-time");
     // 实例化接口
     let kapi = await KAPI.build(config.token)
 
     // 初始化场景
-    let scene = new kapi.Scene('kapi-container', {server})
+    let scene = new kapi.Scene('kapi-container', {server: "10.201.48.31:94"})
 
     // 等待场景响应好
     let readyStat = await scene.ready()
 
     // 打印日志
     printLog(readyStat)
+    console.timeEnd('init-scene-time')
   }
 </script>
 </body>

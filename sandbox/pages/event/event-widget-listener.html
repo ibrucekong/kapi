@@ -47,7 +47,7 @@
     let options = {
       server,                                                    // 服务地址
       netStats: false,                                           // 是否显示网络信息
-      fullscreen: true                                          // 设置需要忽略的按键，默认如下
+      fullscreen: true                                          // 是否要全屏
     }
     // 初始化场景
     let scene = new kapi.Scene('kapi-container', options)
@@ -59,7 +59,7 @@
 
     let event = new kapi.Event()
     // 自定义监听 - 例如获取帧率 （需要开启才能监听到）
-    event.addCustomListener(KAPI_CONST.FPS, response => {
+    event.addEventListener(KAPI_CONST.FPS, response => {
       printLog(response)
     })
   }

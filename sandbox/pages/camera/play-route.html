@@ -51,7 +51,7 @@
     let options = {
       server,                                                    // 服务地址
       netStats: false,                                           // 是否显示网络信息
-      fullscreen: true                                          // 设置需要忽略的按键，默认如下
+      fullscreen: true                                          // 是否要全屏
     }
     // 初始化场景
     let scene = new kapi.Scene('kapi-container', options)
@@ -65,15 +65,15 @@
 
     let event = new kapi.Event()
     // 监听漫游开始的事件监听
-    event.addEventListener(KAPI_CONST.ROUTE.START, response => {
+    event.addEventListener(KAPI_CONST.EVENT.ROUTE.START, response => {
       console.log(response)
     })
     // 监听漫游时的事件监听
-    event.addEventListener(KAPI_CONST.ROUTE.MOVING, response => {
+    event.addEventListener(KAPI_CONST.EVENT.ROUTE.MOVING, response => {
       console.log(response)
     })
     // 监听漫游结束的事件监听
-    event.addEventListener(KAPI_CONST.ROUTE.END, response => {
+    event.addEventListener(KAPI_CONST.EVENT.ROUTE.END, response => {
       console.log(response)
     })
   }
