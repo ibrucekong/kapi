@@ -47,6 +47,24 @@ declare namespace Camera.prototype{
 		distance : number;
 	}
 }
+declare namespace Controller.prototype{
+	// Controller.prototype.setTimeSimulate.!0
+	
+	/**
+	 * 
+	 */
+	interface SetTimeSimulate0 {
+	}
+}
+declare namespace Controller.prototype{
+	// Controller.prototype.setSkyColorParam.!0
+	
+	/**
+	 * 
+	 */
+	interface SetSkyColorParam0 {
+	}
+}
 declare namespace Draw.prototype{
 	// Draw.prototype.drawPolyline.!1
 	
@@ -68,24 +86,6 @@ declare namespace Draw.prototype{
 	 * 
 	 */
 	interface DrawDecal0 {
-	}
-}
-declare namespace Controller.prototype{
-	// Controller.prototype.setTimeSimulate.!0
-	
-	/**
-	 * 
-	 */
-	interface SetTimeSimulate0 {
-	}
-}
-declare namespace Controller.prototype{
-	// Controller.prototype.setSkyColorParam.!0
-	
-	/**
-	 * 
-	 */
-	interface SetSkyColorParam0 {
 	}
 }
 declare namespace Marker.prototype{
@@ -1153,750 +1153,6 @@ declare var Camera: Camera;
 /**
  * 
  */
-declare interface Data {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  parseGeoJSON(fileList: FileList) 导入GeoJSON数据
-	 * @name parseGeoJSON
-	 * @group Data
-	 * @version 1.0.0
-	 * @description 导入GeoJSON数据
-	 * 
-	 * @param fileList 原生的<code>&lt;input type='file' multiple accept=".json"></code>中的fileList结果
-	 * @param encoding 编码方式，默认UTF-8
-	 * 
-	 * @example 使用示例
-	 *   html中
-	 *   <input id='upload' type='file' multiple accept=".json">
-	 *   JavaScript中
-	 *   let fileList = document.getElementById('upload').files
-	 *   let data = new kapi.Data()
-	 *   // 配合 async
-	 *   let coordInfo = await data.parseGeoJSON(fileList)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param fileList 
-	 * @param encoding 
-	 * @return  
-	 */
-	parseGeoJSON(fileList : any, encoding : string): /* Data.prototype.+Promise */ any;
-		
-	/**
-	 * @api  parseShp(fileList: FileList) 导入Shp数据
-	 * @name parseShp
-	 * @group Data
-	 * @apiIgnore
-	 * @version 1.0.0
-	 * @description 导入shp数据
-	 * 
-	 * @param fileList shp的路径/包含shp的zip压缩包/上传文件FileList
-	 * 
-	 * @example 使用示例
-	 *   let data = new kapi.Data()
-	 *   // 配合 async
-	 *   let coordInfo = await data.parseShp('./data/city.shp')
-	 *   // or
-	 *   let coordInfo = await data.parseShp(<Shp 的 FileList>)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param fileList 
-	 * @return  
-	 */
-	parseShp(fileList : any): /* Data.prototype.+Promise */ any;
-}
-declare var Data: Data;
-
-/**
- * 
- */
-declare interface Draw {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  getPointList(sync?: boolean) 获取点列表
-	 * @name getPointList
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 获取点列表【需要完善】
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   // 配合 async
-	 *   let pointList = await draw.getPointList()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	getPointList(sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  openDrawPoint(sync?: boolean) 开启绘制点
-	 * @name openDrawPoint
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 开启绘制点
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   // 配合 async
-	 *   let pointInfo = await draw.openDrawPoint()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	openDrawPoint(sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  closeDrawPoint(sync?: boolean) 关闭绘制点
-	 * @name closeDrawPoint
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 关闭绘制点
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   // 配合 async
-	 *   let pointInfo = await draw.closeDrawPoint()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	closeDrawPoint(sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  drawPoint(type: string, sync?: boolean) 绘制点
-	 * @name drawPoint
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 绘制点
-	 * 
-	 * @param type 绘制点类型，参考字典 KAPI_CONST.POINT_TYPE，如下：<br>
-	 * <table>
-	 *   <thead><tr><th style="width: 40%">枚举参数</th><th style="width: 60%">绘制点描述</th></tr></thead>
-	 *   <tbody>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.FIRE_01:</td><td><p>火焰1</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.FIRE_02:</td><td><p>火焰2</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.FIRE_03:</td><td><p>火焰3</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.TREE_01:</td><td><p>树1</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.TREE_02:</td><td><p>树2</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.TREE_03:</td><td><p>树3</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.DECAL_01</td><td><p>贴图1</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.DECAL_02</td><td><p>贴图2</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.DECAL_03</td><td><p>贴图3</p></td></tr>
-	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.FBX</td><td><p>自定义FBX模型文件</p></td></tr>
-	 *   </tbody>
-	 * </table>
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   // 配合 async
-	 *   let pointInfo = await draw.drawPoint(KAPI_CONST.POINT_TYPE.FIRE_01)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param type 
-	 * @param sync 
-	 * @return  
-	 */
-	drawPoint(type : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  deletePoint(id: string, sync?: boolean) 删除点
-	 * @name deletePoint
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 删除点
-	 * 
-	 * @param id 点的唯一标识
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let id = 'Fire_01'
-	 *   // 配合 async
-	 *   let pointInfo = await draw.deletePoint(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	deletePoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  showPoint(id: string, sync?: boolean) 显示点
-	 * @name showPoint
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 显示点
-	 * 
-	 * @param id 点的唯一标识
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let id = 'Fire_01'
-	 *   // 配合 async
-	 *   let pointInfo = await draw.showPoint(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	showPoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  hidePoint(id: string, sync?: boolean) 隐藏点
-	 * @name hidePoint
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 隐藏点
-	 * 
-	 * @param id 点的唯一标识
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let id = 'Fire_01'
-	 *   // 配合 async
-	 *   let pointInfo = await draw.hidePoint(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	hidePoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  drawPolyline(option: object, sync?: boolean) 绘制线
-	 * @name drawPolyline
-	 * @apiIgnore
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 绘制线
-	 * 
-	 * @param option 绘制线参数
-	 * @param option.isGraphic 空间参数
-	 * @param option.type 预制的点数组
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let option = {
-	 *     isGraphic: true,
-	 *     type: '01'
-	 *   }
-	 *   // 配合 async
-	 *   let polylineInfo = await draw.drawPolyline(option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param path 
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	drawPolyline(path : any, option : Draw.prototype.DrawPolyline1, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  drawPath(option: object, sync?: boolean) 绘制路径
-	 * @name drawPath
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 绘制路径
-	 * 
-	 * @param path 预制的点数组
-	 * @param option 绘制路径参数
-	 * @param option.id 绘制路径的唯一id
-	 * @param option.isGraphic 空间参数
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let path = [{}]
-	 *   let option = {
-	 *     isGraphic: true
-	 *   }
-	 *   // 配合 async
-	 *   let pathInfo = await draw.drawPath(path, option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param path 
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	drawPath(path : any, option : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removePath(id: string, sync?: boolean) 删除路径
-	 * @name removePath
-	 * @apiIgnore
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 删除路径
-	 * 
-	 * @param id 绘制路径的唯一id
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   // 配合 async
-	 *   let pathInfo = await draw.removePath('del_id')
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	removePath(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  clearPath(sync?: boolean) 清空路径
-	 * @name clearPath
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 清空路径
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   // 配合 async
-	 *   let pathInfo = await draw.clearPath()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	clearPath(sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  drawLightFlow(sync?: boolean) 开始绘制光流
-	 * @name drawLightFlow
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 开始绘制光流
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   // 配合 async
-	 *   let lightflow = await draw.drawLightFlow()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "开始绘制光流",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	drawLightFlow(sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  closeDrawLightFlow(sync?: boolean) 结束绘制光流
-	 * @name closeDrawLightFlow
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 结束绘制光流
-	 * 
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   // 配合 async
-	 *   let lightflow = await draw.closeDrawLightFlow()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "绘制光流成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param sync 
-	 * @return  
-	 */
-	closeDrawLightFlow(sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removeLightFlow(id: string, sync?: boolean) 删除光流
-	 * @name removeLightFlow
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 删除光流
-	 * 
-	 * @param id 光流识别名称
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let id="a-pawn_2.NODE_AddSplineMeshComponent-6_4 BeamMesh"
-	 *   // 配合 async
-	 *   let lightflow = await draw.removeLightFlow(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "删除光流成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @return  
-	 */
-	removeLightFlow(id : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  drawContour(contour: array, option: object, sync?: boolean) 绘制区域轮廓
-	 * @name drawContour
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 绘制区域轮廓
-	 * 
-	 * @param contour 预制的点数组
-	 * @param option 绘制区域轮廓参数
-	 * @param option.id 绘制路径的唯一id
-	 * @param option.isGraphic 空间参数
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let option = {
-	 *     isGraphic: true,
-	 *     id: "1"
-	 *   }
-	 *   let contour=[{x:117.135867,y:36.666129,z:0},{x:117.13505,y:36.666165,z:0},{x:117.13372,y:36.666288,z:0},{x:117.132966,y:36.666578,z:0},{x:117.132957,y:36.667056,z:0},{x:117.13293,y:36.668264,z:0},{x:117.132957,y:36.668554,z:0},{x:117.132984,y:36.66893,z:0},{x:117.132975,y:36.669285,z:0},{x:117.132957,y:36.669538,z:0},{x:117.133415,y:36.669538,z:0},{x:117.133981,y:36.669545,z:0},{x:117.134592,y:36.669632,z:0},{x:117.13558,y:36.66961,z:0},{x:117.136155,y:36.669574,z:0},{x:117.136164,y:36.669285,z:0},{x:117.136316,y:36.669133,z:0},{x:117.136586,y:36.668865,z:0},{x:117.136568,y:36.668518,z:0},{x:117.136541,y:36.668192,z:0},{x:117.136397,y:36.667859,z:0},{x:117.136379,y:36.667483,z:0},{x:117.136298,y:36.667099,z:0},{x:117.136244,y:36.666665,z:0}]
-	 *   // 配合 async
-	 *   let pathInfo = await draw.drawContour(contour,option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param contour 
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	drawContour(contour : any, option : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removeContour(id: string, sync?: boolean) 删除区域轮廓
-	 * @name removeContour
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 删除区域轮廓
-	 * 
-	 * @param id 区域识别名称
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let id="1"
-	 *   // 配合 async
-	 *   let lightflow = await draw.removeContour(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "删除区域轮廓成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	removeContour(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  drawCircularContour(option: object, sync?: boolean) 绘制圆形区域轮廓
-	 * @name drawCircularContour
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 绘制区域轮廓
-	 * 
-	 * @param option 绘制区域轮廓参数
-	 * @param option.radius 绘制圆的半径
-	 * @param option.isGraphic 空间参数
-	 * @param option.location 绘制圆形圆心坐标
-	 * @param option.location.x 绘制圆形圆心坐标x
-	 * @param option.location.y 绘制圆形圆心坐标y
-	 * @param option.location.z 绘制圆形圆心坐标z
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let option = {
-	 *     isGraphic: true,
-	 *     radius: 50,
-	 *     location:{
-	 *       x:511128,
-	 *       y:4056989,
-	 *       z:85,
-	 *     }
-	 *   }
-	 *   let pathInfo = await draw.drawCircularContour(option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	drawCircularContour(option : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removeCircularContour(id: string, sync?: boolean) 删除圆形区域轮廓
-	 * @name removeCircularContour
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 删除圆形区域轮廓
-	 * 
-	 * @param id 圆形区域识别名称
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let id="1"
-	 *   // 配合 async
-	 *   let lightflow = await draw.removeCircularContour(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "删除圆形区域轮廓成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	removeCircularContour(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  removeDecal(id: string, sync?: boolean) 删除贴花
-	 * @name removeDecal
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 删除贴花
-	 * 
-	 * @param id 贴花识别名称
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let id="1"
-	 *   // 配合 async
-	 *   let lightflow = await draw.removeDecal(id)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "删除贴花成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param id 
-	 * @param sync 
-	 * @return  
-	 */
-	removeDecal(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  drawDecal(option: object, sync?: boolean) 绘制贴花
-	 * @name drawDecal
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 绘制贴花
-	 * 
-	 * @param option 绘制贴花参数
-	 * @param option.type 绘制贴花【straight  直行引导线；straightright  直行加右转引导线；straightleft  直行加左转引导线；right  右转引导线；left  左转引导线；manholecover  圆形井盖】
-	 * @param option.isGraphic 空间参数【默认接收地理坐标，指定isGraphic为false时，认为接收投影坐标，示例为投影坐标】
-	 * @param option.location 绘制贴花坐标
-	 * @param option.location.x 绘制贴花坐标x
-	 * @param option.location.y 绘制贴花坐标y
-	 * @param option.location.z 绘制贴花坐标z
-	 * @param option.rotation 绘制贴花姿态【默认朝向北方，修改z轴方向可平行于地面旋转】
-	 * @param option.rotation.x 绘制贴花姿态x
-	 * @param option.rotation.y 绘制贴花姿态y
-	 * @param option.rotation.z 绘制贴花姿态z
-	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let option = {
-	 *     isGraphic: false,
-	 *     type: 'manholecover',
-	 *     location:{
-	 *       x:511128,
-	 *       y:4056989,
-	 *       z:85,
-	 *     },
-	 *    rotation:{
-	 *       x:0,
-	 *       y:0,
-	 *       z:0,
-	 *     }
-	 *   }
-	 *   let pathInfo = await draw.drawDecal(option)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param option 
-	 * @param sync 
-	 * @return  
-	 */
-	drawDecal(option : Draw.prototype.DrawDecal0, sync? : any): /* Draw.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getAllByWindow(type) 全选视窗物体
-	 * @name getAllByWindow
-	 * @group Draw
-	 * @version 1.0.0
-	 * @description 全选视窗物体
-	 * 
-	 * @param type 物体类型【staticmesh  静态网格体；tree  树木；car  车辆】
-	 * 
-	 * @example 使用示例
-	 *   let draw = new kapi.Draw()
-	 *   let type = "staticmesh"
-	 *   // 配合 async
-	 *   let all = await draw.getAllByWindow(type)
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param type 
-	 * @return  
-	 */
-	getAllByWindow(type : any): /* Draw.prototype.+Promise */ any;
-}
-declare var Draw: Draw;
-
-/**
- * 
- */
 declare interface Coord {
 		
 	/**
@@ -2836,6 +2092,810 @@ declare var Controller: Controller;
 /**
  * 
  */
+declare interface Data {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  parseGeoJSON(fileList: FileList) 导入GeoJSON数据
+	 * @name parseGeoJSON
+	 * @group Data
+	 * @version 1.0.0
+	 * @description 导入GeoJSON数据
+	 * 
+	 * @param fileList 原生的<code>&lt;input type='file' multiple accept=".json"></code>中的fileList结果
+	 * @param encoding 编码方式，默认UTF-8
+	 * 
+	 * @example 使用示例
+	 *   html中
+	 *   <input id='upload' type='file' multiple accept=".json">
+	 *   JavaScript中
+	 *   let fileList = document.getElementById('upload').files
+	 *   let data = new kapi.Data()
+	 *   // 配合 async
+	 *   let coordInfo = await data.parseGeoJSON(fileList)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param fileList 
+	 * @param encoding 
+	 * @return  
+	 */
+	parseGeoJSON(fileList : any, encoding : string): /* Data.prototype.+Promise */ any;
+		
+	/**
+	 * @api  parseShp(fileList: FileList) 导入Shp数据
+	 * @name parseShp
+	 * @group Data
+	 * @apiIgnore
+	 * @version 1.0.0
+	 * @description 导入shp数据
+	 * 
+	 * @param fileList shp的路径/包含shp的zip压缩包/上传文件FileList
+	 * 
+	 * @example 使用示例
+	 *   let data = new kapi.Data()
+	 *   // 配合 async
+	 *   let coordInfo = await data.parseShp('./data/city.shp')
+	 *   // or
+	 *   let coordInfo = await data.parseShp(<Shp 的 FileList>)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param fileList 
+	 * @return  
+	 */
+	parseShp(fileList : any): /* Data.prototype.+Promise */ any;
+}
+declare var Data: Data;
+
+/**
+ * 
+ */
+declare interface Animation {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  openLiftAnimation() 打开电梯动画
+	 * @name openLiftAnimation
+	 * @group Animation
+	 * @version 1.0.0
+	 * @description 打开电梯动画
+	 * 
+	 * @example {js} 使用示例:
+	 *   let animation = new kapi.Animation();
+	 *   // 配合 async
+	 *   let info = await animation.openLiftAnimation()
+	 * 
+	 * @successExample {json} 响应成功:
+	 *     HTTP/1.1 200 OK
+	 *    {
+	 *      code: 200,
+	 *      message: "打开成功",
+	 *      data: {},
+	 *      timestamp: 1640313429121
+	 *    }
+	 * @return  
+	 */
+	openLiftAnimation(): /* Animation.prototype.+Promise */ any;
+		
+	/**
+	 * @api  closeLiftAnimation() 关闭电梯动画
+	 * @name closeLiftAnimation
+	 * @group Animation
+	 * @version 1.0.0
+	 * @description 关闭电梯动画
+	 * 
+	 * @example {js} 使用示例:
+	 *   let animation = new kapi.Animation();
+	 *   // 配合 async
+	 *   let info = await animation.closeLiftAnimation()
+	 * 
+	 * @successExample {json} 响应成功:
+	 *     HTTP/1.1 200 OK
+	 *    {
+	 *      code: 200,
+	 *      message: "关闭成功",
+	 *      data: {},
+	 *      timestamp: 1640313429121
+	 *    }
+	 * @return  
+	 */
+	closeLiftAnimation(): /* Animation.prototype.+Promise */ any;
+}
+declare var Animation: Animation;
+
+/**
+ * 
+ */
+declare interface Draw {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  getPointList(sync?: boolean) 获取点列表
+	 * @name getPointList
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 获取点列表【需要完善】
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   // 配合 async
+	 *   let pointList = await draw.getPointList()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	getPointList(sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  openDrawPoint(sync?: boolean) 开启绘制点
+	 * @name openDrawPoint
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 开启绘制点
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   // 配合 async
+	 *   let pointInfo = await draw.openDrawPoint()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	openDrawPoint(sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  closeDrawPoint(sync?: boolean) 关闭绘制点
+	 * @name closeDrawPoint
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 关闭绘制点
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   // 配合 async
+	 *   let pointInfo = await draw.closeDrawPoint()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	closeDrawPoint(sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  drawPoint(type: string, sync?: boolean) 绘制点
+	 * @name drawPoint
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 绘制点
+	 * 
+	 * @param type 绘制点类型，参考字典 KAPI_CONST.POINT_TYPE，如下：<br>
+	 * <table>
+	 *   <thead><tr><th style="width: 40%">枚举参数</th><th style="width: 60%">绘制点描述</th></tr></thead>
+	 *   <tbody>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.FIRE_01:</td><td><p>火焰1</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.FIRE_02:</td><td><p>火焰2</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.FIRE_03:</td><td><p>火焰3</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.TREE_01:</td><td><p>树1</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.TREE_02:</td><td><p>树2</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.TREE_03:</td><td><p>树3</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.DECAL_01</td><td><p>贴图1</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.DECAL_02</td><td><p>贴图2</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.DECAL_03</td><td><p>贴图3</p></td></tr>
+	 *     <tr><td class="code">KAPI_CONST.POINT_TYPE.FBX</td><td><p>自定义FBX模型文件</p></td></tr>
+	 *   </tbody>
+	 * </table>
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   // 配合 async
+	 *   let pointInfo = await draw.drawPoint(KAPI_CONST.POINT_TYPE.FIRE_01)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @param sync 
+	 * @return  
+	 */
+	drawPoint(type : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  deletePoint(id: string, sync?: boolean) 删除点
+	 * @name deletePoint
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 删除点
+	 * 
+	 * @param id 点的唯一标识
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let id = 'Fire_01'
+	 *   // 配合 async
+	 *   let pointInfo = await draw.deletePoint(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	deletePoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  showPoint(id: string, sync?: boolean) 显示点
+	 * @name showPoint
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 显示点
+	 * 
+	 * @param id 点的唯一标识
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let id = 'Fire_01'
+	 *   // 配合 async
+	 *   let pointInfo = await draw.showPoint(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	showPoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  hidePoint(id: string, sync?: boolean) 隐藏点
+	 * @name hidePoint
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 隐藏点
+	 * 
+	 * @param id 点的唯一标识
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let id = 'Fire_01'
+	 *   // 配合 async
+	 *   let pointInfo = await draw.hidePoint(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	hidePoint(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  drawPolyline(option: object, sync?: boolean) 绘制线
+	 * @name drawPolyline
+	 * @apiIgnore
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 绘制线
+	 * 
+	 * @param option 绘制线参数
+	 * @param option.isGraphic 空间参数
+	 * @param option.type 预制的点数组
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let option = {
+	 *     isGraphic: true,
+	 *     type: '01'
+	 *   }
+	 *   // 配合 async
+	 *   let polylineInfo = await draw.drawPolyline(option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param path 
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	drawPolyline(path : any, option : Draw.prototype.DrawPolyline1, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  drawPath(option: object, sync?: boolean) 绘制路径
+	 * @name drawPath
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 绘制路径
+	 * 
+	 * @param path 预制的点数组
+	 * @param option 绘制路径参数
+	 * @param option.id 绘制路径的唯一id
+	 * @param option.isGraphic 空间参数
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let path = [{}]
+	 *   let option = {
+	 *     isGraphic: true
+	 *   }
+	 *   // 配合 async
+	 *   let pathInfo = await draw.drawPath(path, option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param path 
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	drawPath(path : any, option : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removePath(id: string, sync?: boolean) 删除路径
+	 * @name removePath
+	 * @apiIgnore
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 删除路径
+	 * 
+	 * @param id 绘制路径的唯一id
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   // 配合 async
+	 *   let pathInfo = await draw.removePath('del_id')
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	removePath(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  clearPath(sync?: boolean) 清空路径
+	 * @name clearPath
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 清空路径
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   // 配合 async
+	 *   let pathInfo = await draw.clearPath()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	clearPath(sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  drawLightFlow(sync?: boolean) 开始绘制光流
+	 * @name drawLightFlow
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 开始绘制光流
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   // 配合 async
+	 *   let lightflow = await draw.drawLightFlow()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "开始绘制光流",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	drawLightFlow(sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  closeDrawLightFlow(sync?: boolean) 结束绘制光流
+	 * @name closeDrawLightFlow
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 结束绘制光流
+	 * 
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   // 配合 async
+	 *   let lightflow = await draw.closeDrawLightFlow()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "绘制光流成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param sync 
+	 * @return  
+	 */
+	closeDrawLightFlow(sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removeLightFlow(id: string, sync?: boolean) 删除光流
+	 * @name removeLightFlow
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 删除光流
+	 * 
+	 * @param id 光流识别名称
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let id="a-pawn_2.NODE_AddSplineMeshComponent-6_4 BeamMesh"
+	 *   // 配合 async
+	 *   let lightflow = await draw.removeLightFlow(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "删除光流成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @return  
+	 */
+	removeLightFlow(id : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  drawContour(contour: array, option: object, sync?: boolean) 绘制区域轮廓
+	 * @name drawContour
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 绘制区域轮廓
+	 * 
+	 * @param contour 预制的点数组
+	 * @param option 绘制区域轮廓参数
+	 * @param option.id 绘制路径的唯一id
+	 * @param option.isGraphic 空间参数
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let option = {
+	 *     isGraphic: true,
+	 *     id: "1"
+	 *   }
+	 *   let contour=[{x:117.135867,y:36.666129,z:0},{x:117.13505,y:36.666165,z:0},{x:117.13372,y:36.666288,z:0},{x:117.132966,y:36.666578,z:0},{x:117.132957,y:36.667056,z:0},{x:117.13293,y:36.668264,z:0},{x:117.132957,y:36.668554,z:0},{x:117.132984,y:36.66893,z:0},{x:117.132975,y:36.669285,z:0},{x:117.132957,y:36.669538,z:0},{x:117.133415,y:36.669538,z:0},{x:117.133981,y:36.669545,z:0},{x:117.134592,y:36.669632,z:0},{x:117.13558,y:36.66961,z:0},{x:117.136155,y:36.669574,z:0},{x:117.136164,y:36.669285,z:0},{x:117.136316,y:36.669133,z:0},{x:117.136586,y:36.668865,z:0},{x:117.136568,y:36.668518,z:0},{x:117.136541,y:36.668192,z:0},{x:117.136397,y:36.667859,z:0},{x:117.136379,y:36.667483,z:0},{x:117.136298,y:36.667099,z:0},{x:117.136244,y:36.666665,z:0}]
+	 *   // 配合 async
+	 *   let pathInfo = await draw.drawContour(contour,option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param contour 
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	drawContour(contour : any, option : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removeContour(id: string, sync?: boolean) 删除区域轮廓
+	 * @name removeContour
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 删除区域轮廓
+	 * 
+	 * @param id 区域识别名称
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let id="1"
+	 *   // 配合 async
+	 *   let lightflow = await draw.removeContour(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "删除区域轮廓成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	removeContour(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  drawCircularContour(option: object, sync?: boolean) 绘制圆形区域轮廓
+	 * @name drawCircularContour
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 绘制区域轮廓
+	 * 
+	 * @param option 绘制区域轮廓参数
+	 * @param option.radius 绘制圆的半径
+	 * @param option.isGraphic 空间参数
+	 * @param option.location 绘制圆形圆心坐标
+	 * @param option.location.x 绘制圆形圆心坐标x
+	 * @param option.location.y 绘制圆形圆心坐标y
+	 * @param option.location.z 绘制圆形圆心坐标z
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let option = {
+	 *     isGraphic: true,
+	 *     radius: 50,
+	 *     location:{
+	 *       x:511128,
+	 *       y:4056989,
+	 *       z:85,
+	 *     }
+	 *   }
+	 *   let pathInfo = await draw.drawCircularContour(option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	drawCircularContour(option : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removeCircularContour(id: string, sync?: boolean) 删除圆形区域轮廓
+	 * @name removeCircularContour
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 删除圆形区域轮廓
+	 * 
+	 * @param id 圆形区域识别名称
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let id="1"
+	 *   // 配合 async
+	 *   let lightflow = await draw.removeCircularContour(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "删除圆形区域轮廓成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	removeCircularContour(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  removeDecal(id: string, sync?: boolean) 删除贴花
+	 * @name removeDecal
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 删除贴花
+	 * 
+	 * @param id 贴花识别名称
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let id="1"
+	 *   // 配合 async
+	 *   let lightflow = await draw.removeDecal(id)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "删除贴花成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param id 
+	 * @param sync 
+	 * @return  
+	 */
+	removeDecal(id : any, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  drawDecal(option: object, sync?: boolean) 绘制贴花
+	 * @name drawDecal
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 绘制贴花
+	 * 
+	 * @param option 绘制贴花参数
+	 * @param option.type 绘制贴花【straight  直行引导线；straightright  直行加右转引导线；straightleft  直行加左转引导线；right  右转引导线；left  左转引导线；manholecover  圆形井盖】
+	 * @param option.isGraphic 空间参数【默认接收地理坐标，指定isGraphic为false时，认为接收投影坐标，示例为投影坐标】
+	 * @param option.location 绘制贴花坐标
+	 * @param option.location.x 绘制贴花坐标x
+	 * @param option.location.y 绘制贴花坐标y
+	 * @param option.location.z 绘制贴花坐标z
+	 * @param option.rotation 绘制贴花姿态【默认朝向北方，修改z轴方向可平行于地面旋转】
+	 * @param option.rotation.x 绘制贴花姿态x
+	 * @param option.rotation.y 绘制贴花姿态y
+	 * @param option.rotation.z 绘制贴花姿态z
+	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let option = {
+	 *     isGraphic: false,
+	 *     type: 'manholecover',
+	 *     location:{
+	 *       x:511128,
+	 *       y:4056989,
+	 *       z:85,
+	 *     },
+	 *    rotation:{
+	 *       x:0,
+	 *       y:0,
+	 *       z:0,
+	 *     }
+	 *   }
+	 *   let pathInfo = await draw.drawDecal(option)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param option 
+	 * @param sync 
+	 * @return  
+	 */
+	drawDecal(option : Draw.prototype.DrawDecal0, sync? : any): /* Draw.prototype.+Promise */ any;
+		
+	/**
+	 * @api  getAllByWindow(type) 全选视窗物体
+	 * @name getAllByWindow
+	 * @group Draw
+	 * @version 1.0.0
+	 * @description 全选视窗物体
+	 * 
+	 * @param type 物体类型【staticmesh  静态网格体；tree  树木；car  车辆】
+	 * 
+	 * @example 使用示例
+	 *   let draw = new kapi.Draw()
+	 *   let type = "staticmesh"
+	 *   // 配合 async
+	 *   let all = await draw.getAllByWindow(type)
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param type 
+	 * @return  
+	 */
+	getAllByWindow(type : any): /* Draw.prototype.+Promise */ any;
+}
+declare var Draw: Draw;
+
+/**
+ * 
+ */
 declare interface Event {
 		
 	/**
@@ -3731,6 +3791,175 @@ declare var Marker: Marker;
 /**
  * 
  */
+declare interface Measure {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  get3DLength(options: object) 获取空间距离
+	 * @name get3DLength
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取空间距离
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get3DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	get3DLength(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  get2DLength(options: object) 获取平面距离
+	 * @name get2DLength
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取平面距离
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   // 配合 async
+	 *   let measureInfo = await measure.get2DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	get2DLength(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  get3DArea(options: object) 获取空间面积
+	 * @name get3DArea
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取空间面积
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get3DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	get3DArea(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  get2DArea(options: object) 获取平面面积
+	 * @name get2DArea
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取平面面积
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.get2DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	get2DArea(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  getHeight(options: object)  获取高度
+	 * @name getHeight
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 获取高度
+	 * 
+	 * @param options 测量相关参数
+	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
+	 * 
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.getHeight({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @param options 
+	 * @return  
+	 */
+	getHeight(options : any): /* Measure.prototype.+Promise */ any;
+		
+	/**
+	 * @api  clear()  清空
+	 * @name clear
+	 * @group Measure
+	 * @version 1.0.0
+	 * @description 清空
+	 * @example 使用示例
+	 *   let measure = new kapi.Measure()
+	 *   let measureInfo = await measure.clear()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "请求成功",
+	 *      data: {}
+	 *    }
+	 * @return Promise
+	 * @return  
+	 */
+	clear(): /* Measure.prototype.+Promise */ any;
+}
+declare var Measure: Measure;
+
+/**
+ * 
+ */
 declare interface Scene {
 		
 	/**
@@ -4077,6 +4306,12 @@ declare interface Scene {
 		
 	/**
 	 * 
+	 * @param callback 
+	 */
+	_reConnect(callback : any): void;
+		
+	/**
+	 * 
 	 * @param timeout 
 	 * @param callback 
 	 */
@@ -4086,14 +4321,14 @@ declare interface Scene {
 	 * 配置TURN SERVER
 	 * @return  
 	 */
-	setConfig(): /* Scene.prototype.+Promise */ any;
+	_setConfig(): /* Scene.prototype.+Promise */ any;
 		
 	/**
 	 * 设置公网访问
 	 * @param options 
 	 * @return  
 	 */
-	setPublic(options : /* Scene.defaultOptions */ any): boolean;
+	_setPublic(options : /* Scene.defaultOptions */ any): boolean;
 		
 	/**
 	 * 
@@ -4103,29 +4338,23 @@ declare interface Scene {
 		
 	/**
 	 * 
-	 * @param callback 
 	 */
-	reConnect(callback : any): void;
+	_setMouseMoveListener(): void;
 		
 	/**
 	 * 
 	 */
-	setMouseMoveListener(): void;
+	_setOnclose(): void;
 		
 	/**
 	 * 
 	 */
-	setOnclose(): void;
+	_setOncloseFirefox(): void;
 		
 	/**
 	 * 
 	 */
-	setOncloseFirefox(): void;
-		
-	/**
-	 * 
-	 */
-	setPCStatus(): void;
+	_setPCStatus(): void;
 		
 	/**
 	 * 
@@ -4148,7 +4377,7 @@ declare interface Scene {
 	/**
 	 * 监听分辨率，并动态调整
 	 */
-	updateVideoStreamSize(): void;
+	_updateVideoStreamSize(): void;
 		
 	/**
 	 * 
@@ -4298,175 +4527,6 @@ declare interface Scene {
 	clientId : string;
 }
 declare var Scene: Scene;
-
-/**
- * 
- */
-declare interface Measure {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  get3DLength(options: object) 获取空间距离
-	 * @name get3DLength
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取空间距离
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get3DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get3DLength(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get2DLength(options: object) 获取平面距离
-	 * @name get2DLength
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取平面距离
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   // 配合 async
-	 *   let measureInfo = await measure.get2DLength({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get2DLength(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get3DArea(options: object) 获取空间面积
-	 * @name get3DArea
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取空间面积
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get3DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get3DArea(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  get2DArea(options: object) 获取平面面积
-	 * @name get2DArea
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取平面面积
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.get2DArea({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	get2DArea(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  getHeight(options: object)  获取高度
-	 * @name getHeight
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 获取高度
-	 * 
-	 * @param options 测量相关参数
-	 * @param options.color  文本颜色，默认红色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * @param options.lineColor 线条颜色，默认绿色 <br> [1] rgb,rgba两种格式，r代表红色，g代表绿色，b代表蓝色，a代表不透明度，例如：[255,0,0]、[255,0,0,1] <br> [2] Hex十六进制，FF表示16进制的不透明度，转换为十进制是255），例如：#FF0000，#FF0000FF
-	 * 
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.getHeight({color: [255, 0, 0, 1], lineColor: [0, 255, 0, 1]})
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @param options 
-	 * @return  
-	 */
-	getHeight(options : any): /* Measure.prototype.+Promise */ any;
-		
-	/**
-	 * @api  clear()  清空
-	 * @name clear
-	 * @group Measure
-	 * @version 1.0.0
-	 * @description 清空
-	 * @example 使用示例
-	 *   let measure = new kapi.Measure()
-	 *   let measureInfo = await measure.clear()
-	 * 
-	 * @returns {json}
-	 *    {
-	 *      code: 200,
-	 *      message: "请求成功",
-	 *      data: {}
-	 *    }
-	 * @return Promise
-	 * @return  
-	 */
-	clear(): /* Measure.prototype.+Promise */ any;
-}
-declare var Measure: Measure;
 
 /**
  * 
