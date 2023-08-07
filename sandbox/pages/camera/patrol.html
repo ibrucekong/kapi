@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Hello World - KAPI</title>
+  <title>Play Route - KAPI</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
   <meta name="description" content="KAPI"/>
@@ -30,12 +30,17 @@
   <div id='kapi-container'></div>
   <div class='operation-range'>
     <div class='row'>
-      <div class='description'>
-        <p style='font-weight: bold;text-align: center'>《工具入门指南》</p>
-        <p> 1️⃣ 这是沙箱里的第一个示例，也是传统意义上的hello world代码</p>
-        <p> 2️⃣ 中间代码框可以编辑修改，代码框内使用【Ctrl+S】键运行</p>
-        <p> 3️⃣ 请注意：中间代码框中编辑的内容在页面刷新后会重置</p>
-      </div>
+      <label>类型
+        <select name='type' id='type'>
+          <option value='0'>0（人员车辆）</option>
+          <option value='1'>1(其他)</option>
+        </select>
+      </label>
+      <label>速度
+        <input id="speed" type="text" placeholder='默认10米/秒'>
+      </label>
+      <div class='btn' onclick='play()'>开始漫游</div>
+      <div class='btn' onclick='stop()'>停止漫游</div>
     </div>
   </div>
 </div>
@@ -46,20 +51,39 @@
 <script src="js/highlight/highlight.min.js"></script>
 <script src="./js/kapi.js"></script>
 <script>
+  let camera
+
   async function init() {
-    console.time("init-scene-time");
-    // 实例化接口
     let kapi = await KAPI.build(config.token)
 
+    // 设置参数
+    let options = {
+      server,                                                    // 服务地址
+      netStats: false,                                           // 是否显示网络信息
+      fullscreen: true                                          // 是否要全屏
+    }
     // 初始化场景
-    let scene = new kapi.Scene('kapi-container', { server })
-
+    let scene = new kapi.Scene('kapi-container', options)
     // 等待场景响应好
     let readyStat = await scene.ready()
-
-    // 打印日志
     printLog(readyStat)
-    console.timeEnd('init-scene-time')
+    if (readyStat.code !== 200) return
+
+    // 实例化
+    camera = new kapi.Camera()
+  }
+
+  async function play() {
+    let type = document.getElementById('type').value || 0
+    let speed = document.getElementById('speed').value || 10
+
+    let res = await camera.startPatrol(type, speed)
+    printLog(res)
+  }
+
+  async function stop() {
+    let res = await camera.stopPatrol()
+    printLog(res)
   }
 </script>
 </body>

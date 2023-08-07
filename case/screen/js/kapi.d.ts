@@ -815,6 +815,64 @@ declare var Analyze: Analyze;
 /**
  * 
  */
+declare interface Animation {
+		
+	/**
+	 * 
+	 */
+	new ();
+		
+	/**
+	 * @api  openLiftAnimation() 打开电梯动画
+	 * @name openLiftAnimation
+	 * @group Animation
+	 * @version 1.0.0
+	 * @description 打开电梯动画
+	 * 
+	 * @example {js} 使用示例:
+	 *   let animation = new kapi.Animation();
+	 *   // 配合 async
+	 *   let info = await animation.openLiftAnimation()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "打开成功",
+	 *      data: {},
+	 *      timestamp: 1640313429121
+	 *    }
+	 * @return  
+	 */
+	openLiftAnimation(): /* Animation.prototype.+Promise */ any;
+		
+	/**
+	 * @api  closeLiftAnimation() 关闭电梯动画
+	 * @name closeLiftAnimation
+	 * @group Animation
+	 * @version 1.0.0
+	 * @description 关闭电梯动画
+	 * 
+	 * @example {js} 使用示例:
+	 *   let animation = new kapi.Animation();
+	 *   // 配合 async
+	 *   let info = await animation.closeLiftAnimation()
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "关闭成功",
+	 *      data: {},
+	 *      timestamp: 1640313429121
+	 *    }
+	 * @return  
+	 */
+	closeLiftAnimation(): /* Animation.prototype.+Promise */ any;
+}
+declare var Animation: Animation;
+
+/**
+ * 
+ */
 declare interface Camera {
 		
 	/**
@@ -1116,6 +1174,100 @@ declare interface Camera {
 	 * @return  
 	 */
 	stopRoute(sync? : any): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  playRouteFree() 开启自由漫游
+	 * @name playRouteFree
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 开启自由漫游
+	 * 
+	 * 
+	 * @example {js} 使用示例:
+	 *   let camera = new kapi.Camera();
+	 *   // 配合 async
+	 *   let res = await camera.playRouteFree();
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "漫游结束",
+	 *      data: {}
+	 *    }
+	 * @return  
+	 */
+	playRouteFree(): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  stopRouteFree() 停止自由漫游
+	 * @name stopRouteFree
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 停止自由漫游
+	 * 
+	 * @example {js} 使用示例:
+	 *   let camera = new kapi.Camera();
+	 *   // 配合 async
+	 *   let res = await camera.stopRouteFree();
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "漫游已停止",
+	 *      data: {}
+	 *    }
+	 * @return  
+	 */
+	stopRouteFree(): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  startPatrol() 【多种类型】开启漫游
+	 * @name startPatrol
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 开启漫游，支持多种类型
+	 * 
+	 * @param type 巡检类型，0人员车辆巡检，1其他巡检
+	 * @param speed 移动速度，单位（米/秒），默认10米/秒
+	 * 
+	 * @example {js} 使用示例:
+	 *   let camera = new kapi.Camera();
+	 *   // 配合 async
+	 *   let res = await camera.startPatrol();
+	 * 
+	 * @returns {json}:
+	 *    {
+	 *      code: 200,
+	 *      message: "漫游结束",
+	 *      data: {}
+	 *    }
+	 * @param type 
+	 * @param speed 
+	 * @return  
+	 */
+	startPatrol(type : any, speed : number): /* Camera.prototype.+Promise */ any;
+		
+	/**
+	 * @api  stopPatrol() 【多种类型】停止漫游
+	 * @name stopPatrol
+	 * @group Camera
+	 * @version 1.0.0
+	 * @description 停止漫游
+	 * 
+	 * @example {js} 使用示例:
+	 *   let camera = new kapi.Camera();
+	 *   // 配合 async
+	 *   let res = await camera.stopPatrol();
+	 * 
+	 * @returns {json}
+	 *    {
+	 *      code: 200,
+	 *      message: "漫游已停止",
+	 *      data: {}
+	 *    }
+	 * @return  
+	 */
+	stopPatrol(): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  addBookmark(type: string, sync?: boolean) 添加自定义书签
@@ -2161,66 +2313,6 @@ declare interface Data {
 	parseShp(fileList : any): /* Data.prototype.+Promise */ any;
 }
 declare var Data: Data;
-
-/**
- * 
- */
-declare interface Animation {
-		
-	/**
-	 * 
-	 */
-	new ();
-		
-	/**
-	 * @api  openLiftAnimation() 打开电梯动画
-	 * @name openLiftAnimation
-	 * @group Animation
-	 * @version 1.0.0
-	 * @description 打开电梯动画
-	 * 
-	 * @example {js} 使用示例:
-	 *   let animation = new kapi.Animation();
-	 *   // 配合 async
-	 *   let info = await animation.openLiftAnimation()
-	 * 
-	 * @successExample {json} 响应成功:
-	 *     HTTP/1.1 200 OK
-	 *    {
-	 *      code: 200,
-	 *      message: "打开成功",
-	 *      data: {},
-	 *      timestamp: 1640313429121
-	 *    }
-	 * @return  
-	 */
-	openLiftAnimation(): /* Animation.prototype.+Promise */ any;
-		
-	/**
-	 * @api  closeLiftAnimation() 关闭电梯动画
-	 * @name closeLiftAnimation
-	 * @group Animation
-	 * @version 1.0.0
-	 * @description 关闭电梯动画
-	 * 
-	 * @example {js} 使用示例:
-	 *   let animation = new kapi.Animation();
-	 *   // 配合 async
-	 *   let info = await animation.closeLiftAnimation()
-	 * 
-	 * @successExample {json} 响应成功:
-	 *     HTTP/1.1 200 OK
-	 *    {
-	 *      code: 200,
-	 *      message: "关闭成功",
-	 *      data: {},
-	 *      timestamp: 1640313429121
-	 *    }
-	 * @return  
-	 */
-	closeLiftAnimation(): /* Animation.prototype.+Promise */ any;
-}
-declare var Animation: Animation;
 
 /**
  * 
