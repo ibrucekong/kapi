@@ -125,6 +125,7 @@ body.dark .operation-range div.btn:active {
   padding: 0;
   margin: 0;
   overflow: hidden;
+  height: 60% !important;
 }
 
 .operation-range {
