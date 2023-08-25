@@ -1,6 +1,6 @@
 let config = {
   token: null,
-  server: 'http://www.zhreleven.com:9001/',
+  server: 'https://www.zhreleven.com:9001/',
   debug: !location.host.includes('wefamily.gitee.io') && !location.host.includes('brucekong.com')
 }
 
