@@ -1,15 +1,15 @@
 import { _ as _export_sfc, o as openBlock, c as createElementBlock, e as createBaseVNode, x as createTextVNode } from "./chunks/framework.1251c745.js";
-const __pageData = JSON.parse('{"title":"This page has no right sidebar","description":"","frontmatter":{"aside":false},"headers":[],"relativePath":"sponsor/index.md","filePath":"sponsor/index.md"}');
+const __pageData = JSON.parse('{"title":"赞助者","description":"","frontmatter":{"page":false,"footer":false,"title":"赞助者","aside":false},"headers":[],"relativePath":"sponsor/index.md","filePath":"sponsor/index.md"}');
 const _sfc_main = { name: "sponsor/index.md" };
 const _hoisted_1 = /* @__PURE__ */ createBaseVNode("h1", {
-  id: "this-page-has-no-right-sidebar",
+  id: "暂无内容",
   tabindex: "-1"
 }, [
-  /* @__PURE__ */ createTextVNode("This page has no right sidebar "),
+  /* @__PURE__ */ createTextVNode("暂无内容 "),
   /* @__PURE__ */ createBaseVNode("a", {
     class: "header-anchor",
-    href: "#this-page-has-no-right-sidebar",
-    "aria-label": 'Permalink to "This page has no right sidebar"'
+    href: "#暂无内容",
+    "aria-label": 'Permalink to "暂无内容"'
   }, "​")
 ], -1);
 const _hoisted_2 = [

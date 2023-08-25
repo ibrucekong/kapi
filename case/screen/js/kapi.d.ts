@@ -99,17 +99,17 @@ declare namespace Scene.prototype{
 		/**
 		 * 
 		 */
-		turnServerError : boolean;
-				
-		/**
-		 * 
-		 */
 		syncServer : string;
 				
 		/**
 		 * 
 		 */
 		keyboardEvents : boolean;
+				
+		/**
+		 * 
+		 */
+		turnServerError : boolean;
 				
 		/**
 		 * 
@@ -1323,7 +1323,7 @@ declare interface Camera {
 	getCameraInfo(sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
-	 * @api  flyTo(position: object, during: number, sync?: boolean) 飞到某位置
+	 * @api  flyTo(position: object, duration: number, sync?: boolean) 飞到某位置
 	 * @name flyTo
 	 * @group Camera
 	 * @version 1.0.0
@@ -1337,7 +1337,7 @@ declare interface Camera {
 	 * @param position.rotation.roll 翻滚角
 	 * @param position.rotation.pitch 俯仰角
 	 * @param position.rotation.yaw 偏航角
-	 * @param during 在飞行多少秒后到目标点，默认1.5秒
+	 * @param duration 在飞行多少秒后到目标点，默认1.5秒
 	 * @param sync [可选]是否要多客户端同步场景，需要开启同步服务器
 	 * 
 	 * @example 使用示例
@@ -1366,11 +1366,11 @@ declare interface Camera {
 	 *    }
 	 * @return Promise
 	 * @param position 
-	 * @param during 
+	 * @param duration 
 	 * @param sync 
 	 * @return  
 	 */
-	flyTo(position : any, during : number, sync? : any): /* Camera.prototype.+Promise */ any;
+	flyTo(position : any, duration : number, sync? : any): /* Camera.prototype.+Promise */ any;
 		
 	/**
 	 * @api  setRotationStatus(status: boolean, speed: float, sync?: boolean) 绕物旋转
@@ -4546,12 +4546,12 @@ declare interface Scene {
 		/**
 		 * 
 		 */
-		turnServerError : boolean;
+		keyboardEvents : boolean;
 				
 		/**
 		 * 
 		 */
-		keyboardEvents : boolean;
+		turnServerError : boolean;
 	}
 		
 	/**
@@ -4577,17 +4577,17 @@ declare interface Scene {
 		/**
 		 * 
 		 */
-		turnServerError : boolean;
-				
-		/**
-		 * 
-		 */
 		syncServer : string;
 				
 		/**
 		 * 
 		 */
 		keyboardEvents : boolean;
+				
+		/**
+		 * 
+		 */
+		turnServerError : boolean;
 	}
 		
 	/**
@@ -4603,12 +4603,12 @@ declare interface Scene {
 	/**
 	 * 
 	 */
-	isSetConfig : /* Scene.prototype.+Promise */ any;
+	clientId : string;
 		
 	/**
 	 * 
 	 */
-	clientId : string;
+	isSetConfig : /* Scene.prototype.+Promise */ any;
 }
 declare var Scene: Scene;
 
