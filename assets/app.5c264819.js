@@ -2999,60 +2999,20 @@ const PreferenceSwitch_vue_vue_type_style_index_0_scoped_deb35952_lang = "";
 const PreferenceSwitch_vue_vue_type_style_index_1_lang = "";
 const PreferenceSwitch = /* @__PURE__ */ _export_sfc$1(_sfc_main$2k, [["__scopeId", "data-v-deb35952"]]);
 const Banner_vue_vue_type_style_index_0_lang = "";
-const Banner_vue_vue_type_style_index_1_scoped_cf80d32f_lang = "";
+const Banner_vue_vue_type_style_index_1_scoped_597bfb9b_lang = "";
 const _hoisted_1$13 = { class: "banner" };
 const _hoisted_2$H = ["href"];
 const _sfc_main$2j = {
   __name: "Banner",
   setup(__props) {
-    const open = ref(true);
-    const textIndex = ref(0);
+    const open = ref(false);
+    ref(0);
     const textSpan = ref("");
     const textUrl = ref("");
     const textContent = ref("");
     onMounted(() => {
-      setBanner();
+      document.documentElement.classList.add("banner-dismissed");
     });
-    async function setBanner() {
-      let res = await getBanner();
-      if (res && res.hasOwnProperty("textIndex")) {
-        textIndex.value = res.textIndex;
-        textSpan.value = res.textSpan;
-        textUrl.value = res.textUrl;
-        textContent.value = res.textContent;
-        let cache2 = localStorage.getItem(`vue-docs-banner-bk`);
-        if (!cache2) {
-          res.show = true;
-          localStorage.setItem(`vue-docs-banner-bk`, JSON.stringify(res));
-          return;
-        }
-        try {
-          cache2 = JSON.parse(cache2);
-          if (cache2.textIndex === res.textIndex) {
-            if (!cache2.show) {
-              dismiss();
-            }
-          } else {
-            res.show = true;
-            localStorage.setItem(`vue-docs-banner-bk`, JSON.stringify(res));
-          }
-        } catch (err) {
-          res.show = true;
-          localStorage.setItem(`vue-docs-banner-bk`, JSON.stringify(res));
-        }
-      } else {
-        dismiss();
-      }
-    }
-    async function getBanner() {
-      let url2 = "/banner.json";
-      let response = await window.fetch(url2);
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        return {};
-      }
-    }
     function dismiss() {
       let cache2 = localStorage.getItem(`vue-docs-banner-bk`);
       if (cache2) {
@@ -3081,7 +3041,7 @@ const _sfc_main$2j = {
     };
   }
 };
-const Banner = /* @__PURE__ */ _export_sfc$1(_sfc_main$2j, [["__scopeId", "data-v-cf80d32f"]]);
+const Banner = /* @__PURE__ */ _export_sfc$1(_sfc_main$2j, [["__scopeId", "data-v-597bfb9b"]]);
 const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 const isVisible = (element) => {
   const computed2 = getComputedStyle(element);
