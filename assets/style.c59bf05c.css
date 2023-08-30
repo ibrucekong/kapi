@@ -3662,7 +3662,7 @@ html:not(.banner-dismissed) {
   --vt-banner-height: 30px;
 }
 
-.banner[data-v-4b332335] {
+.banner[data-v-fe6d925f] {
   position: fixed;
   z-index: var(--vp-z-index-banner);
   box-sizing: border-box;
@@ -3683,26 +3683,26 @@ html:not(.banner-dismissed) {
     rgba(100, 126, 255, 1) 100%
   );
 }
-.banner-dismissed .banner[data-v-4b332335] {
+.banner-dismissed .banner[data-v-fe6d925f] {
   display: none;
 }
-a[data-v-4b332335]:hover {
+a[data-v-fe6d925f]:hover {
   text-decoration: underline;
 }
-button[data-v-4b332335] {
+button[data-v-fe6d925f] {
   position: absolute;
   right: 0;
   top: 0;
   padding: 5px;
 }
-.close[data-v-4b332335] {
+.close[data-v-fe6d925f] {
   width: 20px;
   height: 20px;
   fill: #fff;
   transform: rotate(45deg);
 }
 @media (max-width: 720px) {
-a > span[data-v-4b332335] {
+a > span[data-v-fe6d925f] {
     display: none;
 }
 }
