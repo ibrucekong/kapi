@@ -58,11 +58,6 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://kapi.brucekong.com/sdk/</loc>
-  <lastmod>2023-07-27T06:56:44+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://kapi.brucekong.com/community/wechat/</loc>
   <lastmod>2023-07-27T06:56:43+00:00</lastmod>
   <priority>0.80</priority>
@@ -198,11 +193,6 @@
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://kapi.brucekong.com/guide/tools/sdk.html</loc>
-  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
   <loc>https://kapi.brucekong.com/guide/auth.html</loc>
   <lastmod>2023-07-27T06:56:43+00:00</lastmod>
   <priority>0.64</priority>
@@ -329,11 +319,6 @@
 </url>
 <url>
   <loc>https://kapi.brucekong.com/tool/index.html</loc>
-  <lastmod>2023-07-27T06:56:44+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://kapi.brucekong.com/sdk/index.html</loc>
   <lastmod>2023-07-27T06:56:44+00:00</lastmod>
   <priority>0.64</priority>
 </url>
