@@ -1,6 +1,6 @@
 import { d as defineComponent, r as ref, i as onMounted, q as nextTick, k as resolveComponent, u as unref, o as openBlock, c as createElementBlock, F as Fragment, f as renderList, h as createVNode, l as withCtx, w as withDirectives, m as createBlock, e as createBaseVNode, t as toDisplayString, s as vShow, p as pushScopeId, j as popScopeId, _ as _export_sfc } from "./chunks/framework.1251c745.js";
 import { O as OnResize } from "./chunks/onresize.49581790.js";
-const _withScopeId = (n) => (pushScopeId("data-v-4fcc27a8"), n = n(), popScopeId(), n);
+const _withScopeId = (n) => (pushScopeId("data-v-133dc867"), n = n(), popScopeId(), n);
 const _hoisted_1 = {
   key: 0,
   class: "case-container theme pc-mode"
@@ -30,7 +30,6 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     let list = ref();
     let listDefault = ref();
     let listLength = ref([]);
-    let domOnResize = new OnResize();
     function isMobile() {
       let flag = navigator.userAgent.match(
         /(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
@@ -38,6 +37,7 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       return flag != null;
     }
     onMounted(() => {
+      let domOnResize = new OnResize();
       list.value = [];
       listDefault.value = list.value;
       mobile.value = isMobile();
@@ -46,18 +46,18 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
       }
       listLength = list.value.length;
       domOnResize.addResizeEventListener(document.querySelector(".case-container"), () => onResizing());
-    });
-    async function onResizing() {
-      await nextTick();
-      mobile.value = isMobile();
-      if (isMobile()) {
-        setExpandValue();
-      } else {
-        setDefaultValue();
+      async function onResizing() {
+        await nextTick();
+        mobile.value = isMobile();
+        if (isMobile()) {
+          setExpandValue();
+        } else {
+          setDefaultValue();
+        }
+        await nextTick();
+        domOnResize.addResizeEventListener(document.querySelector(".case-container"), () => onResizing());
       }
-      await nextTick();
-      domOnResize.addResizeEventListener(document.querySelector(".case-container"), () => onResizing());
-    }
+    });
     function setExpandValue() {
       let tempList = [];
       for (const group of list.value) {
@@ -170,8 +170,8 @@ const _sfc_main$1 = /* @__PURE__ */ defineComponent({
     };
   }
 });
-const WeChat_vue_vue_type_style_index_0_scoped_4fcc27a8_lang = "";
-const WeChat = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-4fcc27a8"]]);
+const WeChat_vue_vue_type_style_index_0_scoped_133dc867_lang = "";
+const WeChat = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-133dc867"]]);
 const __pageData = JSON.parse('{"title":"微信群","description":"","frontmatter":{"page":true,"footer":false,"title":"微信群"},"headers":[],"relativePath":"community/wechat/index.md","filePath":"community/wechat/index.md"}');
 const __default__ = { name: "community/wechat/index.md" };
 const _sfc_main = /* @__PURE__ */ Object.assign(__default__, {

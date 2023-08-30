@@ -2999,7 +2999,7 @@ const PreferenceSwitch_vue_vue_type_style_index_0_scoped_deb35952_lang = "";
 const PreferenceSwitch_vue_vue_type_style_index_1_lang = "";
 const PreferenceSwitch = /* @__PURE__ */ _export_sfc$1(_sfc_main$2k, [["__scopeId", "data-v-deb35952"]]);
 const Banner_vue_vue_type_style_index_0_lang = "";
-const Banner_vue_vue_type_style_index_1_scoped_b384d476_lang = "";
+const Banner_vue_vue_type_style_index_1_scoped_5cf844fd_lang = "";
 const _hoisted_1$13 = { class: "banner" };
 const _hoisted_2$H = ["href"];
 const _sfc_main$2j = {
@@ -3010,7 +3010,9 @@ const _sfc_main$2j = {
     const textSpan = ref("");
     const textUrl = ref("");
     const textContent = ref("");
-    closeBanner();
+    onMounted(() => {
+      closeBanner();
+    });
     function closeBanner() {
       open.value = false;
       document.documentElement.classList.add("banner-dismissed");
@@ -3043,7 +3045,7 @@ const _sfc_main$2j = {
     };
   }
 };
-const Banner = /* @__PURE__ */ _export_sfc$1(_sfc_main$2j, [["__scopeId", "data-v-b384d476"]]);
+const Banner = /* @__PURE__ */ _export_sfc$1(_sfc_main$2j, [["__scopeId", "data-v-5cf844fd"]]);
 const FOCUSABLE_ELEMENT_SELECTORS = `a[href],button:not([disabled]),button:not([hidden]),:not([tabindex="-1"]),input:not([disabled]),input:not([type="hidden"]),select:not([disabled]),textarea:not([disabled])`;
 const isVisible = (element) => {
   const computed2 = getComputedStyle(element);
