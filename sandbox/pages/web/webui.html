@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Draw Point - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <link rel='stylesheet' href='./css/index.css'>
+  <style type='text/css'>
+    #kapi-container {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body onload='init()'>
+<div id='kapi-container'></div>
+<div class='operation-range'>
+  <div class='row'>
+    <div class='btn' onclick='draw()'>开始绘制点</div>
+    <div class='btn' onclick='stopDraw()'>结束绘制点</div>
+  </div>
+</div>
+<pre id='console-log'><code id='logs'></code></pre>
+<script src="./config.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+<script src="js/highlight/highlight.min.js"></script>
+<script src="./js/kapi.js"></script>
+<script>
+  async function init() {
+    let kapi = await KAPI.build(config.token)
+
+    // 设置参数
+    let options = {
+      server,                                                    // 服务地址
+      netStats: false,                                           // 是否显示网络信息
+      fullscreen: true                                          // 是否要全屏
+    }
+    // 初始化场景
+    let scene = new kapi.Scene('kapi-container', options)
+
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+    printLog(readyStat)
+    if (readyStat.code !== 200) return
+  }
+
+  function draw() {
+
+  }
+
+  function stopDraw() {
+    let a = [{
+      z: 85.03079986572266,
+      y: 4056984.75,
+      x: 511131.5
+    }, {
+      z: 85.03079986572266,
+      y: 4056984.75,
+      x: 511131.5
+    }, {
+      z: 85.03079986572266,
+      y: 4056984.75,
+      x: 511131.5
+    }, {
+      z: 84.9941177368164,
+      y: 4056989,
+      x: 511127.625
+    }, {
+      z: 84.99378967285156,
+      y: 4057004.75,
+      x: 511109.8125
+    }, {
+      z: 84.84740447998047,
+      y: 4057023.5,
+      x: 511086.3125
+    }, {
+      z: 84.72782135009766,
+      y: 4057043.5,
+      x: 511063.96875
+    }, {
+      z: 85.03816223144531,
+      y: 4057059,
+      x: 511038.71875
+    }, {
+      z: 85.2235336303711,
+      y: 4057067,
+      x: 511009.71875
+    }, {
+      z: 85.26409149169922,
+      y: 4057074,
+      x: 510980.5625
+    }, {
+      z: 85.19207000732422,
+      y: 4057077,
+      x: 510950.8125
+    }, {
+      z: 85.163818359375,
+      y: 4057076,
+      x: 510920.84375
+    }, {
+      z: 85.2052993774414,
+      y: 4057080.25,
+      x: 510891.15625
+    }, {
+      z: 85.24292755126953,
+      y: 4057088.5,
+      x: 510862.3125
+    }, {
+      z: 85.2538833618164,
+      y: 4057102.5,
+      x: 510835.96875
+    }, {
+      z: 85.24312591552734,
+      y: 4057123.75,
+      x: 510814.8125
+    }, {
+      z: 85.23637390136719,
+      y: 4057148.25,
+      x: 510797.65625
+    }, {
+      z: 85.17872619628906,
+      y: 4057174.5,
+      x: 510783.0625
+    }, {
+      z: 85.15482330322266,
+      y: 4057201.75,
+      x: 510770.625
+    }, {
+      z: 85.19757843017578,
+      y: 4057219.5,
+      x: 510746.53125
+    }, {
+      z: 85.26732635498047,
+      y: 4057242.25,
+      x: 510728.3125
+    }, {
+      z: 85.31396484375,
+      y: 4057271.25,
+      x: 510730.65625
+    }, {
+      z: 85.32377624511719,
+      y: 4057299.5,
+      x: 510731.84375
+    }, {
+      z: 85.2651138305664,
+      y: 4057327,
+      x: 510743.1875
+    }, {
+      z: 85.25474548339844,
+      y: 4057357,
+      x: 510746.21875
+    }, {
+      z: 85.24759674072266,
+      y: 4057386.75,
+      x: 510748.5625
+    }, {
+      z: 85.23688507080078,
+      y: 4057416.75,
+      x: 510747.78125
+    }, {
+      z: 85.22669219970703,
+      y: 4057446.75,
+      x: 510745.84375
+    }, {
+      z: 85.21903228759766,
+      y: 4057476.5,
+      x: 510748.5
+    }, {
+      z: 85.37450408935547,
+      y: 4057504.25,
+      x: 510739.125
+    }, {
+      z: 85.42894744873047,
+      y: 4057534,
+      x: 510731.65625
+    }, {
+      z: 85.50792694091797,
+      y: 4057564.25,
+      x: 510736.90625
+    }, {
+      z: 85.56240844726562,
+      y: 4057589.25,
+      x: 510753.90625
+    }]
+  }
+</script>
+</body>
+</html>

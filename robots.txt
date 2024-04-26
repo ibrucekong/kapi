@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /CNAME
+Sitemap: https://kapidev.com/sitemap.xml

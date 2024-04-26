@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Show Maker - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <link rel='stylesheet' href='./css/index.css'>
+  <style type='text/css'>
+    #kapi-container {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body onload='init()'>
+<div class='container'>
+  <div id='kapi-container'></div>
+  <div class='operation-range'>
+    <div class='row'>
+      <div class='btn' onclick='addAll()'>全部标注</div>
+      <div class='btn' onclick='hideAll()'>全部隐藏</div>
+      <div class='btn' onclick='showAll()'>全部显示</div>
+    </div>
+  </div>
+</div>
+<pre id='console-log'><code id='logs'></code></pre>
+<script src="./config.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+<script src="js/highlight/highlight.min.js"></script>
+<script src="./js/kapi.js"></script>
+<script>
+  let markerInstance
+
+  async function init() {
+    let kapi = await KAPI.build(config.token)
+
+    // 设置参数
+    let options = {
+      server,                                                    // 服务地址
+      netStats: false,                                           // 是否显示网络信息
+      fullscreen: true                                          // 是否要全屏
+    }
+    // 初始化场景
+    let scene = new kapi.Scene('kapi-container', options)
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+    printLog(readyStat)
+    if (readyStat.code !== 200) return
+
+    // 实例化
+    markerInstance = new kapi.Marker()
+    // 先清空
+    await markerInstance.clear()
+  }
+
+  async function addAll() {
+    let points = [
+      {
+        id: 200,
+        name: '奥体东馆',
+        position: {x: 117.11958, y: 36.65598, z: 100},
+        isGraphic: true,
+        type: 'sport',
+        visible: true
+      },
+      {
+        id: 201,
+        name: '奥体西场',
+        position: {x: 117.110373, y: 36.656096, z: 100},
+        isGraphic: true,
+        type: 'sport',
+        visible: true
+      },
+      {
+        id: 202,
+        name: '军悦酒店',
+        position: {x: 117.1198455, y: 36.661012, z: 100},
+        isGraphic: true,
+        type: 'hotel',
+        visible: true
+      },
+      {
+        id: 203,
+        name: 'S01',
+        position: {x: 117.121268, y: 36.6606182, z: 200},
+        isGraphic: true,
+        type: 'kapi',
+        visible: true
+      },
+      {
+        id: 204,
+        name: 'S02',
+        position: {x: 117.1231588, y: 36.6604546, z: 200},
+        isGraphic: true,
+        type: 'kapi',
+        visible: true
+      },
+      {
+        id: 205,
+        name: 'S05',
+        position: {x: 117.12127, y: 36.6619417, z: 200},
+        isGraphic: true,
+        type: 'kapi',
+        visible: true
+      },
+      {
+        id: 206,
+        name: 'S06',
+        position: {x: 117.1233999, y: 36.661901, z: 200},
+        isGraphic: true,
+        type: 'kapi',
+        visible: true
+      },
+      {
+        id: 207,
+        name: '室外停车场',
+        position: {x: 117.1218976, y: 36.6632146, z: 100},
+        isGraphic: true,
+        type: 'sport',
+        visible: true
+      },
+      {
+        id: 208,
+        name: '测试足球场',
+        position: {x: 117.1214599, y: 36.6642538, z: 100},
+        isGraphic: true,
+        type: 'sport',
+        visible: true
+      },
+      {
+        id: 209,
+        name: '齐鲁软件园',
+        position: {x: 117.127776, y: 36.671657, z: 100},
+        isGraphic: true,
+        type: 'park',
+        visible: true
+      },
+      {
+        id: 210,
+        name: '龙奥大厦',
+        position: {x: 117.113914, y: 36.651111, z: 100},
+        isGraphic: true,
+        type: 'government',
+        visible: true
+      },
+      {
+        id: 211,
+        name: '省立医院东院区',
+        position: {x: 117.1154305, y: 36.6626439, z: 100},
+        isGraphic: true,
+        type: 'hospital',
+        visible: true
+      },
+      {
+        id: 212,
+        name: '济南高新区伯乐实验学校',
+        position: {x: 117.1266569, y: 36.6619592, z: 100},
+        isGraphic: true,
+        type: 'school',
+        visible: true
+      },
+      {
+        id: 213,
+        name: '山东师范大学附属小学',
+        position: {x: 117.1220769, y: 36.6708516, z: 100},
+        isGraphic: true,
+        type: 'school',
+        visible: true
+      }
+    ]
+    let markerObj, marker1
+    for (const pointInfo of points) {
+      // 标注
+      markerObj = await markerInstance.createMarker(pointInfo.position, {
+        id: pointInfo.id,
+        name: pointInfo.name,
+        type: pointInfo.type,
+        isGraphic: pointInfo.isGraphic,
+        visible: pointInfo.visible
+      })
+      marker1 = await markerInstance.add(markerObj)
+    }
+  }
+
+  function hideAll() {
+    markerInstance.hideAll()
+  }
+
+  function showAll() {
+    markerInstance.showAll()
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://kapidev.com/</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/introduction.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/quick-start.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/versions.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/examples/</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/case/</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/auth/</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/cli/</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/tool/</loc>
+  <lastmod>2023-07-27T06:56:44+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/community/wechat/</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/community/qq/</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/installation.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/introduction</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/quick-start</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/versions</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/environment.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/instance.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/scene.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/camera.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/marker.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/controller.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/measure.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/draw.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/analyze.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/coord.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/data.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/iot.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/layer.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/event.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/ui.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tutorial/tool.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/advanced/async.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/advanced/plugins.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tools/cli.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/tools/tool.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/auth.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/guide/help.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/scene.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/camera.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/marker.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/controller.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/measure.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/draw.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/analyze.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/coord.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/data.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/iot.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/layer.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/event.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/ui.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/tool.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/kapi.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/api/kapi-const.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/examples/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/sandbox/index.html</loc>
+  <lastmod>2023-07-27T06:56:44+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/case/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/auth/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/authorization/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/cli/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/tool/index.html</loc>
+  <lastmod>2023-07-27T06:56:44+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/community/wechat/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://kapidev.com/community/qq/index.html</loc>
+  <lastmod>2023-07-27T06:56:43+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

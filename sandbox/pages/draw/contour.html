@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Draw Contour - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <link rel='stylesheet' href='./css/index.css'>
+  <style type='text/css'>
+    #kapi-container {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body onload='init()'>
+<div class='container'>
+  <div id='kapi-container'></div>
+  <div class='operation-range'>
+    <div class='row'>
+      <div class='btn' onclick='drawContour()'>绘制区域轮廓</div>
+      <div class='btn' onclick='delContour()'>删除区域轮廓</div>
+      <div class='btn' onclick='drawCircularContour()'>绘制圆形区域轮廓</div>
+      <div class='btn' onclick='delCircularContour()'>删除圆形区域轮廓</div>
+    </div>
+  </div>
+</div>
+<pre id='console-log'><code id='logs'></code></pre>
+<script src="./config.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+<script src="js/highlight/highlight.min.js"></script>
+<script src="./js/kapi.js"></script>
+<script>
+  let draw, id
+
+  async function init() {
+    let kapi = await KAPI.build(config.token)
+
+    // 设置参数
+    let options = {
+      server, // 服务地址
+      netStats: false, // 是否显示网络信息
+      fullscreen: true, // 是否显示全屏按钮
+      // 当keyboardEvents为true时，可以设置忽略键，默认如下
+      // 按键名称，参考 https://note.youdao.com/s/UvkGNv1 中的“按键”字段
+      keyboardIgnoreList: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
+        'Tab', '`'
+      ]
+    }
+    // 初始化场景
+    let scene = new kapi.Scene('kapi-container', options)
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+    printLog(readyStat)
+    if (readyStat.code !== 200) return
+
+    // 将界面缩放为 192x108（等比），并同步修改video容器大小
+    draw = new kapi.Draw()
+  }
+
+  function drawContour() {
+    let option = {
+      isGraphic: true,
+      id: '1'
+    }
+    let contour = [{
+      x: 117.135867,
+      y: 36.666129,
+      z: 0
+    }, {
+      x: 117.13505,
+      y: 36.666165,
+      z: 0
+    }, {
+      x: 117.13372,
+      y: 36.666288,
+      z: 0
+    }, {
+      x: 117.132966,
+      y: 36.666578,
+      z: 0
+    }, {
+      x: 117.132957,
+      y: 36.667056,
+      z: 0
+    }, {
+      x: 117.13293,
+      y: 36.668264,
+      z: 0
+    }, {
+      x: 117.132957,
+      y: 36.668554,
+      z: 0
+    }, {
+      x: 117.132984,
+      y: 36.66893,
+      z: 0
+    }, {
+      x: 117.132975,
+      y: 36.669285,
+      z: 0
+    }, {
+      x: 117.132957,
+      y: 36.669538,
+      z: 0
+    }, {
+      x: 117.133415,
+      y: 36.669538,
+      z: 0
+    }, {
+      x: 117.133981,
+      y: 36.669545,
+      z: 0
+    }, {
+      x: 117.134592,
+      y: 36.669632,
+      z: 0
+    }, {
+      x: 117.13558,
+      y: 36.66961,
+      z: 0
+    }, {
+      x: 117.136155,
+      y: 36.669574,
+      z: 0
+    }, {
+      x: 117.136164,
+      y: 36.669285,
+      z: 0
+    }, {
+      x: 117.136316,
+      y: 36.669133,
+      z: 0
+    }, {
+      x: 117.136586,
+      y: 36.668865,
+      z: 0
+    }, {
+      x: 117.136568,
+      y: 36.668518,
+      z: 0
+    }, {
+      x: 117.136541,
+      y: 36.668192,
+      z: 0
+    }, {
+      x: 117.136397,
+      y: 36.667859,
+      z: 0
+    }, {
+      x: 117.136379,
+      y: 36.667483,
+      z: 0
+    }, {
+      x: 117.136298,
+      y: 36.667099,
+      z: 0
+    }, {
+      x: 117.136244,
+      y: 36.666665,
+      z: 0
+    }]
+    draw.drawContour(contour, option)
+  }
+
+  function delContour() {
+    draw.removeContour('1')
+  }
+
+  function drawCircularContour() {
+    let option = {
+      isGraphic: false,
+      radius: 50,
+      location: {
+        x: 511128,
+        y: 4056989,
+        z: 85
+      }
+    }
+    draw.drawCircularContour(option).then(response => {
+      if (response.code !== 200) {
+        throw response.message
+      }
+      //获取圆形区域轮廓名称
+      id = response.data.id
+    })
+  }
+
+  function delCircularContour() {
+    draw.removeCircularContour(id)
+
+  }
+</script>
+</body>
+
+</html>

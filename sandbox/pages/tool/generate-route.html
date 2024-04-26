@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Auto generate route - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .route-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+    }
+
+    .left {
+      width: 350px;
+      height: 100%;
+      background: #252526;
+    }
+
+    .point-list {
+      height: 40px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
+      font-weight: bold;
+    }
+
+    .title {
+      color: #eeeeee;
+      background: #252526;
+    }
+
+    .title-none {
+      color: white;
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    .edit-mode-mask {
+      color: white;
+      width: 100%;
+      height: calc(100% - 300px);
+      overflow-y: auto;
+      background: #252526;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .edit-content {
+      color: white;
+      padding-left: 20px;
+    }
+
+    #kapi-container {
+      flex: 1;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .span-style {
+      font-size: 16px;
+      font-weight: bold;
+      padding-top: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(164, 164, 164, 0.61);
+      width: 400px;
+      display: inline-flex;
+
+      user-select: none;
+    }
+  </style>
+
+  <style>
+    /* 暗黑主题 */
+    /* 表头字体颜色 */
+    .el-table thead{
+      color: #c8cfdd!important;
+    }
+
+    /* 表格字体颜色 */
+    .el-table{
+      color: #c8cfdd!important;
+      border-spacing: 0;
+    }
+
+    .el-table thead {
+      background: rgb(54, 54, 58) !important;
+    }
+
+    /* 头部 */
+    .el-table th.el-table__cell {
+      background-color: rgb(37, 37, 38)!important;
+    }
+
+    /* 侧边空白区域 */
+    .el-table__header-wrapper{
+      background-color: rgb(37, 37, 38)!important;
+    }
+    .el-table__body-wrapper {
+      background-color: rgb(37, 37, 38)!important;
+    }
+
+    .el-table td, .el-table th.is-leaf,.el-table--border, .el-table--group{
+      border-color: #63DFFF!important;
+    }
+
+    /* 单数行 */
+    .el-table tr {
+      background-color: rgb(37, 37, 38)!important;
+      /* background-color: #05133f; */
+    }
+    /* 偶数行 */
+    .el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell{
+      background-color: rgb(37, 37, 38)!important;
+    }
+    .el-table td.el-table__cell, .el-table th.el-table__cell.is-leaf {
+      border-bottom: 1px solid rgb(37, 37, 38)!important;
+    }
+
+    /* 表格悬浮 */
+    .el-table--enable-row-hover .el-table__body tr:hover > td {
+      background-color: #29385e !important;
+      /* background-color: #1f3157 !important; */
+    }
+
+    /* 表格底部线条bug */
+    .el-table::before {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 0px;
+    }
+    /* 输入框 */
+    input{
+      border-color: #2f61df!important;
+    }
+    input::-webkit-input-placeholder{
+      color: #93969e !important;
+    }
+    .el-input__inner:hover {
+      border-color: #2f61df!important;
+    }
+    .el-input__inner {
+      /* background-color: rgb(37, 37, 38); */
+      background-color: #213057!important;
+      border-radius: 8px;
+      border-color: rgb(37, 37, 38)!important;
+      color: aliceblue;
+    }
+
+    /* 按钮 */
+    .el-button--primary {
+      color: #409EFF;
+      background-color: #213057!important;
+      border-color: #213057!important;
+    }
+    .el-button--primary:focus, .el-button--primary:hover {
+      background-color: #364b80!important;
+      border-color: #364b80!important;
+      color: #b0d6fc!important;
+    }
+  </style>
+
+  <style>
+    /* .el-table--border td, .el-table--border th, .el-table__body-wrapper .el-table--border.is-scrolling-left~.el-table__fixed {
+       border: 0!important;
+     }*/
+    .el-table--border, .el-table--group {
+      border-left: #252526!important;
+      /*border-top: #252526!important;*/
+      border-right: #252526!important;
+    }
+    .el-table::before {
+      height: 0!important;
+    }
+    .el-table--border::after, .el-table--group::after, .el-table::before {
+      background-color: #252526!important;
+    }
+
+
+    .add-point-action {
+      position: fixed;
+      left: 370px;
+      bottom: 20px;
+      z-index: 999;
+
+      display: inline-block;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      background: #fff;
+      border: 1px solid #dcdfe6;
+      color: #606266;
+      -webkit-appearance: none;
+      text-align: center;
+      box-sizing: border-box;
+      outline: none;
+      margin: 0;
+      transition: .1s;
+      font-weight: 500;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .add-point-action:hover {
+      transform: scale(1.1);
+    }
+
+    .copy-action {
+      position: fixed;
+      left: 500px;
+      bottom: 20px;
+      z-index: 999;
+
+      display: inline-block;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      background: #fff;
+      border: 1px solid #dcdfe6;
+      color: #606266;
+      -webkit-appearance: none;
+      text-align: center;
+      box-sizing: border-box;
+      outline: none;
+      margin: 0;
+      transition: .1s;
+      font-weight: 500;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .copy-action:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+<div class='route-container' id='app'>
+  <div class='left'>
+    <div class='point-list'>
+      <div class='title'>节点列表</div>
+      <div v-show='!noData'>
+        <el-button
+          v-show='!noData'
+          size="mini"
+          @click="markerAll()">标注全部</el-button>
+        <el-button
+          size="mini"
+          @click="clearPoint()">清除标注</el-button>
+      </div>
+      <!--      <div v-show='!editMode'>
+              <el-button
+                v-show='!noData'
+                size="mini"
+                @click="copy()">复制</el-button>
+              <el-button
+                size="mini"
+                @click="addPoint()">添加</el-button>
+            </div>-->
+    </div>
+    <div v-show='noData' class='title-none'>暂无数据</div>
+    <el-table
+      v-show='!editMode && !noData'
+      :data="route"
+      @cell-click='cellHandleClick'
+      :cell-style="setStyle"
+      border
+      style="width: 100%; height: calc(100% - 300px); overflow-y: auto; background: #252526;"
+      :header-cell-style="{background:'#252526', color:'#eee'}">
+      <el-table-column
+        prop="name"
+        align='center'
+        label="序号"
+        width="60">
+      </el-table-column>
+      <el-table-column label="操作" align='center'>
+        <template slot-scope="scope">
+          <el-dropdown @click="sort" size='mini'>
+            <el-button size='mini'
+                       @click.native.stop=''>
+              调序<i class="el-icon-arrow-down el-icon--right"></i>
+            </el-button>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item
+                v-show='scope.$index !== 0'
+                @click.native.stop="sort(0, scope.row)">置顶</el-dropdown-item>
+              <el-dropdown-item
+                @click.native.stop="sort(1, scope.row)">上移</el-dropdown-item>
+              <el-dropdown-item
+                @click.native.stop="sort(2, scope.row)">下移</el-dropdown-item>
+              <el-dropdown-item
+                v-show='scope.$index !== route.length - 1'
+                @click.native.stop="sort(3, scope.row)">置底</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          &nbsp;
+          <el-button
+            size="mini"
+            @click.stop="handleEdit(scope.row)">编辑</el-button>
+          <el-button
+            size="mini"
+            type="danger"
+            @click.stop="handleDelete(scope.row)">删除</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
+
+    <div v-show='editMode' class='edit-mode-mask'>
+      <el-button
+        size="mini"
+        @click="handleEditDone()">保 存</el-button>
+      <span style='padding-top: 20px;'>编辑模式下无法操作列表清单</span>
+      <span style='padding-top: 20px; color: #8ca8b6; font-weight: bold;'>点击ESC取消修改</span>
+    </div>
+
+    <div v-show='editMode' class='edit-content'>
+
+    </div>
+
+    <div v-show='!editMode' class='add-point-action' @click='addPoint()'>添加漫游点</div>
+    <div v-show='!noData && !editMode' class='copy-action' @click='copy()' title='点击后，将会把结果复制到剪切板'>复制漫游路线</div>
+  </div>
+  <div id="kapi-container"></div>
+</div>
+<textarea id="textarea"></textarea>
+<script src="./config.js"></script>
+<script src="js/vue.min.js"></script>
+<link href="js/element-ui/index.min.css" rel="stylesheet">
+<script src="js/element-ui/index.min.js"></script>
+<script src="./js/kapi.js"></script>
+<script src='./js/jquery-1.8.3.min.js'></script>
+<script src='./js/layer/layer.js'></script>
+<script>
+  // layer.msg('1、使用Shift+X新增漫游点<br>2、使用Shift+C复制漫游路线', {icon: 7, time: 0, closeBtn: true, offset: [10, window.innerWidth - 375] })
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        index: 0, // 全局更新，到几了
+        route: [],
+        kapi: undefined,
+        scene: undefined,
+        camera: undefined,
+        markerInstance: undefined,
+        coord: undefined,
+        actionName: '1', // 1 开始，0 结束
+        editMode: false,
+        currentEditRow: undefined
+      }
+    },
+    mounted() {
+      // 从本地读取数据
+      this.index = localStorage.getItem('route-index') ? parseInt(localStorage.getItem('route-index')) : 0
+      this.route = localStorage.getItem('route-data') ? JSON.parse(localStorage.getItem('route-data')) : []
+      this.route.forEach((r,i) => {
+        r.name = i+1
+      })
+      this.index = this.route.length
+
+      this.init()
+
+      this.$notify.info({
+        title: '提示',
+        dangerouslyUseHTMLString: true,
+        message: `1、使用Shift+X新增漫游点<br>
+        2、使用Shift+C复制漫游路线`,
+        duration: 0
+      });
+
+      window.onkeyup = (e) => {
+        if (e.code === 'Escape'){
+          if (this.editMode) {
+            this.editMode = false
+            // 取消修改
+            this.toast(`已取消坐标修改`, 'info')
+          }
+        }
+        if(e.shiftKey && e.code === 'KeyX'){
+          this.addPoint()
+        }if(e.shiftKey && e.code === 'KeyC'){
+          this.copy()
+        }else if(e.altKey){
+          // alert("alt键被按下了");
+        }else if(e.ctrlKey){
+          // alert("ctrl键被按下了");
+        }
+      }
+    },
+    computed: {
+      noData() {
+        return this.route.length === 0
+      }
+    },
+    methods: {
+      async init() {
+        this.kapi = await KAPI.build()
+
+        // 设置参数
+        let options = {
+          server,                                                    // 服务地址
+          netStats: true,                                            // 是否显示网络信息
+          fullscreen: true,                                          // 是否显示全屏按钮
+        }
+        this.scene = new this.kapi.Scene('kapi-container', options)
+
+        // 等待场景响应好
+        let readyStat = await this.scene.ready()
+        if (readyStat.code !== 200) throw readyStat.message
+
+        this.camera = new this.kapi.Camera()
+
+        this.markerInstance = new this.kapi.Marker()
+
+        this.coord = new this.kapi.Coord()
+      },
+      async addPoint() {
+        let cameraLocation
+        try {
+          cameraLocation = await this.camera.getCameraInfo()
+        }catch (e) {
+          this.toast(`坐标失败获取，已中断`, 'warn')
+          return false
+        }
+        if (!cameraLocation.code === 200) {
+          // 报错，停止录制
+          console.log(cameraLocation.message)
+
+          this.toast(`坐标失败获取，已中断`, 'warn')
+          return
+        }
+        this.index++
+        let position = cameraLocation.data.project
+        position.rotation = cameraLocation.data.rotation
+        this.toast(`添加漫游点成功`, 'info')
+
+        let data = {position, id: this.uuid(), name: this.index}
+        this.route.push(data)
+        await this.marker(data)
+        // 本地持久化
+        localStorage.setItem('route-index', this.index)
+        localStorage.setItem('route-data', JSON.stringify(this.route))
+      },
+      async marker(data) {
+        let { position, id, name } = data
+
+        let attributes = {
+          id: id,
+          name: name,
+          type: 'sport',
+          isGraphic: false,
+          visible: true,
+          scale: 1
+        }
+        // 标注
+        let markerObj = await this.markerInstance.createMarker(position, attributes)
+        let marker1 = await this.markerInstance.add(markerObj)
+        console.log('add marker', marker1)
+      },
+      markerAll() {
+        let item
+        for (const r of this.route) {
+          item = {
+            id: r.id,
+            name: r.name,
+            type: 'sport',
+            isGraphic: false,
+            visible: true,
+            scale: 1,
+            position: r.position
+          }
+          this.markerInstance.add(item)
+        }
+        this.toast(`全部标注成功`, 'info')
+      },
+      async clearPoint() {
+        // 先清空
+        await this.markerInstance.clear()
+        this.toast(`清空标注成功`, 'info')
+      },
+      copy() {
+        // 组织数据
+        let data = []
+        this.route.forEach(r => {
+          data.push(r.position)
+        })
+        this.copyToClipboard(JSON.stringify(data))
+      },
+      cellHandleClick(row, column, cell, event) {
+        //如果规定点击某一列执行，利用column中的label属性
+        if(column.label === '序号') {
+          //执行逻辑
+          this.rowLocation(row)
+        }
+      },
+      setStyle(column) {
+        // 从0开始
+        if(column.columnIndex === 0) {
+          return "cursor: pointer;"
+        }
+      },
+      // 点击行，定位
+      async rowLocation(row) {
+        console.log(row.position)
+        await this.camera.flyTo(row.position)
+        this.toast(`已定位到${row.name}视角处`, 'info')
+      },
+      // 排序
+      sort(type, row) {
+        switch (type) {
+          case 0:
+            this.handleTop(row)
+            this.toast(`${row.name}已置顶`, 'info')
+            break;
+          case 1:
+            this.handleUp(row)
+            this.toast(`${row.name}已上移`, 'info')
+            break;
+          case 2:
+            this.handleDown(row)
+            this.toast(`${row.name}已下移`, 'info')
+            break;
+          case 3:
+            this.handleBottom(row)
+            this.toast(`${row.name}已置底`, 'info')
+            break;
+        }
+      },
+      // 移动到顶部
+      handleTop(row) {
+        let arr = null;
+        let multipleSelection = [row]
+        for (let k = 0; k < multipleSelection.length; k++) {
+          arr = this.route.findIndex(
+            item => item.id === multipleSelection[k].id
+          );
+          this.route.unshift(this.route.splice(arr, 1)[0]);
+        }
+      },
+      // 向上移动
+      handleUp(row) {
+        // 将当前放到第一个
+        let multipleSelection = [row]
+        let arr = [];
+        for (let i = 0; i < multipleSelection.length; i++) {
+          arr.push(
+            this.route.findIndex(
+              item => item.id === multipleSelection[i].id
+            )
+          );
+        }
+        arr.sort((n1, n2) => n1 - n2);
+
+        for (let k = 0; k < arr.length; k++) {
+          let add = this.route;
+          if (arr[k] != 0) {
+            this.route[arr[k]] = this.route.splice(
+              arr[k] - 1,
+              1,
+              add[arr[k]]
+            )[0];
+          } else {
+            this.route.push(this.route.shift());
+          }
+        }
+      },
+      // 向下移动
+      handleDown(row) {
+        let arr = [];
+        let multipleSelection = [row]
+        for (let i = 0; i < multipleSelection.length; i++) {
+          arr.push(
+            this.route.findIndex(
+              item => item.id === multipleSelection[i].id
+            )
+          );
+        }
+        arr.sort((n1, n2) => n2 - n1);
+
+        for (let k = 0; k < arr.length; k++) {
+          let add = this.route;
+          if (arr[k] != this.route.length - 1) {
+            this.route[arr[k]] = this.route.splice(
+              arr[k] + 1,
+              1,
+              add[arr[k]]
+            )[0];
+          } else {
+            this.route.unshift(this.route.splice(index, 1)[0]);
+          }
+        }
+      },
+      // 移动到底部
+      handleBottom(row) {
+        let arr = null;
+        let multipleSelection = [row]
+        for (let k = 0; k < multipleSelection.length; k++) {
+          arr = this.route.findIndex(
+            item => item.id === multipleSelection[k].id
+          );
+
+          let add = this.route;
+          if (arr != this.route.length - 1) {
+            this.route.push(add[arr]);
+            this.route.splice(arr, 1);
+          }
+        }
+      },
+      // 修改当前id的位置信息
+      handleEdit(row) {
+        let dom = document.getElementsByClassName('edit-content')[0]
+        dom.innerHTML = `<span class='span-style'>序号: ${row.name}</span><br>
+<span>{</span><br>
+<span style='display: inline-block'>&nbsp;&nbsp;x: ${row.position.x},</span><br>
+<span style='display: inline-block'>&nbsp;&nbsp;y: ${row.position.y},</span><br>
+<span style='display: inline-block'>&nbsp;&nbsp;z: ${row.position.z},</span><br>
+<span style='display: inline-block'>&nbsp;&nbsp;rotation: {</span><br>
+<span style='display: inline-block'>&nbsp;&nbsp;&nbsp;&nbsp;roll: ${row.position.rotation.roll},</span><br>
+<span style='display: inline-block'>&nbsp;&nbsp;&nbsp;&nbsp;pitch: ${row.position.rotation.pitch},</span><br>
+<span style='display: inline-block'>&nbsp;&nbsp;&nbsp;&nbsp;yaw: ${row.position.rotation.yaw}</span><br>
+<span>&nbsp;&nbsp;}<br></span>
+<span>}`
+
+        this.editMode = true
+
+        this.currentEditRow = row
+      },
+      async handleEditDone() {
+        this.editMode = false
+
+        let cameraLocation = await this.camera.getCameraInfo()
+        if (!cameraLocation.code === 200) {
+          // 报错，停止录制
+          console.log(cameraLocation.message)
+          this.toast('坐标失败获取，已中断', 'warn')
+          return
+        }
+
+        let position = cameraLocation.data.project
+        position.rotation = cameraLocation.data.rotation
+        this.route.forEach(r => {
+          if (r.id === this.currentEditRow.id) {
+            r.positon = position
+          }
+        })
+        this.toast('修改成功', 'info')
+      },
+      // 删除当前id的元素
+      async handleDelete(row) {
+        let multipleSelection = [row]
+        for (let k = 0; k < multipleSelection.length; k++) {
+          this.route.splice(
+            this.route.findIndex(
+              item => item.id === multipleSelection[k].id
+            ),
+            1
+          )
+        }
+        let marker1 = await this.markerInstance.remove(row.id)
+        console.log('remove marker: ', marker1)
+        console.log('route-data', JSON.stringify(this.route))
+        // 存储
+        localStorage.setItem('route-data', JSON.stringify(this.route))
+      },
+      uuid() {
+        function S4() {
+          return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        }
+        return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
+      },
+      copyToClipboard(text) {
+        if (navigator.clipboard) {
+          // localhost 或者 https 下可以使用
+          navigator.clipboard.writeText(text)
+        } else {
+          let textarea = document.getElementById('textarea')
+          textarea.value = text // 修改文本框的内容
+          textarea.select() // 选中文本
+          document.execCommand('copy')
+        }
+        this.toast('已将录制的路线复制到剪切板中', 'info')
+      },
+      /**
+       * 弹窗提示
+       * @param text 提示信息
+       * @param type 提示类型，info， warn
+       */
+      toast(text, type) {
+        switch (type) {
+          case 'info':
+            type = 1
+            break
+          case 'warn':
+            type = 7
+            break
+        }
+        layer.msg(text, { icon: type, offset: [window.innerHeight / 2 - 50, window.innerWidth / 2 + 100] })
+      }
+    }
+  })
+</script>
+</body>
+</html>

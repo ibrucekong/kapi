@@ -1,0 +1,130 @@
+html {
+  font-size: 16px;
+}
+
+html, body, #app {
+  height: auto;
+  width: 100%;
+}
+
+#iframeParent {
+  /*height: 100%;*/
+  color: white !important;
+  overflow: hidden;
+  min-height: calc(100vh - 36px);
+}
+
+#innerPage {
+  height: 100%;
+  min-width: 100%;
+  background: white;
+  border: hidden;
+  outline: none;
+  min-height: calc(100vh - 36px);
+}
+
+
+.text-indent {
+  text-indent: 30px
+}
+
+:root {
+  scrollbar-width: thin !important;
+  /*header中的比例*/
+  --item-flex: 0;
+  --item-flex2: 24;
+
+  /*home页面的比例*/
+  --item-code-list: 12;
+  --item-preview: 12;
+
+  /*沙箱里面的比例*/
+  --item-list: 4;
+  --item-code: 20;
+}
+
+
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  margin: 0px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-size: 1rem;
+  height: auto;
+  width: 100%;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.rotation-img {
+  display: inline-block;
+  -webkit-transform: rotate(360deg);
+  animation: rotation 1s linear infinite;
+  -moz-animation: rotation 1s linear infinite;
+  -webkit-animation: rotation 1s linear infinite;
+  -o-animation: rotation 1s linear infinite;
+}
+
+.light {
+  background: #FFF;
+  color: #232323;
+  padding: 20px;
+}
+
+
+.el-notification.right {
+  background: #3d5965 !important;
+  border: 1px solid #005ec7 !important;
+}
+
+.el-notification__content {
+  margin: 2px 0 0 !important;
+  color: #0fc8e2 !important;
+}
+
+.el-notification.right {
+  right: 40px !important;
+}
+
+.el-notification__title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #0fc8e2 !important;
+  margin: 0;
+}
+
+.__hidden-cursor {
+  cursor: none !important;
+}
+
+
+/*iframe code*/
+.playground, .bue3-playground, .bue3-frame {
+  height: 100% !important;
+}
+
+.el-table--enable-row-transition .el-table__body td {
+  padding: 12px 0 !important;
+}

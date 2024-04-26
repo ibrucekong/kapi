@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Draw Decal - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <link rel='stylesheet' href='./css/index.css'>
+  <style type='text/css'>
+    #kapi-container {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body onload='init()'>
+<div class='container'>
+  <div id='kapi-container'></div>
+  <div class='operation-range'>
+    <div class='row'>
+      <div class='btn' onclick='drawDecal()'>绘制贴花</div>
+      <select name='type' id='type'>贴花类型
+        <option value='manholecover'>圆形井盖</option>
+        <option value='straight'>直行引导线</option>
+        <option value='straightright'>直行加右转引导线</option>
+        <option value='straightleft'>直行加左转引导线</option>
+        <option value='right'>右转引导线</option>
+        <option value='left'>左转引导线</option>
+      </select>
+      <div class='btn' onclick='delDecal()'>删除贴花</div>
+    </div>
+  </div>
+</div>
+<pre id='console-log'><code id='logs'></code></pre>
+<script src="./config.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+<script src="js/highlight/highlight.min.js"></script>
+<script src="./js/kapi.js"></script>
+<script>
+  let draw, id
+
+  async function init() {
+    let kapi = await KAPI.build(config.token)
+
+    // 设置参数
+    let options = {
+      server, // 服务地址
+      netStats: false, // 是否显示网络信息
+      fullscreen: true, // 是否显示全屏按钮
+      // 当keyboardEvents为true时，可以设置忽略键，默认如下
+      // 按键名称，参考 https://note.youdao.com/s/UvkGNv1 中的“按键”字段
+      keyboardIgnoreList: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12',
+        'Tab', '`'
+      ]
+    }
+    // 初始化场景
+    let scene = new kapi.Scene('kapi-container', options)
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+    printLog(readyStat)
+    if (readyStat.code !== 200) return
+
+    // 将界面缩放为 192x108（等比），并同步修改video容器大小
+    draw = new kapi.Draw()
+  }
+
+  function drawDecal() {
+    let type = document.getElementById('type').value
+    let option = {
+      isGraphic: false,
+      type,
+      location: {
+        x: 511028,
+        y: 4057089,
+        z: 85
+      },
+      rotation: {
+        x: 0,
+        y: 0,
+        z: 0
+      }
+    }
+    draw.drawDecal(option).then(response => {
+      alert(type)
+      if (response.code !== 200) {
+        throw response.message
+      }
+      //获取贴花名称
+      id = response.data.id
+    })
+  }
+
+  function delDecal() {
+    draw.removeDecal(id)
+  }
+</script>
+</body>
+
+</html>

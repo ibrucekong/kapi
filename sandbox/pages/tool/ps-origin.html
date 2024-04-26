@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pixel Streamer Origin - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <style>
+    @font-face {
+      font-family: element-icons;
+      src: url(js/element-ui/fonts/element-icons.woff) format('woff'), url(js/element-ui/fonts/element-icons.ttf) format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    html, body, #kapi-container {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    body.dark {
+      background: black;
+    }
+
+    #kapi-container {
+      width: 100%;
+      height: calc(100% - 375px);
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 375px;
+      display: flex;
+      z-index: 2;
+      padding: 0 12px;
+      border-top: 1px solid #ededed;
+    }
+
+    label {
+      color: white;
+    }
+
+    .el-form {
+      width: auto;
+    }
+
+    .el-form-item {
+      margin-bottom: 0 !important;
+    }
+
+    .el-form-item__content {
+      color: white;
+    }
+
+    .el-icon-close:hover {
+      color: red !important;
+    }
+
+    .el-select-dropdown.el-popper {
+      z-index: 3;
+    }
+
+    #console-log {
+      font-size: 13px;
+      width: 370px;
+      overflow: auto;
+      flex: 1;
+      min-width: 370px;
+
+      border-left: 0.5px solid #ededed;
+    }
+
+    #console-log::-webkit-scrollbar {
+      display: none;
+    }
+
+    #console-log code:before {
+      position: fixed;
+      content: ' LOG INFO ';
+      width: auto;
+      height: auto;
+      background: orange;
+      color: white;
+      margin-bottom: 3px;
+      border-bottom-right-radius: 5px;
+      z-index: 2;
+    }
+
+    .copy {
+      width: 16px;
+      height: 16px;
+      border-radius: 20%;
+      position: fixed;
+      right: 20px;
+      bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      cursor: pointer;
+      color: white;
+      z-index: 2;
+    }
+
+    .copy {
+      transition: all .4s;
+      -moz-transition: all .4s;
+      -webkit-transition: all .4s;
+      -o-transition: all .4s;
+    }
+
+    .copy:hover {
+      transform: scale(1.2);
+    }
+
+    .el-icon-document-copy {
+      color: black;
+    }
+
+    #offline-api,
+    #loading-api {
+      background-color: transparent !important;
+    }
+  </style>
+  <script src="js/vue.min.js"></script>
+  <script src="js/jquery-1.8.3.min.js"></script>
+  <link href="js/element-ui/index.min.css" rel="stylesheet">
+  <script src="js/element-ui/index.min.js"></script>
+  <link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+  <script src="js/highlight/highlight.min.js"></script>
+
+  <script src='./js/deep-assign.js'></script>
+  <script src="./config.js"></script>
+  <script src="./js/kapi.js"></script>
+</head>
+<body>
+<div id='app' style='height: 100%; width: 100%;'>
+  <div class='operation-range'>
+    <div style='padding: 7px 20px 0 10px;'>
+      <el-select
+        v-model="methodName"
+        filterable
+        size='mini'
+        style="width: 204px;"
+        placeholder="请选择接口名称">
+        <el-option
+          v-for="item in interfaceOptions"
+          :key="item.code"
+          :label="item.name"
+          :value="item.code">
+        </el-option>
+      </el-select>
+      <div style='padding-top: 12px;display: flex;justify-content: space-between;'>
+        <el-button size='mini' class="addstyle" style='width: 100%;' type="info"
+                   icon="el-icon-sort"
+                   @click="init">重连服务器&nbsp;&nbsp;&nbsp;&nbsp;
+        </el-button>
+      </div>
+      <div style='padding-top: 12px;display: flex;justify-content: space-between;'>
+        <el-button size='mini' class="addstyle" style='width: 100%;' type="info"
+                   icon="el-icon-refresh"
+                   @click="initInterface">刷新接口列表
+        </el-button>
+      </div>
+      <div style='padding-top: 12px;display: flex;justify-content: space-between;'>
+        <el-button size='mini' class="addstyle" type="info"
+                   icon="el-icon-plus"
+                   @click="addInput">新增字段
+        </el-button>
+        <el-button size='mini' class="addstyle" type="success"
+                   icon="el-icon-s-promotion"
+                   @click="sendData">发送数据
+        </el-button>
+      </div>
+    </div>
+
+    <el-form :model="form" style='width: 380px;' v-show='showParam'>
+      <div v-for="(ddd,index) in counter">
+        <el-form-item>
+          <el-input size='mini' style="width:120px" v-model="ddd.key" placeholder="请输入key"
+                    autocomplete="off"></el-input>
+          <span style='color: #8B8B8B;'> -</span>
+          <el-input size='mini' style="width:200px" v-model="ddd.value" placeholder="请输入value"
+                    autocomplete="off"></el-input>
+          <i class="el-icon-close" style='cursor: pointer;color: #a9a8a8;' :index='index'
+             @click='delInput(index)'></i>
+        </el-form-item>
+      </div>
+    </el-form>
+    <!--  不要格式化，不然会首行缩进  -->
+    <pre id='console-log'><code id='logs'></code></pre>
+  </div>
+  <div id='kapi-container'></div>
+
+  <el-tooltip class="item"
+              :manual='true'
+              v-model='showCopySuccess'
+              effect="light" content="复制成功" placement="top">
+    <div class="copy"
+         v-show='showCopyButton'
+         @click="copyResult"><i class="el-icon-document-copy"></i></div>
+  </el-tooltip>
+
+  <textarea id="rawCode" class="raw-code"
+            style="width: 0;height: 0;position: absolute;top: -4000px;" rows="5">
+            {{rawResult}}
+          </textarea>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        methodName: '',
+        interfaceOptions: [],
+        result: '',
+        rawResult: '',
+        showCopyButton: false,
+        showCopySuccess: false,
+        scene: null,
+        form: {},
+        //添加要循环的为空
+        counter: []
+      }
+    },
+    mounted() {
+      // 判断 iframe 的父级的 body 是不是 dark 类，有的话给当前的 body 加 dark
+      let htmlHasDark = parent.document.querySelector('html.dark')
+      let bodyHasDark = parent.document.body.classList.toString().includes('dark')
+      if (htmlHasDark || bodyHasDark) {
+        document.body && document.body.classList.add('dark')
+        // localStorage.setItem('sandbox-theme', 'dark')
+      }
+
+      function dispatchEventStorage() {
+        const signSetItem = parent.parent.localStorage.setItem
+        parent.parent.localStorage.setItem = function (key, val){
+          let setEvent = new Event('setItemEvent')
+          setEvent.key = key
+          setEvent.newValue = val
+          parent && parent.parent && parent.parent.window && parent.parent.window.dispatchEvent && parent.parent.window.dispatchEvent(setEvent)
+          signSetItem.apply(this, arguments)
+        }
+      }
+
+      dispatchEventStorage()
+
+      //根据自己需要来监听对应的key
+      parent.parent.window.addEventListener("setItemEvent",(e) => {
+        //e.key : 是值发生变化的key
+        //e.newValue : 是可以对应的新值
+        if(e.key === "vitepress-theme-appearance"){
+          if (e.newValue === 'dark') {
+            // 修改页面布局的风格
+            document.body.classList.add('dark')
+          }else if (e.newValue === 'auto') {
+            document.body.classList.remove('dark')
+          }
+        }
+      })
+
+      this.init()
+    },
+    computed: {
+      showParam() {
+        return this.counter.length
+      }
+    },
+    methods: {
+      async init() {
+        if (this.scene) {
+          let destroyStat = await this.scene.destroy();
+          if (destroyStat.code === 200) {
+            this.scene = null
+            printLog(destroyStat)
+          }
+        }
+        let kapi = await KAPI.build(config.token)
+
+        // 设置参数
+        let options = {
+          server,                                                    // 服务地址
+          netStats: true,                                            // 是否显示网络信息
+          fullscreen: true                                           // 是否显示全屏按钮
+        }
+        this.scene = new kapi.Scene('kapi-container', options)
+
+        // 等待场景响应好
+        let readyStat = await this.scene.ready()
+        printLog(readyStat)
+        if (readyStat.code !== 200) return
+
+        await this.initInterface()
+      },
+      //现在是动态创建input里所需要的值，既然是添加多条 就是要push添加对象
+      addInput() {
+        if (this.counter.length >= 9) {
+          this.$message.warning(`参数不能超过${this.counter.length}个`)
+          return
+        }
+        this.counter.push({'key': '', 'value': ''})
+      },
+      delInput(index) {
+        // 从 this.counter 删除指定index的值
+        this.counter.splice(index, 1)
+      },
+      async initInterface() {
+        // 初始化测试模块
+        let data = {
+          event: 'getInterfaceList'
+        }
+        let info = await this.scene.sendData(data)
+        if (info.code !== 200) {
+          printLog(info)
+          return
+        }
+        // interface 结果处理
+        let tempList = info.data.result
+        let tempInterfaceList = tempList.split('&')
+        let interfaceList = [], name, code
+        tempInterfaceList.forEach(interfaceResults => {
+          name = interfaceResults.split(':')[0]
+          code = interfaceResults.split(':')[1]
+          interfaceList.push({
+            name,
+            code
+          })
+        })
+        this.interfaceOptions = interfaceList
+      },
+      copyResult() {
+        // 执行复制
+        let that = document.getElementById('rawCode')
+        that.select()
+        document.execCommand('Copy')
+
+        // this.$message.success('复制成功')
+        this.showCopySuccess = true
+        setTimeout(e => {
+          this.showCopySuccess = false
+        }, 1200)
+      },
+      async sendData() {
+        if (!this.methodName) {
+          this.$message.warning('必须要选中一个接口名称')
+          return
+        }
+
+        // 初始化测试模块
+        let data = {
+          event: this.methodName,
+          data: {}
+        }
+        let param
+        for (let i = 0; i < this.counter.length; i++) {
+          param = this.counter[i]
+          if (param.key.trim() === '') {
+            // this.$message.warning(`${param.key}参数不能为空，不需要可以先删除`)
+            continue
+          }
+          let key = param.key.trim()
+          let value = param.value.trim()
+          let obj = strToObj(key, value)
+          data = deepAssign(data, obj)
+        }
+
+        let info = await this.scene.sendData(data)
+        printLog(info)
+        if (info.code !== 200) {
+          this.$message.error(info.message)
+        }
+        this.showCopyButton = true
+      }
+    }
+  })
+</script>
+</body>
+</html>

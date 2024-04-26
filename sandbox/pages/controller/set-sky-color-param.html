@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" id="home">
+<head>
+  <meta charset="utf-8">
+  <title>Set Sky Color Param - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <link rel='stylesheet' href='./css/index.css'>
+  <style type='text/css'>
+    #kapi-container {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body onload='init()'>
+<div class='container'>
+  <div id='kapi-container'></div>
+  <div class='operation-range'>
+    <div class='row'>
+      <label>色温
+        <input id="temperature" type="range" min="0" max="12000" value="6500"/>
+        <span id="show-temperature" style='width: 100px;height: 30px;'>6500</span>
+      </label>
+      <label>对比度
+        <input id="contrast" type="range" min="0" max="1" step="0.01" value="0.2"/>
+        <span id="show-contrast" style='width: 100px;height: 30px;'>0.2</span>
+      </label>
+      <label>饱和度
+        <input id="saturation" type="range" min="0" max="1.5" step="0.01" value="1"/>
+        <span id="show-saturation" style='width: 100px;height: 30px;'>1</span>
+      </label>
+    </div>
+  </div>
+</div>
+<pre id='console-log'><code id='logs'></code></pre>
+<script src="./config.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+<script src="js/highlight/highlight.min.js"></script>
+<script src="./js/kapi.js"></script>
+<script>
+  let kapi
+
+  async function init() {
+    kapi = await KAPI.build(config.token)
+
+    // 设置参数
+    let options = {
+      server,                                                    // 服务地址
+      netStats: false,                                           // 是否显示网络信息
+      fullscreen: true                                          // 是否要全屏
+    }
+    // 初始化场景
+    let scene = new kapi.Scene('kapi-container', options)
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+    printLog(readyStat)
+    if (readyStat.code !== 200) return
+
+    // 实例化
+    let markerInstance = new kapi.Marker()
+    // 先清空
+    await markerInstance.clear()
+
+    let param = {
+      temperature: 6500,
+      contrast: 0.2,
+      saturation: 1
+    }
+    let temperature = document.querySelector('#temperature')
+    temperature.oninput = function (e) {
+      param.temperature = parseFloat(e.target.value)
+      document.getElementById('show-temperature').innerHTML = e.target.value
+      changeSkyColor(param)
+    }
+    let contrast = document.querySelector('#contrast')
+    contrast.oninput = function (e) {
+      param.contrast = parseFloat(e.target.value)
+      document.getElementById('show-contrast').innerHTML = e.target.value
+      changeSkyColor(param)
+    }
+    let saturation = document.querySelector('#saturation')
+    saturation.oninput = function (e) {
+      param.saturation = parseFloat(e.target.value)
+      document.getElementById('show-saturation').innerHTML = e.target.value
+      changeSkyColor(param)
+    }
+
+    await changeSkyColor(param)
+  }
+
+  async function changeSkyColor(param) {
+    // 设置天空色彩参数
+    let controller = new kapi.Controller()
+    let controllerInfo = await controller.setSkyColorParam(param)
+  }
+</script>
+</body>
+</html>

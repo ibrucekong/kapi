@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Projection ECEF Convert to each other - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <link rel='stylesheet' href='./css/index.css'>
+  <style type='text/css'>
+    #kapi-container {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body onload='init()'>
+<div class='container'>
+  <div id='kapi-container'></div>
+  <div class='operation-range'>
+    <div class='row'>
+      输入端：
+      <label>x
+        <input id='x' type='text'>
+      </label>
+      <label>y
+        <input id='y' type='text'>
+      </label>
+      <label>z
+        <input id='z' type='text'>
+      </label>
+    </div>
+
+    <div class='row'>
+      结果端：
+      <label>x
+        <input id='resultx' type='text' disabled>
+      </label>
+      <label>y
+        <input id='resultY' type='text' disabled>
+      </label>
+      <label>z
+        <input id='resultZ' type='text' disabled>
+      </label>
+    </div>
+
+    <div class='row'>
+      <div class='btn' onclick='projection2ECEF()'>投影 -> ECEF</div>
+      <div class='btn' onclick='ecef2Projection()'>ECEF -> 投影</div>
+    </div>
+  </div>
+</div>
+<pre id='console-log'><code id='logs'></code></pre>
+<script src="./config.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+<script src="js/highlight/highlight.min.js"></script>
+<script src="./js/kapi.js"></script>
+<script>
+  let coord
+
+  async function init() {
+    let kapi = await KAPI.build(config.token)
+
+    // 设置参数
+    let options = {
+      server,                                                    // 服务地址
+      netStats: false,                                           // 是否显示网络信息
+      fullscreen: true                                          // 是否要全屏
+    }
+    // 初始化场景
+    let scene = new kapi.Scene('kapi-container', options)
+
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+    printLog(readyStat)
+    if (readyStat.code !== 200) return
+
+    coord = new kapi.Coord()
+  }
+
+  async function projection2ECEF() {
+    let x = document.getElementById('x').value
+    let y = document.getElementById('y').value
+    let z = document.getElementById('z').value
+    let res = await coord.ecefToEngine(x, y, z)
+    if (res.code === 200) {
+      document.getElementById('resultx').value = res.data.coordinate.x
+      document.getElementById('resultY').value = res.data.coordinate.y
+      document.getElementById('resultZ').value = res.data.coordinate.z
+    }
+  }
+
+  async function ecef2Projection() {
+    let x = document.getElementById('x').value
+    let y = document.getElementById('y').value
+    let z = document.getElementById('z').value
+    let res = await coord.engineToECEF(x, y, z)
+    if (res.code === 200) {
+      document.getElementById('resultx').value = res.data.coordinate.x
+      document.getElementById('resultY').value = res.data.coordinate.y
+      document.getElementById('resultZ').value = res.data.coordinate.z
+    }
+  }
+</script>
+</body>
+</html>

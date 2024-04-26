@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang='zh'>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="content-language" content="zh-cn"/>
+  <title>数字孪生仿真可视化大屏 - 云桥平台</title>
+  <meta name="keywords" content="云桥平台 数字孪生"/>
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <link rel='stylesheet' href='css/index.css'>
+</head>
+<body onload="init()">
+<div id='hello-kapi' class="v_out v_out_p">
+  <div class="v_show">
+    <div class="v_cont">
+      <ul>
+        <li style="background:#999">
+          <iframe src="pages/iframe-kapi-cloud.html" style="width:100%;height:100vh;border: 0!important;"></iframe>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function init() {
+    $('.v_cont ul li').css('height', document.documentElement.clientHeight)
+    $('.v_show').css('height', document.documentElement.clientHeight)
+    window.onresize = function () {
+      $('.v_cont ul li').css('height', document.documentElement.clientHeight)
+      $('.v_show').css('height', document.documentElement.clientHeight)
+    }
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Set Weather Type - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <link rel='stylesheet' href='./css/index.css'>
+  <style type='text/css'>
+    #kapi-container {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body onload='init()'>
+<div class='container'>
+  <div id='kapi-container'></div>
+  <div class="operation-range">
+    <div class='row'>
+      <input type="button" value="晴天" id="CLEAR_SKIES" onclick="setWeather(this.id)">
+      <input type="button" value="少云" id="PARTLY_CLOUDY" onclick="setWeather(this.id)">
+      <input type="button" value="多云" id="CLOUDY" onclick="setWeather(this.id)">
+      <input type="button" value="阴" id="OVERCAST" onclick="setWeather(this.id)">
+      <input type="button" value="雾" id="FOGGY" onclick="setWeather(this.id)">
+      <input type="button" value="小雨" id="LIGHT_RAIN" onclick="setWeather(this.id)">
+      <input type="button" value="大雨" id="RAIN" onclick="setWeather(this.id)">
+      <input type="button" value="雷雨" id="THUNDERSTORM" onclick="setWeather(this.id)">
+      <input type="button" value="小雪" id="LIGHT_SNOW" onclick="setWeather(this.id)">
+      <input type="button" value="大雪" id="SNOW" onclick="setWeather(this.id)">
+      <input type="button" value="暴风雪" id="BLIZZARD" onclick="setWeather(this.id)">
+    </div>
+  </div>
+</div>
+<pre id='console-log'><code id='logs'></code></pre>
+<script src="./config.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+<script src="js/highlight/highlight.min.js"></script>
+<script src="./js/kapi.js"></script>
+<script>
+  let kapi
+  async function init() {
+    kapi = await KAPI.build(config.token)
+
+    let syncServer = '10.202.92.2:13000'
+    // 设置参数
+    let options = {
+      server,                                                    // 服务地址
+      netStats: false,                                           // 是否显示网络信息
+      fullscreen: true,                                          // 设置需要忽略的按键，默认如下
+      sync: true,                                                // 是否使用消息同步，开启后，消息会同步到连接到同一个”sync服务器“的客户端
+      syncServer                                                 // 同步服务器的地址
+    }
+    // 初始化场景
+    let scene = new kapi.Scene('kapi-container', options)
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+    if (options.sync) {
+      printLog({
+        success: true,
+        message: '设置了客户端消息同步',
+        data: {
+          syncServer,
+          clientId: scene.clientId
+        }
+      })
+    }
+    printLog(readyStat)
+    if (readyStat.code !== 200) return
+
+    // 实例化
+    let markerInstance = new kapi.Marker()
+    // 先清空
+    await markerInstance.clear()
+
+    controller = new kapi.Controller()
+  }
+
+  // 使用天气系统
+  // type枚举值：
+  // 0：Clear Skies
+  // 1：Partly Cloudy
+  // 2：Cloudy
+  // 3：Overcast
+  // 4：Foggy
+  // 5：Light Rain
+  // 6：Rain
+  // 7：Thunderstorm
+  // 8：Light Snow
+  // 9：Snow
+  // 10：Blizzard
+  // 11：None
+  async function setWeather(type) {
+    type = KAPI_CONST.WEATHER[type]
+    // 第二个参数标识要不要同步到其他客户端
+    let controllerInfo = await controller.setWeatherType(type, true)
+    printLog(controllerInfo)
+  }
+</script>
+
+</body>
+</html>

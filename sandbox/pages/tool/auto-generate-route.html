@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Auto generate route - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    #kapi-container {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .seconds {
+      position: fixed;
+      left: 30px;
+      bottom: 20px;
+
+      width: 220px;
+      z-index: 999;
+
+
+      -webkit-appearance: none;
+      background-color: #fff;
+      background-image: none;
+      border-radius: 4px;
+      border: 1px solid #dcdfe6;
+      box-sizing: border-box;
+      color: #606266 !important;
+      display: inline-block;
+      font-size: inherit;
+      height: 40px;
+      line-height: 40px;
+      outline: none;
+      padding: 0 15px;
+      transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+    }
+
+    .seconds:focus {
+      outline: none;
+      border-color: #409eff;
+    }
+
+    .start-location {
+      position: fixed;
+      left: 270px;
+      bottom: 20px;
+      z-index: 999;
+
+      display: inline-block;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      background: #fff;
+      border: 1px solid #dcdfe6;
+      color: #606266;
+      -webkit-appearance: none;
+      text-align: center;
+      box-sizing: border-box;
+      outline: none;
+      margin: 0;
+      transition: .1s;
+      font-weight: 500;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .start-location:hover {
+      transform: scale(1.1);
+    }
+
+    .stop-location {
+      position: fixed;
+      left: 380px;
+      bottom: 20px;
+      z-index: 999;
+
+      display: inline-block;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      background: #fff;
+      border: 1px solid #dcdfe6;
+      color: #606266;
+      -webkit-appearance: none;
+      text-align: center;
+      box-sizing: border-box;
+      outline: none;
+      margin: 0;
+      transition: .1s;
+      font-weight: 500;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      padding: 12px 20px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .stop-location:hover {
+      transform: scale(1.1);
+    }
+
+    .count-down {
+      position: fixed;
+      left: 500px;
+      bottom: 20px;
+      z-index: 999;
+      width: 40px;
+
+      display: none;
+    }
+
+    #textarea {
+      position: absolute;
+      left: -100%;
+    }
+
+    .fullScreenDiv { /* 全屏div */
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+
+      z-index: 99;
+    }
+
+    .promptDiv { /* 提示框div */
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 20%;
+      height: 20%;
+      border-radius: 2px;
+      background-color: white;
+      text-align: center;
+    }
+
+    .close {
+      height: 34px;
+      line-height: 34px;
+      margin: 0;
+      text-align: right;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      background-color: cornflowerblue
+    }
+
+    .X {
+      font-size: 17px;
+      padding-right: 10px;
+      color: white;
+      cursor: pointer;
+      font-weight: 100;
+    }
+
+    .X:hover {
+      color: gray;
+    }
+
+    .countDown { /*倒计时关闭提示框*/
+      color: red;
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body onload="init()">
+<input type='text' class='seconds' placeholder='请输入录制频率，默认1秒'>
+<div class='start-location' onclick='startRecords()' title='每隔1秒记录一次场景坐标'>开始录制</div>
+<div class='stop-location' onclick='stopRecords()' title='点击后，将会把结果复制到剪切板'>结束录制</div>
+<div class='seconds count-down'></div>
+<div class="fullScreenDiv">
+  <div class="promptDiv">
+    <h4 class="close"><span class="X" title='关闭并停止录制'>×</span></h4>
+    <p>即将开始录制坐标</p>
+    <p>倒计时关闭</p>
+    <span class="countDown">3</span>
+  </div>
+</div>
+<div id='kapi-container'></div>
+<textarea id="textarea"></textarea>
+<script src="./config.js"></script>
+<script src="./js/kapi.js"></script>
+<script src='./js/jquery-1.8.3.min.js'></script>
+<script src='./js/layer/layer.js'></script>
+<script>
+  const copyToClipboard = (text) => {
+    if (navigator.clipboard) {
+      // localhost 或者 https 下可以使用
+      navigator.clipboard.writeText(text)
+    } else {
+      let textarea = document.getElementById('textarea')
+      textarea.value = text // 修改文本框的内容
+      textarea.select() // 选中文本
+      document.execCommand('copy')
+    }
+  }
+  let kapi, scene, camera, waitingSecond = 3, inter, secIndex = 0
+
+  async function init() {
+    kapi = await KAPI.build(config.token)
+
+    // 设置参数
+    let options = {
+      server,                                                    // 服务地址
+      netStats: true,                                            // 是否显示网络信息
+      fullscreen: true                                          // 是否要全屏
+    }
+    // 初始化场景
+    scene = new kapi.Scene('kapi-container', options)
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+    console.log(readyStat)
+    if (readyStat.code !== 200) return
+
+    camera = new kapi.Camera()
+  }
+
+  let route = [], index = 0
+
+  async function startRecords() {
+    waitingSecond = 3
+    inter = undefined
+    inter2 = undefined
+    secIndex = 0
+    route = []
+    index = 0
+
+    let seconds = document.querySelector('.seconds').value
+    if (seconds === '' || seconds.trim() === '') {
+      seconds = 1
+    }
+    seconds = parseInt(seconds)
+
+    document.getElementsByClassName('fullScreenDiv')[0].style.display = 'block'
+    document.getElementsByClassName('promptDiv')[0].style.display = 'block'
+    for (let sec = 3; sec >= 0; sec--) {
+      (function (runSec) {
+        setTimeout(async function () {
+          let waitingTime = Math.abs(runSec - waitingSecond)//如果i为0，那么被定时0s，则要输出abs(0-3)=3 ,如果runSec为3，那么被定时3s，则要输出abs(i-3)=0
+          if (waitingTime === 0) {
+            document.getElementsByClassName('fullScreenDiv')[0].style.display = 'none'
+            document.getElementsByClassName('promptDiv')[0].style.display = 'none'
+            document.getElementsByClassName('count-down')[0].style.display = 'block'
+
+            // 让 video[signal] 获取焦点
+            document.querySelector('video[signal]').focus()
+
+            // 首次
+            let cameraLocation = await camera.getCameraInfo()
+            if (!cameraLocation.code === 200) {
+              // 报错，停止录制
+              console.log(cameraLocation.message)
+              clearInterval(inter)
+              // 将当前数据复制到剪切板
+              copyToClipboard(JSON.stringify(route))
+
+              layer.warn('坐标失败获取，已中断', {icon: 7})
+              return
+            }
+            index++
+            console.info('录制中...', index)
+            inter2 = setInterval(() => {
+              secIndex++
+              let wIndex = seconds - secIndex
+              // console.log('seconds', seconds, 'secIndex', secIndex, 'wIndex', wIndex)
+              document.getElementsByClassName('count-down')[0].innerHTML = wIndex
+              if (wIndex === 0) {
+                clearInterval(inter2)
+                secIndex = 0
+              }
+            }, 1000)
+            let position = cameraLocation.data.project
+            position.rotation = cameraLocation.data.rotation
+            route.push(position)
+
+            // 提示 waitingSecond 秒倒计时----开始
+            inter = setInterval(async () => {
+              let cameraLocation = await camera.getCameraInfo()
+              if (!cameraLocation.code === 200) {
+                // 报错，停止录制
+                console.log(cameraLocation.message)
+                clearInterval(inter)
+                // 将当前数据复制到剪切板
+                copyToClipboard(JSON.stringify(route))
+
+                layer.warn('坐标失败获取，已中断', {icon: 7})
+                return
+              }
+              index++
+              console.info('录制中...', index)
+              inter2 = setInterval(() => {
+                secIndex++
+                let wIndex = seconds - secIndex
+                // console.log('seconds', seconds, 'secIndex', secIndex, 'wIndex', wIndex)
+                document.getElementsByClassName('count-down')[0].innerHTML = wIndex
+                if (wIndex === 0) {
+                  clearInterval(inter2)
+                  secIndex = 0
+                }
+              }, 1000)
+              let position = cameraLocation.data.project
+              position.rotation = cameraLocation.data.rotation
+              route.push(position)
+            }, seconds * 1000)
+          } else {
+            document.getElementsByClassName('countDown')[0].innerHTML = waitingTime
+          }
+        }, runSec * 1000)//每次间隔时间为1s
+      })(sec)
+    }
+  }
+
+  function stopRecords() {
+    clearInterval(inter)
+    clearInterval(inter2)
+    console.info('录制的路线数据：', route)
+    copyToClipboard(JSON.stringify(route))
+    layer.msg('已将录制的路线复制到剪切板中', {icon: 1})
+    document.getElementsByClassName('count-down')[0].style.display = 'none'
+  }
+
+  document.getElementsByClassName('X')[0].addEventListener('click', function () {
+    // 停止录制
+    clearInterval(inter)
+    clearInterval(inter2)
+    // 关闭弹窗
+    document.getElementsByClassName('fullScreenDiv')[0].style.display = 'none'
+    document.getElementsByClassName('promptDiv')[0].style.display = 'none'
+    document.getElementsByClassName('count-down')[0].style.display = 'none'
+  })
+</script>
+</body>
+</html>

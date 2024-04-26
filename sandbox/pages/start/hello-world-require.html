@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hello World - KAPI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="description" content="KAPI"/>
+  <link rel='stylesheet' href='./css/index.css'>
+  <style type='text/css'>
+    #kapi-container {
+      width: 100%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .operation-range {
+      width: 100%;
+      height: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+<div class='container'>
+  <div id='kapi-container'></div>
+  <div class='operation-range'>
+    <div class='row'>
+      <div class='description'>
+        <p style='font-weight: bold;text-align: center'>《工具入门指南》</p>
+        <p> 1️⃣ 这是沙箱里的第一个示例，也是传统意义上的hello world代码</p>
+        <p> 2️⃣ 中间代码框可以编辑修改，代码框内使用【Ctrl+S】键运行</p>
+        <p> 3️⃣ 请注意：中间代码框中编辑的内容在页面刷新后会重置</p>
+      </div>
+    </div>
+  </div>
+</div>
+<pre id='console-log'><code id='logs'></code></pre>
+<script src="./config.js"></script>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/require.js"></script>
+<link href="js/highlight/intellij-light.min.css" rel="stylesheet">
+<script src="js/highlight/highlight.min.js"></script>
+<script>
+  require(['./js/kapi.js'], (KAPI) => {
+    init(KAPI)
+  })
+
+  async function init(KAPI) {
+    // 实例化接口
+    let kapi = await KAPI.build(config.token)
+
+    // 初始化场景
+    let scene = new kapi.Scene('kapi-container', {server})
+
+    // 等待场景响应好
+    let readyStat = await scene.ready()
+
+    // 打印日志
+    printLog(readyStat)
+  }
+</script>
+</body>
+</html>
